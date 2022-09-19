@@ -1,33 +1,39 @@
-package consoCarbone
+package consoCarbone;
 
-public enum CE {
-    A, B, C, D, E, F, G
-}
+public class Logement extends ConsoCarbone {
+    private int superficie; // la superficie du logement en m2
+    private CE classeEnergetique; // la classe énergétique du logement
 
-public class Logement {
-    private int superficie;
-    private CE classeEnergetique;
-    private double impact;
+    public static int cptIndividu = 0; // compteur statique du nb d'individu
+    public static double totalImpact = 0.0; // total de la somme des impacts
 
-    public Logement(int superficie, CE classeEnergetique, double impact) {
+    public Logement(int superficie, CE classeEnergetique) {
+        super();
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
-        // a revoir
-        // if (classeEnergetique == 'A') {
-        //     this.impact = impact*0.005;
-        // } else if (classeEnergetique == 'B'){
-        //     this.impact = impact*0.01;
-        // } else if (classeEnergetique == 'C'){
-        //     this.impact = impact*0.02;
-        // } else if (classeEnergetique == 'D'){
-        //     this.impact = impact*0.035;
-        // } else if (classeEnergetique == 'E'){
-        //     this.impact = impact*0.055;
-        // } else if (classeEnergetique == 'F'){
-        //     this.impact = impact*0.08;
-        // } else {
-        //     this.impact = impact*0.1;
-        // } 
+        this.impact = impactFormula();
+        totalImpact = totalImpact + this.impact;
+        cptIndividu++;
+    }
+
+    public double impactFormula() {
+        switch (classeEnergetique) {
+            case A:
+                return superficie * 0.005;
+            case B:
+                return superficie * 0.01;
+            case C:
+                return superficie * 0.02;
+            case D:
+                return superficie * 0.035;
+            case E:
+                return superficie * 0.055;
+            case F:
+                return superficie * 0.08;
+            case G:
+                return superficie * 0.1;
+        }
+        return -1;
     }
 
     public int getSuperficie() {
@@ -36,10 +42,6 @@ public class Logement {
 
     public CE getClasseEnergetique() {
         return classeEnergetique;
-    }
-
-    public double getImpact() {
-        return impact;
     }
 
     public void setSuperficie(int superficie) {
@@ -54,5 +56,14 @@ public class Logement {
         this.impact = impact;
     }
 
-    pu
+    @Override
+    public String toString() {
+        return "Logement [superficie=" + superficie + ", classeEnergetique=" + classeEnergetique + ", impact=" + impact
+                + "]";
+    }
+
+    public static String empreinteMoyLogement() {
+        return "Empreinte moyenne du logement par individu : " + (totalImpact / cptIndividu);
+    }
+
 }
