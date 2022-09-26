@@ -56,6 +56,10 @@ public class Logement extends ConsoCarbone {
         this.impact = impact;
     }
 
+    public double getImpact() {
+        return impact;
+    }
+
     @Override
     public String toString() {
         return "Logement [superficie=" + superficie + ", classeEnergetique=" + classeEnergetique + ", impact=" + impact

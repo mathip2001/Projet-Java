@@ -25,6 +25,10 @@ public class BienConso extends ConsoCarbone {
         return montant;
     }
 
+    public double getImpact() {
+        return impact;
+    }
+
     public void setMontant(double montant) {
         this.montant = montant;
     }

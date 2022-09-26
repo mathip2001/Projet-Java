@@ -36,7 +36,7 @@ public class Transport extends ConsoCarbone {
                 ", taille=" + taille +
                 ", kilomAnnee=" + kilomAnnee +
                 ", amortissement=" + amortissement +
-                ", impact=" + impact +']';
+                ", impact=" + impact + ']';
     }
 
     public boolean isPossede() {
@@ -69,5 +69,9 @@ public class Transport extends ConsoCarbone {
 
     public void setAmortissement(int amortissement) {
         this.amortissement = amortissement;
+    }
+
+    public double getImpact() {
+        return impact;
     }
 }
