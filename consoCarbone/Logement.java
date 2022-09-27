@@ -1,12 +1,14 @@
 package consoCarbone;
 
 public class Logement extends ConsoCarbone {
+    // Attributs
     private int superficie; // la superficie du logement en m2
     private CE classeEnergetique; // la classe énergétique du logement
 
     public static int cptIndividu = 0; // compteur statique du nb d'individu
     public static double totalImpact = 0.0; // total de la somme des impacts
 
+    // Constructeur
     public Logement(int superficie, CE classeEnergetique) {
         super();
         this.superficie = superficie;
@@ -36,6 +38,7 @@ public class Logement extends ConsoCarbone {
         return -1;
     }
 
+    // getter et setter
     public int getSuperficie() {
         return superficie;
     }
@@ -60,12 +63,14 @@ public class Logement extends ConsoCarbone {
         return impact;
     }
 
+    // Méthode toString
     @Override
     public String toString() {
         return "Logement [superficie=" + superficie + ", classeEnergetique=" + classeEnergetique + ", impact=" + impact
                 + "]";
     }
 
+    // Méthode de classe empreinteMoyLogement
     public static String empreinteMoyLogement() {
         return "Empreinte moyenne du logement par individu : " + (totalImpact / cptIndividu);
     }

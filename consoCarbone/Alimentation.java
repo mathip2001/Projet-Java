@@ -1,6 +1,7 @@
 package consoCarbone;
 
 public class Alimentation extends ConsoCarbone {
+    // Attributs
     private double txBoeuf; // le taux de repas (une valeur entre 0 et 1) à base de boeuf (le type de viande
                             // le plus émissif)
     private double txVege; // txVege, le taux de repas végétariens
@@ -12,6 +13,7 @@ public class Alimentation extends ConsoCarbone {
     public static int cptIndividu = 0; // compteur statique du nb d'individu
     public static double totalImpact = 0.0; // total de la somme des impacts
 
+    // Constructeur
     public Alimentation(double txBoeuf, double txVege) {
         super();
         this.txBoeuf = txBoeuf;
@@ -25,6 +27,7 @@ public class Alimentation extends ConsoCarbone {
         return c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
     }
 
+    // getter et setter
     public double getTxBoeuf() {
         return txBoeuf;
     }
@@ -49,11 +52,13 @@ public class Alimentation extends ConsoCarbone {
         this.impact = impact;
     }
 
+    // Méthode toString
     @Override
     public String toString() {
         return "Alimentation [txBoeuf=" + txBoeuf + ", txVege=" + txVege + ", impact=" + impact + "]";
     }
 
+    // Méthode de classe empreinteMoyAlimentation
     public static String empreinteMoyAlimentation() {
         return "Empreinte moyenne de l'alimentation par individu : " + (totalImpact / cptIndividu);
     }

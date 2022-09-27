@@ -1,11 +1,13 @@
 package consoCarbone;
 
 public class Transport extends ConsoCarbone {
+    // Attributs
     private boolean possede; // un boolean indiquant si l’utilisateur.rice possède une voiture.
     private Taille taille; // la taille du véhicule.
     private int kilomAnnee;// nombre de kilomètres parcourus par an.
     private int amortissement;// durée de conservation du véhicule.
 
+    // Constructeur
     public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement) {
         super();
         this.possede = possede;
@@ -29,6 +31,7 @@ public class Transport extends ConsoCarbone {
 
     }
 
+    // Méthode toString
     @Override
     public String toString() {
         return "Transport [" +
@@ -36,9 +39,10 @@ public class Transport extends ConsoCarbone {
                 ", taille=" + taille +
                 ", kilomAnnee=" + kilomAnnee +
                 ", amortissement=" + amortissement +
-                ", impact=" + impact + ']';
+                ", impact=" + String.format("%.2f", impact) + ']';
     }
 
+    // getter et setter
     public boolean isPossede() {
         return possede;
     }
@@ -73,5 +77,9 @@ public class Transport extends ConsoCarbone {
 
     public double getImpact() {
         return impact;
+    }
+
+    public void setImpact(double impact) {
+        this.impact = impact;
     }
 }
