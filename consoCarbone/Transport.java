@@ -35,6 +35,7 @@ public class Transport extends ConsoCarbone {
     // Méthode toString
     @Override
     public String toString() {
+        // super.toString() ?
         return "Transport [" +
                 "possede=" + possede +
                 ", taille=" + taille +
@@ -83,4 +84,21 @@ public class Transport extends ConsoCarbone {
     public void setImpact(double impact) {
         this.impact = impact;
     }
+
+    // Méthode compareTo
+    public int compareTo(ConsoCarbone o) {
+        int res = -1;
+        Transport t = (Transport) o;
+
+        if (this.getImpact() > t.getImpact()) {
+            res = 1;
+        }
+
+        if ((this.getImpact() == t.getImpact())) {
+            res = 0;
+        }
+
+        return res;
+    }
+
 }

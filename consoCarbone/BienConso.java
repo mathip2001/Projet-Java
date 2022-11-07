@@ -43,4 +43,19 @@ public class BienConso extends ConsoCarbone {
         this.impact = impact;
     }
 
+    // Méthode compareTo
+    public int compareTo(ConsoCarbone o) {
+        int res = -1;
+        BienConso b = (BienConso) o;
+
+        if (this.getImpact() > b.getImpact()) {
+            res = 1;
+        }
+
+        if ((this.getImpact() == b.getImpact())) {
+            res = 0;
+        }
+
+        return res;
+    }
 }

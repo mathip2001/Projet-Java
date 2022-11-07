@@ -76,4 +76,20 @@ public class Logement extends ConsoCarbone {
         return "Empreinte moyenne du logement par individu : " + (totalImpact / cptIndividu);
     }
 
+    // Méthode compareTo
+    public int compareTo(ConsoCarbone o) {
+        int res = -1;
+        Logement l = (Logement) o;
+
+        if (this.getImpact() > l.getImpact()) {
+            res = 1;
+        }
+
+        if ((this.getImpact() == l.getImpact())) {
+            res = 0;
+        }
+
+        return res;
+    }
+
 }

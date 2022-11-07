@@ -38,4 +38,10 @@ public class ServicesPublics extends ConsoCarbone {
         }
         return instance;
     }
+
+    // Méthode compareTo
+    @Override
+    public int compareTo(ConsoCarbone o) {
+        return 0;
+    }
 }

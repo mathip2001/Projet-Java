@@ -19,7 +19,7 @@ public class Alimentation extends ConsoCarbone {
         super();
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
-        this.impact = impactFormula();
+        impact = impactFormula();
         totalImpact = totalImpact + this.impact;
         cptIndividu++;
     }
@@ -64,4 +64,19 @@ public class Alimentation extends ConsoCarbone {
         return "Empreinte moyenne de l'alimentation par individu : " + (totalImpact / cptIndividu);
     }
 
+    // Méthode compareTo
+    public int compareTo(ConsoCarbone o) {
+        int res = -1;
+        Alimentation a = (Alimentation) o;
+
+        if (this.getImpact() > a.getImpact()) {
+            res = 1;
+        }
+
+        if ((this.getImpact() == a.getImpact())) {
+            res = 0;
+        }
+
+        return res;
+    }
 }

@@ -1,6 +1,8 @@
 package consoCarbone;
 
-public abstract class ConsoCarbone implements Comparable {
+import java.lang.Comparable;
+
+public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
     // Attributs
     protected double impact;
     private int ID; // identifiant unique attribué à l’instance
@@ -26,4 +28,5 @@ public abstract class ConsoCarbone implements Comparable {
 
     public abstract void setImpact(double impact);
 
+    public abstract int compareTo(ConsoCarbone o);
 }
