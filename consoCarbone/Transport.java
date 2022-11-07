@@ -77,7 +77,7 @@ public class Transport extends ConsoCarbone {
 
     // Méthode de classe empreinteMoyTransport
     public static void empreinteMoyTransport() {
-        System.out.println("Empreinte carbone moyenne d'un français par rapport au transport");
+        System.out.println("Empreinte carbone moyenne d'un francais par rapport au transport :");
         System.out.println("Voiture : 1972 Kg eq CO2/an");
         System.out.println("Avion : 480 Kg eq CO2/an");
         System.out.println("Fret et messagerie : 383 Kg eq CO2/an");

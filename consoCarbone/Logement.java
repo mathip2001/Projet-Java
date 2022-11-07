@@ -14,30 +14,9 @@ public class Logement extends ConsoCarbone {
         super();
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
-        impact = impactFormula();
+        impact = superficie * this.classeEnergetique.getCoefficient();
         totalImpact = totalImpact + this.impact;
         cptIndividu++;
-    }
-
-    public double impactFormula() {
-        switch (classeEnergetique) {
-            case A:
-                return superficie * 0.005;
-            case B:
-                return superficie * 0.01;
-            case C:
-                return superficie * 0.02;
-            case D:
-                return superficie * 0.035;
-            case E:
-                return superficie * 0.055;
-            case F:
-                return superficie * 0.08;
-            case G:
-                return superficie * 0.1;
-            default:
-                return -1;
-        }
     }
 
     // getter et setter
@@ -79,12 +58,10 @@ public class Logement extends ConsoCarbone {
 
     // Méthode de classe empreinteMoyLogement
     public static void empreinteMoyLogement() {
-        System.out.println("Empreinte carbone moyenne d'un français par rapport au logement");
+        System.out.println("Empreinte carbone moyenne d'un francais par rapport au logement :");
         System.out.println("Equipements des logements : 335 Kg eq CO2/an");
         System.out.println("Construction & gros entretien : 675 Kg eq CO2/an");
-        System.out.println("Energie et utilités : 1696 Kg eq CO2/an");
-        // return "Empreinte moyenne du logement par individu : " + (totalImpact /
-        // cptIndividu);
+        System.out.println("Energie et utilites : 1696 Kg eq CO2/an");
     }
 
     // Méthode compareTo

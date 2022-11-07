@@ -45,8 +45,8 @@ public class ServicesPublics extends ConsoCarbone {
 
     // Méthode de classe empreinteMoyServicesPublics
     public static void empreinteMoyServicesPublics() {
-        System.out.println("Empreinte carbone moyenne d'un français par rapport aux services publics");
-        System.out.println("Services Publics, Santé : 1489 Kg eq CO2/an");
+        System.out.println("Empreinte carbone moyenne d'un francais par rapport aux services publics :");
+        System.out.println("Services Publics, Sante : 1489 Kg eq CO2/an");
     }
 
     // Méthode compareTo

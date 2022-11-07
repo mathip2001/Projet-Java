@@ -1,5 +1,19 @@
 package consoCarbone;
 
 public enum CE {
-    A, B, C, D, E, F, G
+    // Enumérations
+    A(0.005), B(0.01), C(0.02), D(0.035), E(0.055), F(0.08), G(0.1);
+
+    // Attributs
+    public double coefficient;
+
+    // Constructeur
+    private CE(double coefficient){
+        this.coefficient = coefficient;
+    }
+
+    // getter
+    public double getCoefficient(){
+        return coefficient;
+    }
 }

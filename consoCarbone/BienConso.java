@@ -48,7 +48,7 @@ public class BienConso extends ConsoCarbone {
 
     // Méthode de classe empreinteMoyBienConso
     public static void empreinteMoyBienConso() {
-        System.out.println("Empreinte carbone moyenne d'un français par rapport aux biens consommés");
+        System.out.println("Empreinte carbone moyenne d'un francais par rapport aux biens consommes :");
         System.out.println("Habillement : 763 Kg eq CO2/an");
         System.out.println("Achats et usages Internet et technologies : 1180 Kg eq CO2/an");
         System.out.println("Autres Biens et Services : 682 Kg eq CO2/an");
