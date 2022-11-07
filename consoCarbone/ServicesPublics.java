@@ -2,28 +2,26 @@ package consoCarbone;
 
 public class ServicesPublics extends ConsoCarbone {
     // Attribut
-    private double empreinte;
+    private static ServicesPublics instance = null;
 
     // Constructeur
-    public ServicesPublics() {
-        this.empreinte = 1.5;
+    private ServicesPublics() {
+        impact = 1.5;
+    }
+
+    private static void createInstance() {
+        if (instance == null) {
+            instance = new ServicesPublics();
+        }
     }
 
     // Méthode toString
     @Override
     public String toString() {
-        return "ServicesPublics [empreinte=" + empreinte + "]";
+        return "ServicesPublics [impact=" + impact + "]";
     }
 
     // getter et setter
-    public double getEmpreinte() {
-        return empreinte;
-    }
-
-    public void setEmpreinte(double empreinte) {
-        this.empreinte = empreinte;
-    }
-
     public double getImpact() {
         return impact;
     }
@@ -32,4 +30,11 @@ public class ServicesPublics extends ConsoCarbone {
         this.impact = impact;
     }
 
+    // Méthode getInstance
+    public static ServicesPublics getInstance() {
+        if (instance == null) {
+            createInstance();
+        }
+        return instance;
+    }
 }

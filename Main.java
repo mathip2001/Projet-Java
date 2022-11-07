@@ -46,7 +46,7 @@ public class Main {
 
         // Création d'1 objet ServicesPublics
         System.out.println("Création d'1 objet ServicesPublics");
-        ServicesPublics s1 = new ServicesPublics();
+        ServicesPublics s1 = ServicesPublics.getInstance();
         System.out.println(s1);
         System.out.println();
 

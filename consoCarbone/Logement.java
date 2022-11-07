@@ -2,6 +2,7 @@ package consoCarbone;
 
 public class Logement extends ConsoCarbone {
     // Attributs
+    // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
     private int superficie; // la superficie du logement en m2
     private CE classeEnergetique; // la classe énergétique du logement
 

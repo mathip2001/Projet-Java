@@ -2,11 +2,13 @@ package consoCarbone;
 
 public class BienConso extends ConsoCarbone {
     // Attributs
+    // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
     private double montant; // le montant des dépenses annuelles de l’utilisateur.rice.
 
     // Constructeur
     public BienConso(double montant) {
-        super(); // une tonne de CO2eq est équivalente à 1750€ de dépenses.
+        super();
+        // une tonne de CO2eq est équivalente à 1750€ de dépenses.
         this.montant = montant;
         this.impact = impactFormula();
     }

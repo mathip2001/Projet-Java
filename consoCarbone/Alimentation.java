@@ -2,6 +2,7 @@ package consoCarbone;
 
 public class Alimentation extends ConsoCarbone {
     // Attributs
+    // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
     private double txBoeuf; // le taux de repas (une valeur entre 0 et 1) à base de boeuf (le type de viande
                             // le plus émissif)
     private double txVege; // txVege, le taux de repas végétariens

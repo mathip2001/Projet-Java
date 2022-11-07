@@ -2,6 +2,7 @@ package consoCarbone;
 
 public class Transport extends ConsoCarbone {
     // Attributs
+    // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
     private boolean possede; // un boolean indiquant si l’utilisateur.rice possède une voiture.
     private Taille taille; // la taille du véhicule.
     private int kilomAnnee;// nombre de kilomètres parcourus par an.
