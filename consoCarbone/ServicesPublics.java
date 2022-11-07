@@ -6,6 +6,7 @@ public class ServicesPublics extends ConsoCarbone {
 
     // Constructeur
     private ServicesPublics() {
+        super();
         impact = 1.5;
     }
 
