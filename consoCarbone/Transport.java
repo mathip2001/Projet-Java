@@ -15,33 +15,19 @@ public class Transport extends ConsoCarbone {
         this.taille = taille;
         this.kilomAnnee = kilomAnnee;
         this.amortissement = amortissement;
-        this.impact = impactFormula();
-    }
-
-    public double impactFormula() {
-        if (!possede)
-            return 0;
-        switch (taille) {
-            case G:
-                return kilomAnnee * 1.93 * Math.pow(10, -4) + 19 / amortissement;
-            case P:
-                return kilomAnnee * 1.93 * Math.pow(10, -4) + 4.2 / amortissement;
-            default:
-                return -1;
-        }
-
+        impact = kilomAnnee * 1.93 * Math.pow(10, -4) + this.taille.getProduction() / amortissement;
     }
 
     // Méthode toString
     @Override
     public String toString() {
         // super.toString() ?
-        return "Transport [" +
-                "possede=" + possede +
+        return "Transport [" + super.toString() +
+                ", possede=" + possede +
                 ", taille=" + taille +
                 ", kilomAnnee=" + kilomAnnee +
                 ", amortissement=" + amortissement +
-                ", impact=" + String.format("%.2f", impact) + ']';
+                ']';
     }
 
     // getter et setter
@@ -83,6 +69,19 @@ public class Transport extends ConsoCarbone {
 
     public void setImpact(double impact) {
         this.impact = impact;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    // Méthode de classe empreinteMoyTransport
+    public static void empreinteMoyTransport() {
+        System.out.println("Empreinte carbone moyenne d'un français par rapport au transport");
+        System.out.println("Voiture : 1972 Kg eq CO2/an");
+        System.out.println("Avion : 480 Kg eq CO2/an");
+        System.out.println("Fret et messagerie : 383 Kg eq CO2/an");
+        System.out.println("Train et bus : 85 Kg eq CO2/an");
     }
 
     // Méthode compareTo

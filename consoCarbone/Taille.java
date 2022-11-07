@@ -5,10 +5,10 @@ public enum Taille {
     P(4.2), G(19.0);
 
     // Attributs
-    private double production;
+    public double production;
 
     // Constructeur
-    Taille(double production) {
+    private Taille(double production) {
         this.production = production;
     }
 

@@ -53,15 +53,25 @@ public class Alimentation extends ConsoCarbone {
         this.impact = impact;
     }
 
+    public int getID() {
+        return ID;
+    }
+
     // Méthode toString
     @Override
     public String toString() {
-        return "Alimentation [txBoeuf=" + txBoeuf + ", txVege=" + txVege + ", impact=" + impact + "]";
+        return "Alimentation [" + super.toString() + ", txBoeuf=" + txBoeuf + ", txVege=" + txVege + "]";
     }
 
     // Méthode de classe empreinteMoyAlimentation
-    public static String empreinteMoyAlimentation() {
-        return "Empreinte moyenne de l'alimentation par individu : " + (totalImpact / cptIndividu);
+    public static void empreinteMoyAlimentation() {
+        System.out.println("Empreinte carbone moyenne d'un français par rapport à l'alimentation");
+        System.out.println("Boissons : 263 Kg eq CO2/an");
+        System.out.println("Produits laitiers et oeufs : 408 Kg eq CO2/an");
+        System.out.println("Viandes et Poissons : 1144 Kg eq CO2/an");
+        System.out.println("Autres : 538 Kg eq CO2/an");
+        // return "Empreinte moyenne de l'alimentation par individu : " + (totalImpact /
+        // cptIndividu);
     }
 
     // Méthode compareTo

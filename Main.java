@@ -4,8 +4,8 @@ import consoCarbone2.*;
 public class Main {
 
     public static void main(String[] args) {
-        // Création de 3 objets logements
-        System.out.println("Création de 3 objets logements :");
+        // Création de 3 objets Logements
+        System.out.println("Création de 3 objets Logements :");
         Logement l1 = new Logement(100, CE.A);
         System.out.println(l1);
         Logement l2 = new Logement(1000, CE.B);
@@ -13,13 +13,12 @@ public class Main {
         Logement l3 = new Logement(15, CE.G);
         System.out.println(l3);
 
-        // Utilisation de la méthode statique pour calculer l'empreinte moyenne des
-        // logements par individu
-        System.out.println(Logement.empreinteMoyLogement());
+        // Utilisation de la méthode empreinteMoyLogement
+        Logement.empreinteMoyLogement();
         System.out.println();
 
-        // Création de 3 objets alimentation
-        System.out.println("Création de 3 objets alimentation :");
+        // Création de 3 objets Alimentation
+        System.out.println("Création de 3 objets Alimentation :");
         Alimentation a1 = new Alimentation(0.5, 0.5);
         System.out.println(a1);
         Alimentation a2 = new Alimentation(0.6, 0.4);
@@ -27,9 +26,8 @@ public class Main {
         Alimentation a3 = new Alimentation(0.4, 0.3);
         System.out.println(a3);
 
-        // Utilisation de la méthode statique pour calculer l'empreinte moyenne de
-        // l'alimentation par individu
-        System.out.println(Alimentation.empreinteMoyAlimentation());
+        // Utilisation de la méthode empreinteMoyAlimentation
+        Alimentation.empreinteMoyAlimentation();
         System.out.println();
 
         // Création d'1 objet BienConso
@@ -38,16 +36,28 @@ public class Main {
         System.out.println(b1);
         System.out.println();
 
+        // Utilisation de la méthode empreinteMoyBienConso
+        BienConso.empreinteMoyBienConso();
+        System.out.println();
+
         // Création d'1 objet Transport
         System.out.println("Création d'1 objet Transport :");
         Transport t1 = new Transport(true, Taille.P, 30040, 2);
         System.out.println(t1);
         System.out.println();
 
+        // Utilisation de la méthode empreinteMoyTransport
+        Transport.empreinteMoyTransport();
+        System.out.println();
+
         // Création d'1 objet ServicesPublics
         System.out.println("Création d'1 objet ServicesPublics");
         ServicesPublics s1 = ServicesPublics.getInstance();
         System.out.println(s1);
+        System.out.println();
+
+        // Utilisation de la méthode empreinteMoyServicesPublics
+        ServicesPublics.empreinteMoyServicesPublics();
         System.out.println();
 
         // Création d'1 objet Utilisateur

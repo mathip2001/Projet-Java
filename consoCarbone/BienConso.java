@@ -10,7 +10,7 @@ public class BienConso extends ConsoCarbone {
         super();
         // une tonne de CO2eq est équivalente à 1750€ de dépenses.
         this.montant = montant;
-        this.impact = impactFormula();
+        impact = impactFormula();
     }
 
     public double impactFormula() {
@@ -20,9 +20,8 @@ public class BienConso extends ConsoCarbone {
     // Méthode toString
     @Override
     public String toString() {
-        return "BienConso [" +
-                "montant=" + montant +
-                ", impact=" + String.format("%.2f", impact) +
+        return "BienConso [" + super.toString() +
+                ", montant=" + montant +
                 ']';
     }
 
@@ -41,6 +40,18 @@ public class BienConso extends ConsoCarbone {
 
     public void setImpact(double impact) {
         this.impact = impact;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    // Méthode de classe empreinteMoyBienConso
+    public static void empreinteMoyBienConso() {
+        System.out.println("Empreinte carbone moyenne d'un français par rapport aux biens consommés");
+        System.out.println("Habillement : 763 Kg eq CO2/an");
+        System.out.println("Achats et usages Internet et technologies : 1180 Kg eq CO2/an");
+        System.out.println("Autres Biens et Services : 682 Kg eq CO2/an");
     }
 
     // Méthode compareTo
