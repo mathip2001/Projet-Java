@@ -11,17 +11,12 @@ public class Alimentation extends ConsoCarbone {
     public final double c2 = 1.6;
     public final double c3 = 0.9;
 
-    public static int cptIndividu = 0; // compteur statique du nb d'individu
-    public static double totalImpact = 0.0; // total de la somme des impacts
-
     // Constructeur
     public Alimentation(double txBoeuf, double txVege) {
         super();
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
         impact = impactFormula();
-        totalImpact = totalImpact + this.impact;
-        cptIndividu++;
     }
 
     public double impactFormula() {

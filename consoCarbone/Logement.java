@@ -6,17 +6,12 @@ public class Logement extends ConsoCarbone {
     private int superficie; // la superficie du logement en m2
     private CE classeEnergetique; // la classe énergétique du logement
 
-    public static int cptIndividu = 0; // compteur statique du nb d'individu
-    public static double totalImpact = 0.0; // total de la somme des impacts
-
     // Constructeur
     public Logement(int superficie, CE classeEnergetique) {
         super();
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
         impact = superficie * this.classeEnergetique.getCoefficient();
-        totalImpact = totalImpact + this.impact;
-        cptIndividu++;
     }
 
     // getter et setter
