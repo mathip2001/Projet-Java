@@ -15,13 +15,20 @@ public class Transport extends ConsoCarbone {
         this.taille = taille;
         this.kilomAnnee = kilomAnnee;
         this.amortissement = amortissement;
-        impact = kilomAnnee * 1.93 * Math.pow(10, -4) + this.taille.getProduction() / amortissement;
+        impact = impactFormula();
+    }
+
+    public double impactFormula() {
+        if (!possede) {
+            return 0;
+        } else {
+            return kilomAnnee * 1.93 * Math.pow(10, -4) + this.taille.getProduction() / amortissement;
+        }
     }
 
     // Méthode toString
     @Override
     public String toString() {
-        // super.toString() ?
         return "Transport [" + super.toString() +
                 ", possede=" + possede +
                 ", taille=" + taille +

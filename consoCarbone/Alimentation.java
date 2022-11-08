@@ -16,11 +16,7 @@ public class Alimentation extends ConsoCarbone {
         super();
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
-        impact = impactFormula();
-    }
-
-    public double impactFormula() {
-        return c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
+        impact = c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
     }
 
     // getter et setter

@@ -5,7 +5,7 @@ public enum Taille {
     P(4.2), G(19.0);
 
     // Attributs
-    public double production;
+    private double production;
 
     // Constructeur
     private Taille(double production) {

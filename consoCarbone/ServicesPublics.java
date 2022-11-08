@@ -19,7 +19,7 @@ public class ServicesPublics extends ConsoCarbone {
     // Méthode toString
     @Override
     public String toString() {
-        return "ServicesPublics [impact=" + impact + "]";
+        return "ServicesPublics [" + super.toString() + "]";
     }
 
     // getter et setter

@@ -10,11 +10,7 @@ public class BienConso extends ConsoCarbone {
         super();
         // une tonne de CO2eq est équivalente à 1750€ de dépenses.
         this.montant = montant;
-        impact = impactFormula();
-    }
-
-    public double impactFormula() {
-        return montant / 1750;
+        impact = montant / 1750;
     }
 
     // Méthode toString

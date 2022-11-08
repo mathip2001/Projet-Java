@@ -41,9 +41,13 @@ public class Main {
         System.out.println();
 
         // Création d'1 objet Transport
-        System.out.println("Creation d'1 objet Transport :");
+        System.out.println("Creation de 2 objets Transport :");
         Transport t1 = new Transport(true, Taille.P, 30040, 2);
         System.out.println(t1);
+        // Cas où l'utilisateur ne possede pas de voiture
+        System.out.println("Cas où l'utilisateur ne possede pas de voiture :");
+        Transport t2 = new Transport(false, null, 0, 0);
+        System.out.println(t2);
         System.out.println();
 
         // Utilisation de la méthode empreinteMoyTransport
