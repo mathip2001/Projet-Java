@@ -2,7 +2,6 @@ package consoCarbone2;
 
 import consoCarbone.*;
 
-// test v2
 public class Utilisateur {
     private Alimentation alimentation;
     private BienConso bienConso;

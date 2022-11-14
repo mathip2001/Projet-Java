@@ -1,5 +1,9 @@
 package consoCarbone;
 
+/*
+ * La classe Logement 
+ */
+
 public class Logement extends ConsoCarbone {
     // Attributs
     // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
@@ -14,15 +18,20 @@ public class Logement extends ConsoCarbone {
         impact = superficie * this.classeEnergetique.getCoefficient();
     }
 
+    // getter et setter
     /**
+     * La fonction getSuperficie() permet de récupérer la superficie du Logement
+     * 
      * @return int
      */
-    // getter et setter
     public int getSuperficie() {
         return superficie;
     }
 
     /**
+     * La fonction getClasseEnergetique() permet de récupérer la classe énergétique
+     * du Logement
+     * 
      * @return CE
      */
     public CE getClasseEnergetique() {
@@ -30,6 +39,8 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
+     * La fonction setSuperficie() permet de modifier la superficie du Logement
+     * 
      * @param superficie
      */
     public void setSuperficie(int superficie) {
@@ -37,6 +48,8 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
+     * La fonction setClasse
+     * 
      * @param classeEnergetique
      */
     public void setClasseEnergetique(CE classeEnergetique) {
