@@ -14,35 +14,59 @@ public class Logement extends ConsoCarbone {
         impact = superficie * this.classeEnergetique.getCoefficient();
     }
 
+    /**
+     * @return int
+     */
     // getter et setter
     public int getSuperficie() {
         return superficie;
     }
 
+    /**
+     * @return CE
+     */
     public CE getClasseEnergetique() {
         return classeEnergetique;
     }
 
+    /**
+     * @param superficie
+     */
     public void setSuperficie(int superficie) {
         this.superficie = superficie;
     }
 
+    /**
+     * @param classeEnergetique
+     */
     public void setClasseEnergetique(CE classeEnergetique) {
         this.classeEnergetique = classeEnergetique;
     }
 
+    /**
+     * @param impact
+     */
     public void setImpact(double impact) {
         this.impact = impact;
     }
 
+    /**
+     * @return double
+     */
     public double getImpact() {
         return impact;
     }
 
+    /**
+     * @return int
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * @return String
+     */
     // Méthode toString
     @Override
     public String toString() {
@@ -59,6 +83,10 @@ public class Logement extends ConsoCarbone {
         System.out.println("Energie et utilites : 1696 Kg eq CO2/an");
     }
 
+    /**
+     * @param o
+     * @return int
+     */
     // Méthode compareTo
     public int compareTo(ConsoCarbone o) {
         int res = -1;

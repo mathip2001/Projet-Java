@@ -1,5 +1,10 @@
 package consoCarbone;
 
+/**
+ * Classe Alimentation
+ * 
+ */
+
 public class Alimentation extends ConsoCarbone {
     // Attributs
     // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
@@ -19,35 +24,59 @@ public class Alimentation extends ConsoCarbone {
         impact = c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
     }
 
+    /**
+     * @return double
+     */
     // getter et setter
     public double getTxBoeuf() {
         return txBoeuf;
     }
 
+    /**
+     * @param txBoeuf
+     */
     public void setTxBoeuf(double txBoeuf) {
         this.txBoeuf = txBoeuf;
     }
 
+    /**
+     * @return double
+     */
     public double getTxVege() {
         return txVege;
     }
 
+    /**
+     * @param txVege
+     */
     public void setTxVege(double txVege) {
         this.txVege = txVege;
     }
 
+    /**
+     * @return double
+     */
     public double getImpact() {
         return impact;
     }
 
+    /**
+     * @param impact
+     */
     public void setImpact(double impact) {
         this.impact = impact;
     }
 
+    /**
+     * @return int
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * @return String
+     */
     // Méthode toString
     @Override
     public String toString() {
@@ -63,6 +92,10 @@ public class Alimentation extends ConsoCarbone {
         System.out.println("Autres : 538 Kg eq CO2/an");
     }
 
+    /**
+     * @param o
+     * @return int
+     */
     // Méthode compareTo
     public int compareTo(ConsoCarbone o) {
         int res = -1;

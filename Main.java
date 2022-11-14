@@ -3,6 +3,9 @@ import consoCarbone2.*;
 
 public class Main {
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         // Création de 3 objets Logements
         System.out.println("Creation de 3 objets Logements :");

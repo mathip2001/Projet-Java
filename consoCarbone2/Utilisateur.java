@@ -18,6 +18,9 @@ public class Utilisateur {
         this.services = services;
     }
 
+    /**
+     * @return double
+     */
     public double calculerEmpreinte() {
         return alimentation.getImpact() + bienConso.getImpact() + logement.getImpact() + transport.getImpact()
                 + services.getImpact();

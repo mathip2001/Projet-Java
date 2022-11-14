@@ -13,6 +13,9 @@ public class BienConso extends ConsoCarbone {
         impact = montant / 1750;
     }
 
+    /**
+     * @return String
+     */
     // Méthode toString
     @Override
     public String toString() {
@@ -21,23 +24,38 @@ public class BienConso extends ConsoCarbone {
                 ']';
     }
 
+    /**
+     * @return double
+     */
     // getter et setter
     public double getMontant() {
         return montant;
     }
 
+    /**
+     * @return double
+     */
     public double getImpact() {
         return impact;
     }
 
+    /**
+     * @param montant
+     */
     public void setMontant(double montant) {
         this.montant = montant;
     }
 
+    /**
+     * @param impact
+     */
     public void setImpact(double impact) {
         this.impact = impact;
     }
 
+    /**
+     * @return int
+     */
     public int getID() {
         return ID;
     }
@@ -50,6 +68,10 @@ public class BienConso extends ConsoCarbone {
         System.out.println("Autres Biens et Services : 682 Kg eq CO2/an");
     }
 
+    /**
+     * @param o
+     * @return int
+     */
     // Méthode compareTo
     public int compareTo(ConsoCarbone o) {
         int res = -1;

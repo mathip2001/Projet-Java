@@ -14,6 +14,9 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
         cmptID++;
     }
 
+    /**
+     * @return String
+     */
     // Méthode toString
     @Override
     public String toString() {

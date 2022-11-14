@@ -16,25 +16,40 @@ public class ServicesPublics extends ConsoCarbone {
         }
     }
 
+    /**
+     * @return String
+     */
     // Méthode toString
     @Override
     public String toString() {
         return "ServicesPublics [" + super.toString() + "]";
     }
 
+    /**
+     * @return double
+     */
     // getter et setter
     public double getImpact() {
         return impact;
     }
 
+    /**
+     * @param impact
+     */
     public void setImpact(double impact) {
         this.impact = impact;
     }
 
+    /**
+     * @return int
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * @return ServicesPublics
+     */
     // Méthode getInstance
     public static ServicesPublics getInstance() {
         if (instance == null) {
@@ -49,6 +64,10 @@ public class ServicesPublics extends ConsoCarbone {
         System.out.println("Services Publics, Sante : 1489 Kg eq CO2/an");
     }
 
+    /**
+     * @param o
+     * @return int
+     */
     // Méthode compareTo
     @Override
     public int compareTo(ConsoCarbone o) {

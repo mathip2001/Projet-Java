@@ -18,6 +18,9 @@ public class Transport extends ConsoCarbone {
         impact = impactFormula();
     }
 
+    /**
+     * @return double
+     */
     public double impactFormula() {
         if (!possede) {
             return 0;
@@ -26,6 +29,9 @@ public class Transport extends ConsoCarbone {
         }
     }
 
+    /**
+     * @return String
+     */
     // Méthode toString
     @Override
     public String toString() {
@@ -37,47 +43,80 @@ public class Transport extends ConsoCarbone {
                 ']';
     }
 
+    /**
+     * @return boolean
+     */
     // getter et setter
     public boolean isPossede() {
         return possede;
     }
 
+    /**
+     * @param possede
+     */
     public void setPossede(boolean possede) {
         this.possede = possede;
     }
 
+    /**
+     * @return Taille
+     */
     public Taille getTaille() {
         return taille;
     }
 
+    /**
+     * @param taille
+     */
     public void setTaille(Taille taille) {
         this.taille = taille;
     }
 
+    /**
+     * @return int
+     */
     public int getKilomAnnee() {
         return kilomAnnee;
     }
 
+    /**
+     * @param kilomAnnee
+     */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
     }
 
+    /**
+     * @return int
+     */
     public int getAmortissement() {
         return amortissement;
     }
 
+    /**
+     * @param amortissement
+     */
     public void setAmortissement(int amortissement) {
         this.amortissement = amortissement;
     }
 
+    /**
+     * @return double
+     */
     public double getImpact() {
         return impact;
     }
 
+    /**
+     * @param impact
+     */
     public void setImpact(double impact) {
         this.impact = impact;
     }
 
+    /**
+     * @return int
+     */
     public int getID() {
         return ID;
     }
@@ -91,6 +130,10 @@ public class Transport extends ConsoCarbone {
         System.out.println("Train et bus : 85 Kg eq CO2/an");
     }
 
+    /**
+     * @param o
+     * @return int
+     */
     // Méthode compareTo
     public int compareTo(ConsoCarbone o) {
         int res = -1;
