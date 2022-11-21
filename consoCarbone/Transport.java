@@ -1,5 +1,13 @@
 package consoCarbone;
 
+/**
+ * Un objet issu de la classe Transport permet de calculer l'impact carbone
+ * lié au transport d'une personne
+ * 
+ * @author Julien RAMEAUX et Mathias YIP
+ * @version 1
+ */
+
 public class Transport extends ConsoCarbone {
     // Attributs
     // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
@@ -19,7 +27,10 @@ public class Transport extends ConsoCarbone {
     }
 
     /**
-     * @return double
+     * La méthode impactFormula ...
+     * 
+     * @return 0 si l'utilisateur.trice ne possède pas de voiture
+     *         ou retourne ...
      */
     public double impactFormula() {
         if (!possede) {
@@ -27,20 +38,6 @@ public class Transport extends ConsoCarbone {
         } else {
             return kilomAnnee * 1.93 * Math.pow(10, -4) + this.taille.getProduction() / amortissement;
         }
-    }
-
-    /**
-     * @return String
-     */
-    // Méthode toString
-    @Override
-    public String toString() {
-        return "Transport [" + super.toString() +
-                ", possede=" + possede +
-                ", taille=" + taille +
-                ", kilomAnnee=" + kilomAnnee +
-                ", amortissement=" + amortissement +
-                ']';
     }
 
     /**
@@ -119,6 +116,20 @@ public class Transport extends ConsoCarbone {
      */
     public int getID() {
         return ID;
+    }
+
+    /**
+     * @return String
+     */
+    // Méthode toString
+    @Override
+    public String toString() {
+        return "Transport [" + super.toString() +
+                ", possede=" + possede +
+                ", taille=" + taille +
+                ", kilomAnnee=" + kilomAnnee +
+                ", amortissement=" + amortissement +
+                ']';
     }
 
     // Méthode de classe empreinteMoyTransport

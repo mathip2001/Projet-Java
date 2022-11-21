@@ -1,5 +1,13 @@
 package consoCarbone;
 
+/**
+ * Un objet issu de la classe BienConso permet de calculer l'impact carbone
+ * lié aux dépenses d'une personne
+ * 
+ * @author Julien RAMEAUX et Mathias YIP
+ * @version 1
+ */
+
 public class BienConso extends ConsoCarbone {
     // Attributs
     // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
@@ -14,9 +22,11 @@ public class BienConso extends ConsoCarbone {
     }
 
     /**
-     * @return String
+     * La méthode toString permet de donner un aperçu des attributs d'une instance
+     * BienConso
+     * 
+     * @return les attributs d'une instance BienConso
      */
-    // Méthode toString
     @Override
     public String toString() {
         return "BienConso [" + super.toString() +
@@ -24,10 +34,10 @@ public class BienConso extends ConsoCarbone {
                 ']';
     }
 
+    // getter et setter
     /**
      * @return double
      */
-    // getter et setter
     public double getMontant() {
         return montant;
     }
@@ -60,7 +70,10 @@ public class BienConso extends ConsoCarbone {
         return ID;
     }
 
-    // Méthode de classe empreinteMoyBienConso
+    /**
+     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * moyenne d'un.e français.e lié à son logement
+     */
     public static void empreinteMoyBienConso() {
         System.out.println("Empreinte carbone moyenne d'un francais par rapport aux biens consommes :");
         System.out.println("Habillement : 763 Kg eq CO2/an");

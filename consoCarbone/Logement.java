@@ -1,7 +1,11 @@
 package consoCarbone;
 
 /*
- * La classe Logement 
+ * Un objet issu de la classe Logement permet de calculer l'impact carbone
+ * lié au logement d'une personne
+ * 
+ * @author Julien RAMEAUX et Mathias YIP
+ * @version 1
  */
 
 public class Logement extends ConsoCarbone {
@@ -20,50 +24,49 @@ public class Logement extends ConsoCarbone {
 
     // getter et setter
     /**
-     * La fonction getSuperficie() permet de récupérer la superficie du Logement
+     * La méthode getSuperficie permet de récupérer la superficie d'une instance
+     * Logement
      * 
-     * @return int
+     * @return la superficie d'une instance Logement
      */
     public int getSuperficie() {
         return superficie;
     }
 
     /**
-     * La fonction getClasseEnergetique() permet de récupérer la classe énergétique
-     * du Logement
+     * La méthode getClasseEnergetique permet de récupérer la classe énergétique
+     * d'une instance Logement
      * 
-     * @return CE
+     * @return la classe énergétique d'une instance Logement
      */
     public CE getClasseEnergetique() {
         return classeEnergetique;
     }
 
     /**
-     * La fonction setSuperficie() permet de modifier la superficie du Logement
+     * La méthode setSuperficie permet de modifier la superficie d'une instance
+     * Logement
      * 
-     * @param superficie
+     * @param représente la nouvelle superficie d'une instance Logement
      */
     public void setSuperficie(int superficie) {
         this.superficie = superficie;
     }
 
     /**
-     * La fonction setClasse
+     * La méthode setClasseEnergétique permet de modifier la classe énergétique
+     * d'une instance Logement
      * 
-     * @param classeEnergetique
+     * @param représente la nouvelle classe énergétique d'une instance Logement
      */
     public void setClasseEnergetique(CE classeEnergetique) {
         this.classeEnergetique = classeEnergetique;
     }
 
     /**
-     * @param impact
-     */
-    public void setImpact(double impact) {
-        this.impact = impact;
-    }
-
-    /**
+     * La méthode getImpact permet de récupérer l'impact du logement de
+     * l'utilisateur en termes d'émissions de GES en TCO2eq
+     * 
      * @return double
      */
     public double getImpact() {
@@ -71,6 +74,19 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
+     * La méthode setImpact permet de modifier l'impact du logement de
+     * l'utilisateur en termes d'émissions de GES en TCO2eq
+     * 
+     * @param impact
+     */
+    public void setImpact(double impact) {
+        this.impact = impact;
+    }
+
+    /**
+     * La méthode getID permet de récupérer l'identifiant (unique) attribué à
+     * l'instance
+     * 
      * @return int
      */
     public int getID() {
@@ -78,9 +94,11 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
-     * @return String
+     * La méthode toString permet de donner un aperçu des attributs d'une instance
+     * Logement
+     * 
+     * @return les attributs d'une instance Alimentation
      */
-    // Méthode toString
     @Override
     public String toString() {
         return "Logement [" + super.toString() + ", superficie=" + superficie + ", classeEnergetique="
@@ -88,7 +106,10 @@ public class Logement extends ConsoCarbone {
                 + "]";
     }
 
-    // Méthode de classe empreinteMoyLogement
+    /**
+     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * moyenne d'un.e français.e lié à son logement
+     */
     public static void empreinteMoyLogement() {
         System.out.println("Empreinte carbone moyenne d'un francais par rapport au logement :");
         System.out.println("Equipements des logements : 335 Kg eq CO2/an");
@@ -97,8 +118,10 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
+     * La méthode compareTo
+     * 
      * @param o
-     * @return int
+     * @return
      */
     // Méthode compareTo
     public int compareTo(ConsoCarbone o) {

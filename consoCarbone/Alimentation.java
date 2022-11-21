@@ -4,8 +4,8 @@ package consoCarbone;
  * Un objet issu de la classe Alimentation permet de calculer l'impact carbone
  * lié à l'alimentation d'une personne
  * 
- * h@author Julien RAMEAUX et Mathias YIP
- * 
+ * @author Julien RAMEAUX et Mathias YIP
+ * @version 1
  */
 
 public class Alimentation extends ConsoCarbone {
@@ -27,66 +27,96 @@ public class Alimentation extends ConsoCarbone {
         impact = c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
     }
 
-    /**
-     * @return double
-     */
     // getter et setter
+    /**
+     * La méthode getTxBoeuf permet de récupérer le taux de repas à base de boeuf
+     * d'une instance Alimentation
+     * 
+     * @return une valeur entre 0 et 1 qui est le taux de repas à base de boeuf
+     *         d'une instance Alimentation
+     */
     public double getTxBoeuf() {
         return txBoeuf;
     }
 
     /**
-     * @param txBoeuf
+     * La méthode setTxBoeuf permet de modifier le taux de repas à base de boeuf
+     * d'une instance Alimentation
+     * 
+     * @param txBoeuf représente le taux de repas à base de boeuf
      */
     public void setTxBoeuf(double txBoeuf) {
         this.txBoeuf = txBoeuf;
     }
 
     /**
-     * @return double
+     * La méthode getTxVege permet de récupérer le taux de repas végétarien
+     * d'une instance Alimentation
+     * 
+     * @return une valeur entre 0 et 1 qui est le taux de repas végétarien
+     *         d'une instance Alimentation
      */
     public double getTxVege() {
         return txVege;
     }
 
     /**
-     * @param txVege
+     * La méthode setTxVege permet de modifier le taux de repas végétarien
+     * d'une instance Alimentation
+     * 
+     * @param txVege représente le taux de repas végétarien
      */
     public void setTxVege(double txVege) {
         this.txVege = txVege;
     }
 
     /**
-     * @return double
+     * La méthode getImpact permet de récupérer l'impact de l'alimentation de
+     * l'utilisateur en termes d'émissions de GES en TCO2eq
+     * 
+     * @return l'impact de l'alimentation de l'utilisateur en termes d'émissions de
+     *         GES en TCO2eq
      */
     public double getImpact() {
         return impact;
     }
 
     /**
-     * @param impact
+     * La méthode setImpact permet de modifier l'impact de l'alimentation de
+     * l'utilisateur.rice en termes d'émissions de GES en TCO2eq
+     * 
+     * @param impact représente l'impact de l'alimentation de l'utilisateur.rice en
+     *               termes d'émissions de GES en TCO2eq
      */
     public void setImpact(double impact) {
         this.impact = impact;
     }
 
     /**
-     * @return int
+     * La méthode getID permet de récupérer l'identifiant (unique) attribué à
+     * l'instance
+     * 
+     * @return l'identifiant attribué à l'instance
      */
     public int getID() {
         return ID;
     }
 
     /**
-     * @return String
+     * La méthode toString permet de donner un aperçu des attributs d'une instance
+     * Alimentation
+     * 
+     * @return les attributs d'une instance Alimentation
      */
-    // Méthode toString
     @Override
     public String toString() {
         return "Alimentation [" + super.toString() + ", txBoeuf=" + txBoeuf + ", txVege=" + txVege + "]";
     }
 
-    // Méthode de classe empreinteMoyAlimentation
+    /**
+     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * moyenne d'un.e français.e lié à son alimentation
+     */
     public static void empreinteMoyAlimentation() {
         System.out.println("Empreinte carbone moyenne d'un francais par rapport a l'alimentation :");
         System.out.println("Boissons : 263 Kg eq CO2/an");
