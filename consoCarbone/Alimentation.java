@@ -4,7 +4,7 @@ package consoCarbone;
  * Un objet issu de la classe Alimentation permet de calculer l'impact carbone
  * lié à l'alimentation d'une personne
  * 
- * @author Julien RAMEAUX et Mathias YIP
+ * h@author Julien RAMEAUX et Mathias YIP
  * 
  */
 

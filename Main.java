@@ -73,5 +73,7 @@ public class Main {
         u1.detaillerEmpreinte();
         System.out.println();
 
+        u1.trier();
+
     }
 }

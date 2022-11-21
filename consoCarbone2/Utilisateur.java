@@ -1,5 +1,9 @@
 package consoCarbone2;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.ArrayList;
+
 import consoCarbone.*;
 
 public class Utilisateur {
@@ -8,6 +12,7 @@ public class Utilisateur {
     private Logement logement;
     private Transport transport;
     private ServicesPublics services;
+    private ArrayList<ConsoCarbone> liste = new ArrayList<>();
 
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement, Transport transport,
             ServicesPublics services) {
@@ -16,6 +21,11 @@ public class Utilisateur {
         this.logement = logement;
         this.transport = transport;
         this.services = services;
+        liste.add(alimentation);
+        liste.add(bienConso);
+        liste.add(logement);
+        liste.add(transport);
+        liste.add(services);
     }
 
     /**
@@ -38,4 +48,11 @@ public class Utilisateur {
 
     }
 
+    public void trier() {
+        System.out.println("Affichage de la liste triee :");
+        Collections.sort(liste);
+        for (ConsoCarbone c : liste) {
+            System.out.println(c.toString());
+        }
+    }
 }
