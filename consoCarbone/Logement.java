@@ -1,6 +1,6 @@
 package consoCarbone;
 
-/*
+/**
  * Un objet issu de la classe Logement permet de calculer l'impact carbone
  * lié au logement d'une personne
  * 
@@ -34,16 +34,6 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
-     * La méthode getClasseEnergetique permet de récupérer la classe énergétique
-     * d'une instance Logement
-     * 
-     * @return la classe énergétique d'une instance Logement
-     */
-    public CE getClasseEnergetique() {
-        return classeEnergetique;
-    }
-
-    /**
      * La méthode setSuperficie permet de modifier la superficie d'une instance
      * Logement
      * 
@@ -51,6 +41,16 @@ public class Logement extends ConsoCarbone {
      */
     public void setSuperficie(int superficie) {
         this.superficie = superficie;
+    }
+
+    /**
+     * La méthode getClasseEnergetique permet de récupérer la classe énergétique
+     * d'une instance Logement
+     * 
+     * @return la classe énergétique d'une instance Logement
+     */
+    public CE getClasseEnergetique() {
+        return classeEnergetique;
     }
 
     /**
@@ -67,7 +67,8 @@ public class Logement extends ConsoCarbone {
      * La méthode getImpact permet de récupérer l'impact du logement de
      * l'utilisateur en termes d'émissions de GES en TCO2eq
      * 
-     * @return double
+     * @return l'impact de l'alimentation de l'utilisateur en termes d'émissions de
+     *         GES en TCO2eq
      */
     public double getImpact() {
         return impact;
@@ -77,7 +78,8 @@ public class Logement extends ConsoCarbone {
      * La méthode setImpact permet de modifier l'impact du logement de
      * l'utilisateur en termes d'émissions de GES en TCO2eq
      * 
-     * @param impact
+     * @param impact représente l'impact de l'alimentation de l'utilisateur.rice en
+     *               termes d'émissions de GES en TCO2eq
      */
     public void setImpact(double impact) {
         this.impact = impact;
@@ -87,7 +89,7 @@ public class Logement extends ConsoCarbone {
      * La méthode getID permet de récupérer l'identifiant (unique) attribué à
      * l'instance
      * 
-     * @return int
+     * @return l'identifiant attribué à l'instance
      */
     public int getID() {
         return ID;
@@ -97,7 +99,7 @@ public class Logement extends ConsoCarbone {
      * La méthode toString permet de donner un aperçu des attributs d'une instance
      * Logement
      * 
-     * @return les attributs d'une instance Alimentation
+     * @return les attributs d'une instance Logements
      */
     @Override
     public String toString() {

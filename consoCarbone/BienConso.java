@@ -21,6 +21,61 @@ public class BienConso extends ConsoCarbone {
         impact = montant / 1750;
     }
 
+    // getter et setter
+    /**
+     * La méthode getMontant permet de récupérer le montant des dépenses annuelles
+     * des bienConso de l'utilisateur.rice d'une instance BienConso
+     * 
+     * @return le montant des dépenses annuelles des bienConso de l'utilisateur.rice
+     *         d'une instance BienConso
+     */
+    public double getMontant() {
+        return montant;
+    }
+
+    /**
+     * La méthode setMontant permet de modifier le montant des dépenses annuelles
+     * des bienConso de l'utilisateur.rice d'une instance BienConso
+     * 
+     * @param représente le montant des dépenses annuelles des bienConso de
+     *                   l'utilisateur.rice
+     */
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
+
+    /**
+     * La méthode getImpact permet de récupérer l'impact des dépenses annuelles des
+     * bienConso de l'utilisateur en termes d'émissions de GES en TCO2eq
+     * 
+     * @return l'impact des dépenses annuelles des bienConso de l'utilisateur en
+     *         termes d'émissions de GES en TCO2eq
+     */
+    public double getImpact() {
+        return impact;
+    }
+
+    /**
+     * La méthode setImpact permet de modifier l'impact des dépenses annuelles des
+     * bienConso de l'utilisateur.rice en termes d'émissions de GES en TCO2eq
+     * 
+     * @param impact représente l'impact des dépenses annuelles de bienConso de
+     *               l'utilisateur.rice en termes d'émissions de GES en TCO2eq
+     */
+    public void setImpact(double impact) {
+        this.impact = impact;
+    }
+
+    /**
+     * La méthode getID permet de récupérer l'identifiant (unique) attribué à
+     * l'instance
+     * 
+     * @return l'identifiant attribué à l'instance
+     */
+    public int getID() {
+        return ID;
+    }
+
     /**
      * La méthode toString permet de donner un aperçu des attributs d'une instance
      * BienConso
@@ -32,42 +87,6 @@ public class BienConso extends ConsoCarbone {
         return "BienConso [" + super.toString() +
                 ", montant=" + montant +
                 ']';
-    }
-
-    // getter et setter
-    /**
-     * @return double
-     */
-    public double getMontant() {
-        return montant;
-    }
-
-    /**
-     * @return double
-     */
-    public double getImpact() {
-        return impact;
-    }
-
-    /**
-     * @param montant
-     */
-    public void setMontant(double montant) {
-        this.montant = montant;
-    }
-
-    /**
-     * @param impact
-     */
-    public void setImpact(double impact) {
-        this.impact = impact;
-    }
-
-    /**
-     * @return int
-     */
-    public int getID() {
-        return ID;
     }
 
     /**

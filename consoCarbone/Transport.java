@@ -40,86 +40,128 @@ public class Transport extends ConsoCarbone {
         }
     }
 
-    /**
-     * @return boolean
-     */
     // getter et setter
+    /**
+     * La méthode isPossede permet de savoir si l'utilisateur.rice possède une
+     * voiture dans une instance Transport
+     * 
+     * @return true si l'utilisateur possède une voiture, sinon retourne false si
+     *         l'utilisateur ne possède pas de voiture dans une instance Transport
+     */
     public boolean isPossede() {
         return possede;
     }
 
     /**
-     * @param possede
+     * La méthode setPossede permet de modifier le statut de la possession d'une
+     * voiture de l'utilisateur dans une instance Transport
+     * 
+     * @param possede représente la possession ou non d'une voiture par
+     *                l'utilisateur
      */
     public void setPossede(boolean possede) {
         this.possede = possede;
     }
 
     /**
-     * @return Taille
+     * La méthode getTaille permet de récupérer la taille du véhicule de
+     * l'utilisateur.rice d'une instance Logement
+     * 
+     * @return la taille du véhicule de l'utilisateur.rice d'une instance Logement
      */
     public Taille getTaille() {
         return taille;
     }
 
     /**
-     * @param taille
+     * La méthode setTaille permet de la taille du véhicule de l'utilisateur.rice
+     * d'une instance Logement
+     * 
+     * @param taille représente la taille du véhicule de l'utilisateur.rice
      */
     public void setTaille(Taille taille) {
         this.taille = taille;
     }
 
     /**
-     * @return int
+     * La méthode getKilomAnnee permet de récupérer le nombre de kilomètres
+     * parcourus par an par l'utilisateur.rice d'une instance Transport
+     * 
+     * @return le nombre de kilomètres parcourus par an par l'utilisateur.rice d'une
+     *         instance Transport
      */
     public int getKilomAnnee() {
         return kilomAnnee;
     }
 
     /**
-     * @param kilomAnnee
+     * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
+     * parcourus par an par l'utilisateur.rice d'une instance Transport
+     * 
+     * @param kilomAnnee représente le nombre de kilomètres parcourus par an par
+     *                   l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
     }
 
     /**
-     * @return int
+     * La méthode getAmortissement permet de récupérer la durée de conservation du
+     * véhicule d'une instance Transport
+     * 
+     * @return la durée de conservation du véhicule d'une instance Transport
      */
     public int getAmortissement() {
         return amortissement;
     }
 
     /**
-     * @param amortissement
+     * La méthode setAmortissement permet de modifier la durée de conservation du
+     * véhicule d'une instance Transport
+     * 
+     * @param amortissement représente la nouvelle durée de conservation du véhicule
      */
     public void setAmortissement(int amortissement) {
         this.amortissement = amortissement;
     }
 
     /**
-     * @return double
+     * La méthode getImpact permet de récupérer l'impact du transport de
+     * l'utilisateur en termes d'émissions de GES en TCO2eq
+     * 
+     * @return l'impact du transport de l'utilisateur en termes d'émissions de GES
+     *         en TCO2eq
      */
     public double getImpact() {
         return impact;
     }
 
     /**
-     * @param impact
+     * La méthode setImpact permet de modifier l'impact du transport de
+     * l'utilisateur en termes d'émissions de GES en TCO2eq
+     * 
+     * @param impact représente l'impact du transport de l'utilisateur.rice en
+     *               termes d'émissions de GES en TCO2eq
      */
     public void setImpact(double impact) {
         this.impact = impact;
     }
 
     /**
-     * @return int
+     * La méthode getID permet de récupérer l'identifiant (unique) attribué à
+     * l'instance
+     * 
+     * @return l'identifiant attribué à l'instance
      */
     public int getID() {
         return ID;
     }
 
     /**
-     * @return String
+     * La méthode toString permet de donner un aperçu des attributs d'une instance
+     * Transport
+     * 
+     * @return les attributs d'une instance Transport
      */
     // Méthode toString
     @Override
@@ -132,7 +174,10 @@ public class Transport extends ConsoCarbone {
                 ']';
     }
 
-    // Méthode de classe empreinteMoyTransport
+    /**
+     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * moyenne d'un.e français.e lié au transport
+     */
     public static void empreinteMoyTransport() {
         System.out.println("Empreinte carbone moyenne d'un francais par rapport au transport :");
         System.out.println("Voiture : 1972 Kg eq CO2/an");
