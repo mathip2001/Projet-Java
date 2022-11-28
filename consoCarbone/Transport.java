@@ -27,10 +27,13 @@ public class Transport extends ConsoCarbone {
     }
 
     /**
-     * La méthode impactFormula ...
+     * La méthode impactFormula permet de calculer l'impact de l'utilisateur.rice
+     * en utilisant les transports
      * 
      * @return 0 si l'utilisateur.trice ne possède pas de voiture
-     *         ou retourne ...
+     *         ou retourne l'impact d'après la formule : kilomAnnee x 1.92 x 10^-4 +
+     *         fabrication/amortissement
+     * 
      */
     public double impactFormula() {
         if (!possede) {
