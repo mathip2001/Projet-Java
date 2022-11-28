@@ -6,6 +6,14 @@ import java.util.ArrayList;
 
 import consoCarbone.*;
 
+/**
+ * Un objet issu de la classe Utilisateur permet de regrouper l'impact carbone
+ * d'un utilisateur.rice dans tous les secteurs de consommation (ceux traités
+ * dans le package consoCarbone)
+ * 
+ * @author Julien RAMEAUX et Mathias YIP
+ * @version 1
+ */
 public class Utilisateur {
     private Alimentation alimentation;
     private BienConso bienConso;
@@ -29,13 +37,20 @@ public class Utilisateur {
     }
 
     /**
-     * @return double
+     * La méthode calculerEmpreinte permet de calculer les empreintes carbones d'une
+     * instance Utilisateur
+     * 
+     * @return les empreintes carbones d'une instance Utilisateur
      */
     public double calculerEmpreinte() {
         return alimentation.getImpact() + bienConso.getImpact() + logement.getImpact() + transport.getImpact()
                 + services.getImpact();
     }
 
+    /**
+     * La méthode detaillerEmpreinte permet de détailler les empreintes carbones
+     * d'une instance Utilisateur
+     */
     public void detaillerEmpreinte() {
         String res = "";
         res = res + "impact de l'alimentation : " + String.format("%.2f\n", alimentation.getImpact())

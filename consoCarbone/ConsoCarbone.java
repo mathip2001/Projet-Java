@@ -2,6 +2,13 @@ package consoCarbone;
 
 import java.lang.Comparable;
 
+/**
+ * consoCarbone représente un poste de consommation carbone générique
+ * 
+ * @author Julien RAMEAUX et Mathias YIP
+ * @version 1
+ */
+
 public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
     // Attributs
     protected double impact;
@@ -15,9 +22,11 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
     }
 
     /**
-     * @return String
+     * La méthode toString permet de donner un aperçu des attributs génériques d'un
+     * poste de consommation carbone
+     * 
+     * @return les attributs génériques d'un poste de consommation carbone
      */
-    // Méthode toString
     @Override
     public String toString() {
         return "ID=" + ID +

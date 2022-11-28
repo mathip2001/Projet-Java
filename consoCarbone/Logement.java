@@ -109,7 +109,7 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
-     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * La méthode empreinteMoyLogement permet de donner l'empreinte carbone
      * moyenne d'un.e français.e lié à son logement
      */
     public static void empreinteMoyLogement() {

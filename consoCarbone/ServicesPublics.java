@@ -1,5 +1,15 @@
 package consoCarbone;
 
+/**
+ * Un objet issu de la classe ServicesPublics représentent le poste de
+ * consommation induit par les services publics (justice, police, éducation,
+ * santé, ...). L'objet ServicesPublics est unique. Le design patter que l'on a
+ * utilisé est le singleton
+ * 
+ * @author Julien RAMEAUX et Mathias YIP
+ * @version 1
+ */
+
 public class ServicesPublics extends ConsoCarbone {
     // Attribut
     private static ServicesPublics instance = null;
@@ -16,41 +26,14 @@ public class ServicesPublics extends ConsoCarbone {
         }
     }
 
-    /**
-     * @return String
-     */
-    // Méthode toString
-    @Override
-    public String toString() {
-        return "ServicesPublics [" + super.toString() + "]";
-    }
-
-    /**
-     * @return double
-     */
     // getter et setter
-    public double getImpact() {
-        return impact;
-    }
-
     /**
-     * @param impact
+     * La méthode getInstance permet de récupérer l'unique instance ServicesPublics
+     * si elle a été créée. Dans le cas échéant, une instance ServicesPublics sera
+     * créée.
+     * 
+     * @return l'unique instance ServicesPublics
      */
-    public void setImpact(double impact) {
-        this.impact = impact;
-    }
-
-    /**
-     * @return int
-     */
-    public int getID() {
-        return ID;
-    }
-
-    /**
-     * @return ServicesPublics
-     */
-    // Méthode getInstance
     public static ServicesPublics getInstance() {
         if (instance == null) {
             createInstance();
@@ -58,7 +41,53 @@ public class ServicesPublics extends ConsoCarbone {
         return instance;
     }
 
-    // Méthode de classe empreinteMoyServicesPublics
+    /**
+     * La méthode getImpact permet de récupérer l'impact des services publics en
+     * termes d'émissions de GES en TCO2eq
+     * 
+     * @return l'impact des services publics en termes d'émissions de
+     *         GES en TCO2eq
+     */
+    public double getImpact() {
+        return impact;
+    }
+
+    /**
+     * La méthode setImpact permet de modifier l'impact des services publics en
+     * termes d'émissions de GES en TCO2eq
+     * 
+     * @param impact représente le nouvel impact des services publics en termes
+     *               d'émissions de GES en TCO2eq
+     */
+    public void setImpact(double impact) {
+        this.impact = impact;
+    }
+
+    /**
+     * La méthode getID permet de récupérer l'identifiant (unique) attribué à
+     * l'instance
+     * 
+     * @return l'identifiant attribué à l'instance
+     */
+    public int getID() {
+        return ID;
+    }
+
+    /**
+     * La méthode toString permet de donner un aperçu des attributs de l'instance
+     * ServicesPublics
+     * 
+     * @return les attributs d'une instance ServicesPublics
+     */
+    @Override
+    public String toString() {
+        return "ServicesPublics [" + super.toString() + "]";
+    }
+
+    /**
+     * La méthode empreinteMoyServicesPublics permet de donner l'empreinte carbone
+     * moyenne des services publics
+     */
     public static void empreinteMoyServicesPublics() {
         System.out.println("Empreinte carbone moyenne d'un francais par rapport aux services publics :");
         System.out.println("Services Publics, Sante : 1489 Kg eq CO2/an");

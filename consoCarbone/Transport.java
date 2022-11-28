@@ -59,8 +59,8 @@ public class Transport extends ConsoCarbone {
      * La méthode setPossede permet de modifier le statut de la possession d'une
      * voiture de l'utilisateur dans une instance Transport
      * 
-     * @param possede représente la possession ou non d'une voiture par
-     *                l'utilisateur
+     * @param possede représente la nouvelle situation de possession ou non d'une
+     *                voiture par l'utilisateur.rice
      */
     public void setPossede(boolean possede) {
         this.possede = possede;
@@ -80,7 +80,7 @@ public class Transport extends ConsoCarbone {
      * La méthode setTaille permet de la taille du véhicule de l'utilisateur.rice
      * d'une instance Logement
      * 
-     * @param taille représente la taille du véhicule de l'utilisateur.rice
+     * @param taille représente la taille du nouveau véhicule de l'utilisateur.rice
      */
     public void setTaille(Taille taille) {
         this.taille = taille;
@@ -101,8 +101,8 @@ public class Transport extends ConsoCarbone {
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
      * parcourus par an par l'utilisateur.rice d'une instance Transport
      * 
-     * @param kilomAnnee représente le nombre de kilomètres parcourus par an par
-     *                   l'utilisateur.rice
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus par an
+     *                   par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
@@ -143,8 +143,8 @@ public class Transport extends ConsoCarbone {
      * La méthode setImpact permet de modifier l'impact du transport de
      * l'utilisateur en termes d'émissions de GES en TCO2eq
      * 
-     * @param impact représente l'impact du transport de l'utilisateur.rice en
-     *               termes d'émissions de GES en TCO2eq
+     * @param impact représente le nouvel impact du transport de l'utilisateur.rice
+     *               en termes d'émissions de GES en TCO2eq
      */
     public void setImpact(double impact) {
         this.impact = impact;
@@ -166,7 +166,6 @@ public class Transport extends ConsoCarbone {
      * 
      * @return les attributs d'une instance Transport
      */
-    // Méthode toString
     @Override
     public String toString() {
         return "Transport [" + super.toString() +
@@ -178,7 +177,7 @@ public class Transport extends ConsoCarbone {
     }
 
     /**
-     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * La méthode empreinteMoyTransport permet de donner l'empreinte carbone
      * moyenne d'un.e français.e lié au transport
      */
     public static void empreinteMoyTransport() {

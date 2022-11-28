@@ -43,7 +43,7 @@ public class Alimentation extends ConsoCarbone {
      * La méthode setTxBoeuf permet de modifier le taux de repas à base de boeuf
      * d'une instance Alimentation
      * 
-     * @param txBoeuf représente le taux de repas à base de boeuf
+     * @param txBoeuf représente le nouveau taux de repas à base de boeuf
      */
     public void setTxBoeuf(double txBoeuf) {
         this.txBoeuf = txBoeuf;
@@ -64,7 +64,7 @@ public class Alimentation extends ConsoCarbone {
      * La méthode setTxVege permet de modifier le taux de repas végétarien
      * d'une instance Alimentation
      * 
-     * @param txVege représente le taux de repas végétarien
+     * @param txVege représente le nouveau taux de repas végétarien
      */
     public void setTxVege(double txVege) {
         this.txVege = txVege;
@@ -85,8 +85,8 @@ public class Alimentation extends ConsoCarbone {
      * La méthode setImpact permet de modifier l'impact de l'alimentation de
      * l'utilisateur.rice en termes d'émissions de GES en TCO2eq
      * 
-     * @param impact représente l'impact de l'alimentation de l'utilisateur.rice en
-     *               termes d'émissions de GES en TCO2eq
+     * @param impact représente le nouvel impact de l'alimentation de
+     *               l'utilisateur.rice en termes d'émissions de GES en TCO2eq
      */
     public void setImpact(double impact) {
         this.impact = impact;

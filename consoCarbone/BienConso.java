@@ -37,7 +37,7 @@ public class BienConso extends ConsoCarbone {
      * La méthode setMontant permet de modifier le montant des dépenses annuelles
      * des bienConso de l'utilisateur.rice d'une instance BienConso
      * 
-     * @param représente le montant des dépenses annuelles des bienConso de
+     * @param représente le nouveau montant des dépenses annuelles des bienConso de
      *                   l'utilisateur.rice
      */
     public void setMontant(double montant) {
@@ -59,8 +59,8 @@ public class BienConso extends ConsoCarbone {
      * La méthode setImpact permet de modifier l'impact des dépenses annuelles des
      * bienConso de l'utilisateur.rice en termes d'émissions de GES en TCO2eq
      * 
-     * @param impact représente l'impact des dépenses annuelles de bienConso de
-     *               l'utilisateur.rice en termes d'émissions de GES en TCO2eq
+     * @param impact représente le nouvel impact des dépenses annuelles de bienConso
+     *               de l'utilisateur.rice en termes d'émissions de GES en TCO2eq
      */
     public void setImpact(double impact) {
         this.impact = impact;
@@ -90,7 +90,7 @@ public class BienConso extends ConsoCarbone {
     }
 
     /**
-     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * La méthode empreinteMoyBienConso permet de donner l'empreinte carbone
      * moyenne d'un.e français.e lié à son logement
      */
     public static void empreinteMoyBienConso() {
