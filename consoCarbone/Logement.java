@@ -119,26 +119,4 @@ public class Logement extends ConsoCarbone {
         System.out.println("Energie et utilites : 1696 Kg eq CO2/an");
     }
 
-    /**
-     * La méthode compareTo
-     * 
-     * @param o
-     * @return
-     */
-    // Méthode compareTo
-    public int compareTo(ConsoCarbone o) {
-        int res = -1;
-        Logement l = (Logement) o;
-
-        if (this.getImpact() > l.getImpact()) {
-            res = 1;
-        }
-
-        if ((this.getImpact() == l.getImpact())) {
-            res = 0;
-        }
-
-        return res;
-    }
-
 }

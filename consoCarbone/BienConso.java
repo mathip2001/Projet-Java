@@ -100,23 +100,4 @@ public class BienConso extends ConsoCarbone {
         System.out.println("Autres Biens et Services : 682 Kg eq CO2/an");
     }
 
-    /**
-     * @param o
-     * @return int
-     */
-    // Méthode compareTo
-    public int compareTo(ConsoCarbone o) {
-        int res = -1;
-        BienConso b = (BienConso) o;
-
-        if (this.getImpact() > b.getImpact()) {
-            res = 1;
-        }
-
-        if ((this.getImpact() == b.getImpact())) {
-            res = 0;
-        }
-
-        return res;
-    }
 }

@@ -125,23 +125,4 @@ public class Alimentation extends ConsoCarbone {
         System.out.println("Autres : 538 Kg eq CO2/an");
     }
 
-    /**
-     * @param o
-     * @return int
-     */
-    // Méthode compareTo
-    public int compareTo(ConsoCarbone o) {
-        int res = -1;
-        Alimentation a = (Alimentation) o;
-
-        if (this.getImpact() > a.getImpact()) {
-            res = 1;
-        }
-
-        if ((this.getImpact() == a.getImpact())) {
-            res = 0;
-        }
-
-        return res;
-    }
 }

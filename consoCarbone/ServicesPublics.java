@@ -93,13 +93,4 @@ public class ServicesPublics extends ConsoCarbone {
         System.out.println("Services Publics, Sante : 1489 Kg eq CO2/an");
     }
 
-    /**
-     * @param o
-     * @return int
-     */
-    // Méthode compareTo
-    @Override
-    public int compareTo(ConsoCarbone o) {
-        return 0;
-    }
 }

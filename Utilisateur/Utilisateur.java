@@ -1,8 +1,7 @@
-package consoCarbone2;
+package Utilisateur;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.ArrayList;
 
 import consoCarbone.*;
 
@@ -15,11 +14,16 @@ import consoCarbone.*;
  * @version 1
  */
 public class Utilisateur {
-    private Alimentation alimentation;
-    private BienConso bienConso;
-    private Logement logement;
-    private Transport transport;
-    private ServicesPublics services;
+    private Alimentation alimentation; // le poste de consommation carbone de l'utilisateur.rice concernant son
+                                       // alimentation
+    private BienConso bienConso; // le poste de consommation carbone de l'utilisateur.rice concernant ses
+                                 // dépenses en biens de consommation
+    private Logement logement; // le poste de consommation carbone de l'utilisateur.rice concernant son
+                               // logement
+    private Transport transport; // le poste de consommation carbone de l'utilisateur.rice concernant ses
+                                 // déplacements
+    private ServicesPublics services; // le poste de consommation carbone de l'utilisateur.rice concernant son
+                                      // utilisation des services publics
     private ArrayList<ConsoCarbone> liste = new ArrayList<>();
 
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement, Transport transport,
