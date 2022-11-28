@@ -13,12 +13,25 @@ public class BienConso extends ConsoCarbone {
     // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
     private double montant; // le montant des dépenses annuelles de l’utilisateur.rice.
 
+    private final int c1 = 1750; // On fait l’hypothèse simplificatrice qu’une tonne de CO2eq est équivalente à
+                                 // 1750€ de dépenses.
+
     // Constructeur
     public BienConso(double montant) {
         super();
         // une tonne de CO2eq est équivalente à 1750€ de dépenses.
         this.montant = montant;
-        impact = montant / 1750;
+        impact = impactFormula();
+    }
+
+    /**
+     * La méthode impactFormula permet de calculer l'impact de l'utilisateur.rice
+     * lié à ses dépenses
+     * 
+     * @return l'impact d'après la formule : montant / c1
+     */
+    public double impactFormula() {
+        return montant / c1;
     }
 
     // getter et setter
@@ -42,6 +55,7 @@ public class BienConso extends ConsoCarbone {
      */
     public void setMontant(double montant) {
         this.montant = montant;
+        this.impact = impactFormula();
     }
 
     /**
@@ -53,17 +67,6 @@ public class BienConso extends ConsoCarbone {
      */
     public double getImpact() {
         return impact;
-    }
-
-    /**
-     * La méthode setImpact permet de modifier l'impact des dépenses annuelles des
-     * bienConso de l'utilisateur.rice en termes d'émissions de GES en TCO2eq
-     * 
-     * @param impact représente le nouvel impact des dépenses annuelles de bienConso
-     *               de l'utilisateur.rice en termes d'émissions de GES en TCO2eq
-     */
-    public void setImpact(double impact) {
-        this.impact = impact;
     }
 
     /**

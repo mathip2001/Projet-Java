@@ -5,7 +5,7 @@ package consoCarbone;
  * lié à l'alimentation d'une personne
  * 
  * @author Julien RAMEAUX et Mathias YIP
- * @version 1
+ * @version 2
  */
 
 public class Alimentation extends ConsoCarbone {
@@ -15,16 +15,27 @@ public class Alimentation extends ConsoCarbone {
                             // le plus émissif)
     private double txVege; // txVege, le taux de repas végétariens
 
-    public final double c1 = 8.0;
-    public final double c2 = 1.6;
-    public final double c3 = 0.9;
+    private final double c1 = 8.0;
+    private final double c2 = 1.6;
+    private final double c3 = 0.9;
 
     // Constructeur
     public Alimentation(double txBoeuf, double txVege) {
         super();
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
-        impact = c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
+        this.impact = ImpactFormula();
+    }
+
+    /**
+     * La méthode impactFormula permet de calculer l'impact de l'utilisateur.rice
+     * lié à l'alimentation
+     * 
+     * @return l'impact d'après la formule : c1 * txBoeuf + c2 * (1 - txVege -
+     *         txBoeuf) + c3 * txVege
+     */
+    public double ImpactFormula() {
+        return c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
     }
 
     // getter et setter
@@ -47,6 +58,7 @@ public class Alimentation extends ConsoCarbone {
      */
     public void setTxBoeuf(double txBoeuf) {
         this.txBoeuf = txBoeuf;
+        this.impact = ImpactFormula();
     }
 
     /**
@@ -68,6 +80,7 @@ public class Alimentation extends ConsoCarbone {
      */
     public void setTxVege(double txVege) {
         this.txVege = txVege;
+        this.impact = ImpactFormula();
     }
 
     /**
@@ -79,17 +92,6 @@ public class Alimentation extends ConsoCarbone {
      */
     public double getImpact() {
         return impact;
-    }
-
-    /**
-     * La méthode setImpact permet de modifier l'impact de l'alimentation de
-     * l'utilisateur.rice en termes d'émissions de GES en TCO2eq
-     * 
-     * @param impact représente le nouvel impact de l'alimentation de
-     *               l'utilisateur.rice en termes d'émissions de GES en TCO2eq
-     */
-    public void setImpact(double impact) {
-        this.impact = impact;
     }
 
     /**

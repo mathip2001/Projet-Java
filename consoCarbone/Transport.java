@@ -33,7 +33,6 @@ public class Transport extends ConsoCarbone {
      * @return 0 si l'utilisateur.trice ne possède pas de voiture
      *         ou retourne l'impact d'après la formule : kilomAnnee x 1.92 x 10^-4 +
      *         fabrication/amortissement
-     * 
      */
     public double impactFormula() {
         if (!possede) {
@@ -64,6 +63,7 @@ public class Transport extends ConsoCarbone {
      */
     public void setPossede(boolean possede) {
         this.possede = possede;
+        this.impact = impactFormula();
     }
 
     /**
@@ -84,6 +84,7 @@ public class Transport extends ConsoCarbone {
      */
     public void setTaille(Taille taille) {
         this.taille = taille;
+        this.impact = impactFormula();
     }
 
     /**
@@ -106,6 +107,8 @@ public class Transport extends ConsoCarbone {
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
+        this.impact = impactFormula();
+
     }
 
     /**
@@ -126,6 +129,8 @@ public class Transport extends ConsoCarbone {
      */
     public void setAmortissement(int amortissement) {
         this.amortissement = amortissement;
+        this.impact = impactFormula();
+
     }
 
     /**
@@ -137,17 +142,6 @@ public class Transport extends ConsoCarbone {
      */
     public double getImpact() {
         return impact;
-    }
-
-    /**
-     * La méthode setImpact permet de modifier l'impact du transport de
-     * l'utilisateur en termes d'émissions de GES en TCO2eq
-     * 
-     * @param impact représente le nouvel impact du transport de l'utilisateur.rice
-     *               en termes d'émissions de GES en TCO2eq
-     */
-    public void setImpact(double impact) {
-        this.impact = impact;
     }
 
     /**

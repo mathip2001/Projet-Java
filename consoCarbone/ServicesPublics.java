@@ -53,17 +53,6 @@ public class ServicesPublics extends ConsoCarbone {
     }
 
     /**
-     * La méthode setImpact permet de modifier l'impact des services publics en
-     * termes d'émissions de GES en TCO2eq
-     * 
-     * @param impact représente le nouvel impact des services publics en termes
-     *               d'émissions de GES en TCO2eq
-     */
-    public void setImpact(double impact) {
-        this.impact = impact;
-    }
-
-    /**
      * La méthode getID permet de récupérer l'identifiant (unique) attribué à
      * l'instance
      * 

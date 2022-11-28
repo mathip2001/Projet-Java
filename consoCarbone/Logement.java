@@ -19,7 +19,18 @@ public class Logement extends ConsoCarbone {
         super();
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
-        impact = superficie * this.classeEnergetique.getCoefficient();
+        impact = ImpactFormula();
+    }
+
+    /**
+     * La méthode impactFormula permet de calculer l'impact de l'utilisateur.rice
+     * lié à ses logements
+     * 
+     * @return l'impact d'après la formule : this.superficie *
+     *         this.classeEnergetique.getCoefficient();
+     */
+    public double ImpactFormula() {
+        return this.superficie * this.classeEnergetique.getCoefficient();
     }
 
     // getter et setter
@@ -41,6 +52,7 @@ public class Logement extends ConsoCarbone {
      */
     public void setSuperficie(int superficie) {
         this.superficie = superficie;
+        this.impact = ImpactFormula();
     }
 
     /**
@@ -61,6 +73,7 @@ public class Logement extends ConsoCarbone {
      */
     public void setClasseEnergetique(CE classeEnergetique) {
         this.classeEnergetique = classeEnergetique;
+        this.impact = ImpactFormula();
     }
 
     /**
@@ -72,17 +85,6 @@ public class Logement extends ConsoCarbone {
      */
     public double getImpact() {
         return impact;
-    }
-
-    /**
-     * La méthode setImpact permet de modifier l'impact du logement de
-     * l'utilisateur en termes d'émissions de GES en TCO2eq
-     * 
-     * @param impact représente l'impact de l'alimentation de l'utilisateur.rice en
-     *               termes d'émissions de GES en TCO2eq
-     */
-    public void setImpact(double impact) {
-        this.impact = impact;
     }
 
     /**
