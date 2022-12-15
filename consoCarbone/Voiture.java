@@ -2,7 +2,7 @@ package consoCarbone;
 
 /**
  * Un objet issu de la classe Voiture permet de calculer l'impact carbone lié à
- * l'utilisation d'une voiture par une personne
+ * l'utilisation d'une voiture par une personne par an
  * 
  * @author Julien RAMEAUX et Mathias YIP
  * @version 1
@@ -25,11 +25,11 @@ public class Voiture extends Transport {
 
     /**
      * La méthode impactFormula permet de calculer l'impact de l'utilisateur.rice
-     * en utilisant les transports
+     * en utilisant la voiture
      * 
      * @return 0 si l'utilisateur.trice ne possède pas de voiture
-     *         ou retourne l'impact d'après la formule : kilomAnnee x 1.92 x 10^-4 +
-     *         fabrication/amortissement
+     *         ou l'impact d'après la formule : "kilomAnnee x 1.92 x 10^-4 +
+     *         fabrication/amortissement" sinon
      */
     public double impactFormula() {
         if (!possede) {
@@ -40,19 +40,18 @@ public class Voiture extends Transport {
     }
 
     /**
-     * La méthode isPossede permet de savoir si l'utilisateur.rice possède une
-     * voiture dans une instance Transport
+     * La méthode getPossede permet de savoir si l'utilisateur.rice possède une
+     * voiture
      * 
-     * @return true si l'utilisateur possède une voiture, sinon retourne false si
-     *         l'utilisateur ne possède pas de voiture dans une instance Transport
+     * @return true si l'utilisateur possède une voiture, false sinon
      */
-    public boolean isPossede() {
+    public boolean getPossede() {
         return possede;
     }
 
     /**
      * La méthode setPossede permet de modifier le statut de la possession d'une
-     * voiture de l'utilisateur dans une instance Transport
+     * voiture de l'utilisateur.rice
      * 
      * @param possede représente la nouvelle situation de possession ou non d'une
      *                voiture par l'utilisateur.rice
@@ -64,17 +63,16 @@ public class Voiture extends Transport {
 
     /**
      * La méthode getTaille permet de récupérer la taille du véhicule de
-     * l'utilisateur.rice d'une instance Logement
+     * l'utilisateur.rice
      * 
-     * @return la taille du véhicule de l'utilisateur.rice d'une instance Logement
+     * @return la taille du véhicule de l'utilisateur.rice
      */
     public Taille getTaille() {
         return taille;
     }
 
     /**
-     * La méthode setTaille permet de la taille du véhicule de l'utilisateur.rice
-     * d'une instance Logement
+     * La méthode setTaille permet de modifier la taille du véhicule de l'utilisateur.rice
      * 
      * @param taille représente la taille du nouveau véhicule de l'utilisateur.rice
      */
@@ -85,22 +83,21 @@ public class Voiture extends Transport {
 
     /**
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
-     * parcourus par an par l'utilisateur.rice d'une instance Transport
+     * parcourus en voiture par an par l'utilisateur.rice 
      * 
-     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus par an
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en voiture par an
      *                   par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
         this.impact = impactFormula();
-
     }
 
     /**
      * La méthode getAmortissement permet de récupérer la durée de conservation du
-     * véhicule d'une instance Transport
+     * véhicule par l'utilisateur.rice
      * 
-     * @return la durée de conservation du véhicule d'une instance Transport
+     * @return la durée de conservation du véhicule par l'utilisateur.rice
      */
     public int getAmortissement() {
         return amortissement;
@@ -108,9 +105,9 @@ public class Voiture extends Transport {
 
     /**
      * La méthode setAmortissement permet de modifier la durée de conservation du
-     * véhicule d'une instance Transport
+     * véhicule par l'utilisateur.rice
      * 
-     * @param amortissement représente la nouvelle durée de conservation du véhicule
+     * @param amortissement représente la nouvelle durée de conservation du véhicule par l'utilisateur.rice
      */
     public void setAmortissement(int amortissement) {
         this.amortissement = amortissement;

@@ -7,7 +7,6 @@ package consoCarbone;
  * @author Julien RAMEAUX et Mathias YIP
  * @version 1
  */
-
 public class Transport extends ConsoCarbone {
     // Attributs
     // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
