@@ -8,9 +8,6 @@ package consoCarbone;
  * @version 1
  */
 public class Tramway extends Train {
-    // Attributs
-    private boolean utilise; // un boolean indiquant si l'utilisateur.rice utilise le tramway
-
     // Constructeur
     public Tramway(boolean utilise, int kilomAnnee) {
         super(kilomAnnee);
@@ -31,16 +28,6 @@ public class Tramway extends Train {
         } else {
             return 3.4 * Math.pow(10, -6) * kilomAnnee;
         }
-    }
-
-    /**
-     * La méthode getUtilise permet de savoir si l'utilisateur.rice utilise 
-     * le tramway en tant que moyen de transport
-     * 
-     * @return true si l'utilisateur utilise le tramway, false sinon
-     */
-    public boolean getUtilise() {
-        return utilise;
     }
 
     /**
@@ -75,6 +62,6 @@ public class Tramway extends Train {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n" + "Le mode de transport est le tramway : utilise=" + utilise;
+        return super.toString() + "\n où le mode de transport est le tramway";
     }
 }
