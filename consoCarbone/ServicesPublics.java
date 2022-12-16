@@ -26,7 +26,7 @@ public class ServicesPublics extends ConsoCarbone {
         }
     }
 
-    // getter et setter
+    // getter
     /**
      * La méthode getInstance permet de récupérer l'unique instance ServicesPublics
      * si elle a été créée. Dans le cas échéant, une instance ServicesPublics sera

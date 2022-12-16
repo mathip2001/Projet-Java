@@ -28,7 +28,7 @@ public class Voiture extends Transport {
      * en utilisant la voiture
      * 
      * @return 0 si l'utilisateur.trice ne possède pas de voiture
-     *         ou l'impact d'après la formule : "kilomAnnee x 1.92 x 10^-4 +
+     *         ou l'impact d'après la formule : "kilomAnnee x 1.93 x 10^-4 +
      *         fabrication/amortissement" sinon
      */
     public double impactFormula() {
