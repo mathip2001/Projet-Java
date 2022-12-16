@@ -59,7 +59,7 @@ public class Transport extends ConsoCarbone {
      */
     @Override
     public String toString() {
-        return "Transport :" + super.toString() +
+        return "Transport : " + super.toString() +
                 ", kilomAnnee=" + kilomAnnee;
     }
 

@@ -112,7 +112,7 @@ public class Alimentation extends ConsoCarbone {
      */
     @Override
     public String toString() {
-        return "Alimentation [" + super.toString() + ", txBoeuf=" + txBoeuf + ", txVege=" + txVege + "]";
+        return "Alimentation : " + super.toString() + ", txBoeuf=" + txBoeuf + ", txVege=" + txVege;
     }
 
     /**

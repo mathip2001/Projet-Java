@@ -105,9 +105,8 @@ public class Logement extends ConsoCarbone {
      */
     @Override
     public String toString() {
-        return "Logement [" + super.toString() + ", superficie=" + superficie + ", classeEnergetique="
-                + classeEnergetique
-                + "]";
+        return "Logement : " + super.toString() + ", superficie=" + superficie + ", classeEnergetique="
+                + classeEnergetique;
     }
 
     /**

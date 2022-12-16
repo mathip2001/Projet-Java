@@ -34,7 +34,7 @@ public class Bus extends Transport {
     }
 
     /**
-     * La méthode getUtilise permet de savoir si l'utilisateur.rice utilise 
+     * La méthode getUtilise permet de savoir si l'utilisateur.rice utilise
      * le bus en tant que moyen de transport
      * 
      * @return true si l'utilisateur utilise le bus, false sinon
@@ -45,7 +45,7 @@ public class Bus extends Transport {
 
     /**
      * La méthode setUtilise permet de modifier le statut de l'utilisation du
-     * bus de l'utilisateur.rice 
+     * bus de l'utilisateur.rice
      * 
      * @param utilise représente la nouvelle situation d'utilisation ou non du
      *                bus par l'utilisateur.rice
@@ -59,7 +59,8 @@ public class Bus extends Transport {
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
      * parcourus en bus par an par l'utilisateur.rice
      * 
-     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en bus par an
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en bus
+     *                   par an
      *                   par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
@@ -75,6 +76,6 @@ public class Bus extends Transport {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n" + "Le mode de transport est le bus : utilise=" + utilise;
+        return super.toString() + ", utilise=" + utilise + "\noù le mode de transport est le bus";
     }
 }

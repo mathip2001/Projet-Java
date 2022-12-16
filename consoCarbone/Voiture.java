@@ -72,7 +72,8 @@ public class Voiture extends Transport {
     }
 
     /**
-     * La méthode setTaille permet de modifier la taille du véhicule de l'utilisateur.rice
+     * La méthode setTaille permet de modifier la taille du véhicule de
+     * l'utilisateur.rice
      * 
      * @param taille représente la taille du nouveau véhicule de l'utilisateur.rice
      */
@@ -83,9 +84,10 @@ public class Voiture extends Transport {
 
     /**
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
-     * parcourus en voiture par an par l'utilisateur.rice 
+     * parcourus en voiture par an par l'utilisateur.rice
      * 
-     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en voiture par an
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en
+     *                   voiture par an
      *                   par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
@@ -107,7 +109,8 @@ public class Voiture extends Transport {
      * La méthode setAmortissement permet de modifier la durée de conservation du
      * véhicule par l'utilisateur.rice
      * 
-     * @param amortissement représente la nouvelle durée de conservation du véhicule par l'utilisateur.rice
+     * @param amortissement représente la nouvelle durée de conservation du véhicule
+     *                      par l'utilisateur.rice
      */
     public void setAmortissement(int amortissement) {
         this.amortissement = amortissement;
@@ -123,9 +126,9 @@ public class Voiture extends Transport {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n" + "Le mode de transport est la voiture : taille=" + taille + ", possede="
+        return super.toString() + ", taille=" + taille + ", possede="
                 + possede + ", amortissement="
-                + amortissement;
+                + amortissement + "\noù le mode de transport est la voiture";
     }
 
 }

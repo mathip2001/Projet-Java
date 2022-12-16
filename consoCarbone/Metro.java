@@ -32,7 +32,7 @@ public class Metro extends Train {
 
     /**
      * La méthode setUtilise permet de modifier le statut de l'utilisation du
-     * métro de l'utilisateur.rice 
+     * métro de l'utilisateur.rice
      * 
      * @param utilise représente la nouvelle situation d'utilisation ou non du
      *                métro par l'utilisateur.rice
@@ -46,7 +46,8 @@ public class Metro extends Train {
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
      * parcourus en métro par an par l'utilisateur.rice
      * 
-     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en métro par an
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en
+     *                   métro par an
      *                   par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
@@ -62,6 +63,6 @@ public class Metro extends Train {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n où le mode de transport est le métro";
+        return super.toString() + "\noù le mode de transport est le métro";
     }
 }

@@ -2,7 +2,7 @@ package consoCarbone;
 
 /**
  * Un objet issu de la classe BienConso permet de calculer l'impact carbone
- * lié aux dépenses d'une personne
+ * lié aux dépenses en biens de consommation d'une personne
  * 
  * @author Julien RAMEAUX et Mathias YIP
  * @version 1
@@ -87,9 +87,7 @@ public class BienConso extends ConsoCarbone {
      */
     @Override
     public String toString() {
-        return "BienConso [" + super.toString() +
-                ", montant=" + montant +
-                ']';
+        return "BienConso : " + super.toString() + ", montant=" + montant;
     }
 
     /**

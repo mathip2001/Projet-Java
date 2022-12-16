@@ -70,8 +70,22 @@ public class Utilisateur {
     public void trier() {
         System.out.println("Affichage de la liste triee :");
         Collections.sort(liste);
+        String recommendations = "Pour obtenir un mode de vie plus durable :\n";
+        // Affichage de la liste triée
         for (ConsoCarbone c : liste) {
             System.out.println(c.toString());
+            if (c instanceof Alimentation) {
+                Alimentation alim1 = (Alimentation) c;
+                if (alim1.getTxBoeuf() > 0.2) {
+                    recommendations += " - réduisez votre consommation de viande et de produits d'origine animale\n";
+                }
+            }
         }
+        // Recommandations
+        System.out.println(recommendations
+                + " - isolez bien votre logement, éteignez vos appareils lorsque vous ne vous en servez plus et utilisez des ampoules LED pour réduire votre consommation énergétique\n"
+                + " - résduisez vos dépenses en biens de consommation\n"
+                + " - favorisez les transports en communs et déplacez vous à pied ou en vélo pour les trajets courts\n");
+
     }
 }

@@ -32,7 +32,7 @@ public class RER extends Train {
 
     /**
      * La méthode setUtilise permet de modifier le statut de l'utilisation du
-     * RER de l'utilisateur.rice 
+     * RER de l'utilisateur.rice
      * 
      * @param utilise représente la nouvelle situation d'utilisation ou non du
      *                RER par l'utilisateur.rice
@@ -46,7 +46,8 @@ public class RER extends Train {
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
      * parcourus en RER par an par l'utilisateur.rice
      * 
-     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en RER par an
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en RER
+     *                   par an
      *                   par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
@@ -62,6 +63,6 @@ public class RER extends Train {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n où le mode de transport est le RER";
+        return super.toString() + "\noù le mode de transport est le RER";
     }
 }

@@ -2,10 +2,6 @@ import consoCarbone.*;
 import Utilisateur.*;
 
 public class Main {
-
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         // Création de 3 objets Logements
         System.out.println("Creation de 3 objets Logements :");
@@ -22,7 +18,7 @@ public class Main {
 
         // Création de 3 objets Alimentation
         System.out.println("Creation de 3 objets Alimentation :");
-        Alimentation a1 = new Alimentation(0.5, 0.5);
+        Alimentation a1 = new Alimentation(0.1, 0.5);
         System.out.println(a1);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         System.out.println(a2);
@@ -81,5 +77,11 @@ public class Main {
         Voiture v1 = new Voiture(true, Taille.P, 30040, 2);
         System.out.println(v1);
         System.out.println();
+
+        // Création d'1 objet Avion
+        System.out.println("Creation d'1 objet Avion :");
+        Avion av1 = new Avion(true, 30040);
+        System.out.println(av1);
+
     }
 }

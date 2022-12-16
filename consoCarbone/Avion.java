@@ -9,7 +9,7 @@ package consoCarbone;
  */
 public class Avion extends Transport {
     // Attributs
-    private boolean utilise; // un boolean indiquant si l'utilisateur.rice utilise un avion 
+    private boolean utilise; // un boolean indiquant si l'utilisateur.rice utilise un avion
 
     // Constructeur
     public Avion(boolean utilise, int kilomAnnee) {
@@ -23,7 +23,8 @@ public class Avion extends Transport {
      * en utilisant l'avion
      * 
      * @return 0 si l'utilisateur.trice n'utilis pas l'avion
-     *         ou  l'impact d'après la formule : "((3 * kilomAnnee) / 100) * 3.1 * 10^-3" sinon
+     *         ou l'impact d'après la formule : "((3 * kilomAnnee) / 100) * 3.1 *
+     *         10^-3" sinon
      */
     public double impactFormula() {
         if (!utilise) {
@@ -34,7 +35,7 @@ public class Avion extends Transport {
     }
 
     /**
-     * La méthode getUtilise permet de savoir si l'utilisateur.rice utilise 
+     * La méthode getUtilise permet de savoir si l'utilisateur.rice utilise
      * l'avion en tant que moyen de transport
      * 
      * @return true si l'utilisateur utilise l'avion, false sinon
@@ -59,7 +60,8 @@ public class Avion extends Transport {
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
      * parcourus en avion par an par l'utilisateur.rice d'une instance Transport
      * 
-     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en avion par an
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en
+     *                   avion par an
      *                   par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
@@ -75,6 +77,6 @@ public class Avion extends Transport {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n" + "Le mode de transport est l'avion : utilise=" + utilise;
+        return super.toString() + ", utilise=" + utilise + "\noù le mode de transport est l'avion";
     }
 }

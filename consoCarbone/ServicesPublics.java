@@ -70,7 +70,7 @@ public class ServicesPublics extends ConsoCarbone {
      */
     @Override
     public String toString() {
-        return "ServicesPublics [" + super.toString() + "]";
+        return "ServicesPublics : " + super.toString();
     }
 
     /**

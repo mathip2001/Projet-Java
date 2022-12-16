@@ -32,7 +32,7 @@ public class Tramway extends Train {
 
     /**
      * La méthode setUtilise permet de modifier le statut de l'utilisation du
-     * tramway de l'utilisateur.rice 
+     * tramway de l'utilisateur.rice
      * 
      * @param utilise représente la nouvelle situation d'utilisation ou non du
      *                tramway par l'utilisateur.rice
@@ -46,8 +46,8 @@ public class Tramway extends Train {
      * La méthode setKilomAnnee permet de modifier le nombre de kilomètres
      * parcourus en tramway par an par l'utilisateur.rice
      * 
-     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en tramway par an
-     *                   par l'utilisateur.rice
+     * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en
+     *                   tramway par an par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
@@ -62,6 +62,6 @@ public class Tramway extends Train {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n où le mode de transport est le tramway";
+        return super.toString() + "\noù le mode de transport est le tramway";
     }
 }
