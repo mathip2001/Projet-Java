@@ -51,11 +51,6 @@ public class Utilisateur {
      * logements
      */
     public void AjouterLogement(int cmpt, Scanner entree) throws SuperficieException {
-
-        // Fermer ce scanner uniquement lorsqu'on n'en n'aura plus jms besoin => Tout à
-        // la fin du Main. Et mettre le scanner uniqument au début et ne pas le recréer
-        // à chaque fois
-
         System.out.println("Avez-vous un autre logement ? (Oui/Non)");
         String reponse = entree.next();
         Logement log;
@@ -65,10 +60,16 @@ public class Utilisateur {
             liste.add(log);
             System.out.println("Avez-vous un autre logement ? (Oui/Non)");
             reponse = entree.next();
+            numero++;
         }
-        // entree.close();
     }
 
+    /**
+     * @param cmpt
+     * @param entree
+     * @throws AmmortissementException
+     * @throws NbKilometresException
+     */
     public void AjouterTransport(int cmpt, Scanner entree) throws AmmortissementException, NbKilometresException {
         AjouterVoiture(cmpt, entree);
         AjouterAvion(cmpt, entree);
@@ -88,6 +89,7 @@ public class Utilisateur {
         System.out.println("Avez-vous une voiture ? (Oui/Non)");
         String reponse = entree.next();
         Voiture voiture;
+        int numero = 1;
         while (reponse.equals("Oui")) {
             System.out.println(
                     "Quelle est la taille de votre véhicule ? ('G' pour grande voiture ou 'P' pour petite voiture)");
@@ -98,11 +100,11 @@ public class Utilisateur {
             int annee = entree.nextInt();
             switch (taille) {
                 case "P":
-                    voiture = new Voiture(true, Taille.P, km, annee);
+                    voiture = new Voiture(true, Taille.P, km, annee, numero);
                     liste.add(voiture);
                     break;
                 case "G":
-                    voiture = new Voiture(true, Taille.G, km, annee);
+                    voiture = new Voiture(true, Taille.G, km, annee, numero);
                     liste.add(voiture);
                     break;
                 default:
@@ -110,6 +112,7 @@ public class Utilisateur {
             }
             System.out.println("Avez-vous une autre voiture ? (Oui/Non)");
             reponse = entree.next();
+            numero++;
         }
     }
 
@@ -200,17 +203,35 @@ public class Utilisateur {
     public void detaillerEmpreinte() {
         System.out.println("Description détaillée de l'empreinte carbone :");
         for (ConsoCarbone c : liste) {
-
+            if (c instanceof Alimentation) {
+                System.out.println("Impact de l'alimentation : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof BienConso) {
+                System.out.println(
+                        "Impact des dépenses en biens de consommation : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof Logement) {
+                Logement log = (Logement) c;
+                System.out.println(
+                        "Impact du logement " + log.getNumero() + " : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof ServicesPublics) {
+                System.out.println("Impact des services publics : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof Avion) {
+                System.out.println("Impact de l'utilisation de l'avion : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof Voiture) {
+                Voiture voiture = (Voiture) c;
+                System.out.println("Impact de l'utilisation de la voiture " + voiture.getNumero() + " : "
+                        + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof Bus) {
+                System.out.println("Impact de l'utilisation du bus : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof RER) {
+                System.out.println("Impact de l'utilisation du RER : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof TGV) {
+                System.out.println("Impact de l'utilisation du TGV : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof Metro) {
+                System.out.println("Impact de l'utilisation du métro : " + String.format("%.2f\n", c.getImpact()));
+            } else if (c instanceof Tramway) {
+                System.out.println("Impact de l'utilisation du Tramway : " + String.format("%.2f\n", c.getImpact()));
+            }
         }
-
-        String res = "";
-        res = res + "impact de l'alimentation : " + String.format("%.2f\n", alimentation.getImpact())
-                + "impact de bienConso : "
-                + String.format("%.2f\n", bienConso.getImpact()) + "impact du logement : "
-                + String.format("%.2f\n", logement.getImpact()) + "impact du transport : "
-                + String.format("%.2f\n", transport.getImpact()) + "impact du service public : "
-                + String.format("%.2f\n", services.getImpact());
-        System.out.println(res);
     }
 
     /**
@@ -239,5 +260,29 @@ public class Utilisateur {
                 + " - réduisez vos dépenses en biens de consommation\n"
                 + " - favorisez les transports en communs et déplacez vous à pied ou en vélo pour les trajets courts\n");
 
+    }
+
+    public Alimentation getAlimentation() {
+        return alimentation;
+    }
+
+    public BienConso getBienConso() {
+        return bienConso;
+    }
+
+    public Logement getLogement() {
+        return logement;
+    }
+
+    public Transport getTransport() {
+        return transport;
+    }
+
+    public ServicesPublics getServices() {
+        return services;
+    }
+
+    public ArrayList<ConsoCarbone> getListe() {
+        return liste;
     }
 }

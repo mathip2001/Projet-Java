@@ -92,15 +92,6 @@ public class Logement extends ConsoCarbone {
     }
 
     /**
-     * La méthode setSuperficie permet de modifier le numéro du logement
-     * 
-     * @param numero représente la nouvelle superficie d'une instance Logement
-     */
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    /**
      * La méthode getImpact permet de récupérer l'impact du logement de
      * l'utilisateur en termes d'émissions de GES en TCO2eq
      * 
@@ -130,7 +121,7 @@ public class Logement extends ConsoCarbone {
     @Override
     public String toString() {
         return "Logement : " + super.toString() + ", superficie=" + superficie + ", classeEnergetique="
-                + classeEnergetique;
+                + classeEnergetique + ", numero=" + numero;
     }
 
     /**

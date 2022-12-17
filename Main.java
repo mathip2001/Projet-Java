@@ -7,11 +7,11 @@ public class Main {
             throws SuperficieException, TauxException, AmmortissementException, NbKilometresException {
         // Création de 3 objets Logements
         System.out.println("Creation de 3 objets Logements :");
-        Logement l1 = new Logement(100, CE.A);
+        Logement l1 = new Logement(100, CE.A, 1);
         System.out.println(l1);
-        Logement l2 = new Logement(1000, CE.B);
+        Logement l2 = new Logement(1000, CE.B, 2);
         System.out.println(l2);
-        Logement l3 = new Logement(15, CE.G);
+        Logement l3 = new Logement(15, CE.G, 3);
         System.out.println(l3);
 
         // Utilisation de la méthode empreinteMoyLogement
@@ -85,7 +85,7 @@ public class Main {
 
         // Création d'1 objet Voiture
         System.out.println("Creation d'1 objet Voiture :");
-        Voiture v1 = new Voiture(true, Taille.P, 30040, 10);
+        Voiture v1 = new Voiture(true, Taille.P, 30040, 10, 1);
         System.out.println(v1);
         System.out.println();
 

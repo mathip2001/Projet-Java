@@ -9,17 +9,19 @@ package consoCarbone;
  */
 public class Voiture extends Transport {
     // Attributs
-    private Taille taille; // la taille du véhicule.
+    private Taille taille; // la taille de la voiture.
     private boolean possede; // un boolean indiquant si l’utilisateur.rice possède une voiture.
-    private int amortissement;// durée de conservation du véhicule.
+    private int amortissement;// durée de conservation de la voiture.
+    private int numero; // numéro de la voiture (pour l'identifier lorsque l'utilisateur en a plusieurs)
 
     // Constructeur
-    public Voiture(boolean possede, Taille taille, int kilomAnnee, int amortissement)
+    public Voiture(boolean possede, Taille taille, int kilomAnnee, int amortissement, int numero)
             throws AmmortissementException, NbKilometresException {
         super(kilomAnnee);
         this.taille = taille;
         this.possede = possede;
         this.amortissement = amortissement;
+        this.numero = numero;
         impact = impactFormula();
         if (amortissement <= 0) {
             throw new AmmortissementException();
@@ -119,6 +121,15 @@ public class Voiture extends Transport {
         this.amortissement = amortissement;
         this.impact = impactFormula();
 
+    }
+
+    /**
+     * La méthode getNumero permet de récupérer le numéro de la voiture
+     * 
+     * @return le numéro de la voiture
+     */
+    public int getNumero() {
+        return numero;
     }
 
     /**

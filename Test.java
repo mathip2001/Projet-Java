@@ -12,11 +12,11 @@ public class Test {
 
         // Voiture v1 = new Voiture(true, Taille.P, 30040, 10);
         // System.out.println(v1);
-        // Population p = Population.getInstance();
-        // p.creerPopulation();
+        Population p = Population.getInstance();
+        p.creerPopulation();
 
-        Alimentation a1 = creerAlimentation()
-        
+        // Alimentation a1 = creerAlimentation()
+
     }
 
 }
