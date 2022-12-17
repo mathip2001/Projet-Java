@@ -1,8 +1,10 @@
 import consoCarbone.*;
 import Utilisateur.*;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+            throws SuperficieException, TauxException, AmmortissementException, NbKilometresException {
         // Création de 3 objets Logements
         System.out.println("Creation de 3 objets Logements :");
         Logement l1 = new Logement(100, CE.A);
@@ -69,10 +71,12 @@ public class Main {
 
         // Création de 2 objets Utilisateur
         System.out.println("Creation d'1 objet Utilisateur :");
-        Utilisateur u1 = new Utilisateur(a1, b1, l1, t1, s1);
+        Scanner entree = new Scanner(System.in);
+        int cmpt = 1;
+        Utilisateur u1 = new Utilisateur(a1, b1, l1, s1, cmpt, entree);
         u1.detaillerEmpreinte();
         System.out.println();
-        Utilisateur u2 = new Utilisateur(a2, b2, l2, t2, s1);
+        Utilisateur u2 = new Utilisateur(a2, b2, l2, s1, cmpt, entree);
         u2.detaillerEmpreinte();
         System.out.println();
 

@@ -13,13 +13,18 @@ public class Logement extends ConsoCarbone {
     // Pour information l'attribut impact est dans la classe mere : ConsoCarbone
     private int superficie; // la superficie du logement en m2
     private CE classeEnergetique; // la classe énergétique du logement
+    private int numero; // représente le numéro du logement
 
     // Constructeur
-    public Logement(int superficie, CE classeEnergetique) {
+    public Logement(int superficie, CE classeEnergetique, int numero) throws SuperficieException {
         super();
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
+        this.numero = numero;
         impact = ImpactFormula();
+        if (superficie < 0) {
+            throw new SuperficieException();
+        }
     }
 
     /**
@@ -48,7 +53,7 @@ public class Logement extends ConsoCarbone {
      * La méthode setSuperficie permet de modifier la superficie d'une instance
      * Logement
      * 
-     * @param représente la nouvelle superficie d'une instance Logement
+     * @param superficie représente la nouvelle superficie d'une instance Logement
      */
     public void setSuperficie(int superficie) {
         this.superficie = superficie;
@@ -69,11 +74,30 @@ public class Logement extends ConsoCarbone {
      * La méthode setClasseEnergétique permet de modifier la classe énergétique
      * d'une instance Logement
      * 
-     * @param représente la nouvelle classe énergétique d'une instance Logement
+     * @param classeEnergetique représente la nouvelle classe énergétique d'une
+     *                          instance Logement
      */
     public void setClasseEnergetique(CE classeEnergetique) {
         this.classeEnergetique = classeEnergetique;
         this.impact = ImpactFormula();
+    }
+
+    /**
+     * La méthode getNumero permet de récupérer le numéro du logement
+     * 
+     * @return le numéro du logement
+     */
+    public int getNumero() {
+        return numero;
+    }
+
+    /**
+     * La méthode setSuperficie permet de modifier le numéro du logement
+     * 
+     * @param numero représente la nouvelle superficie d'une instance Logement
+     */
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     /**

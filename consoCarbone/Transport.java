@@ -13,9 +13,12 @@ public class Transport extends ConsoCarbone {
     protected int kilomAnnee;// nombre de kilomètres parcourus par an.
 
     // Constructeur
-    public Transport(int kilomAnnee) {
+    public Transport(int kilomAnnee) throws NbKilometresException {
         super();
         this.kilomAnnee = kilomAnnee;
+        if (kilomAnnee < 0) {
+            throw new NbKilometresException();
+        }
     }
 
     // getter et setter

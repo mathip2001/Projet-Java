@@ -9,7 +9,7 @@ package consoCarbone;
  */
 public class Tramway extends Train {
     // Constructeur
-    public Tramway(boolean utilise, int kilomAnnee) {
+    public Tramway(boolean utilise, int kilomAnnee) throws NbKilometresException {
         super(kilomAnnee);
         this.utilise = utilise;
         impact = impactFormula();

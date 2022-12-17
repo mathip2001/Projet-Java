@@ -29,21 +29,20 @@ public class Utilisateur {
     private ArrayList<ConsoCarbone> liste;
 
     // Constructeur
-    public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement, Transport transport,
-            ServicesPublics services) {
+    public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement,
+            ServicesPublics services, int cmpt, Scanner entree)
+            throws SuperficieException, AmmortissementException, NbKilometresException {
         liste = new ArrayList<>();
         this.alimentation = alimentation;
         this.bienConso = bienConso;
         this.logement = logement;
-        this.transport = transport;
         this.services = services;
         liste.add(alimentation);
         liste.add(bienConso);
         liste.add(logement);
-        liste.add(transport);
         liste.add(services);
-        AjouterLogement();
-        AjouterVoiture();
+        AjouterLogement(cmpt, entree);
+        AjouterTransport(cmpt, entree);
     }
 
     /**
@@ -51,8 +50,8 @@ public class Utilisateur {
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * logements
      */
-    public void AjouterLogement() {
-        Scanner entree = new Scanner(System.in);
+    public void AjouterLogement(int cmpt, Scanner entree) throws SuperficieException {
+
         // Fermer ce scanner uniquement lorsqu'on n'en n'aura plus jms besoin => Tout à
         // la fin du Main. Et mettre le scanner uniqument au début et ne pas le recréer
         // à chaque fois
@@ -60,47 +59,24 @@ public class Utilisateur {
         System.out.println("Avez-vous un autre logement ? (Oui/Non)");
         String reponse = entree.next();
         Logement log;
+        int numero = 2;
         while (reponse.equals("Oui")) {
-            System.out.println("Quelle est la superficie du logement ? (en m^2)");
-            int superficie = entree.nextInt();
-            System.out.println("Quelle est la classe énergétique du logement ? (une lettre de A à G)");
-            String classeEnergetique = entree.next();
-            switch (classeEnergetique) {
-                case "A":
-                    log = new Logement(superficie, CE.A);
-                    liste.add(log);
-                    break;
-                case "B":
-                    log = new Logement(superficie, CE.B);
-                    liste.add(log);
-                    break;
-                case "C":
-                    log = new Logement(superficie, CE.C);
-                    liste.add(log);
-                    break;
-                case "D":
-                    log = new Logement(superficie, CE.D);
-                    liste.add(log);
-                    break;
-                case "E":
-                    log = new Logement(superficie, CE.E);
-                    liste.add(log);
-                    break;
-                case "F":
-                    log = new Logement(superficie, CE.F);
-                    liste.add(log);
-                    break;
-                case "G":
-                    log = new Logement(superficie, CE.G);
-                    liste.add(log);
-                    break;
-                default:
-                    System.out.println("Vous n'avez pas rentré correctement la classe énergétique de votre logement");
-            }
+            log = Population.creerLogement(cmpt, entree, numero);
+            liste.add(log);
             System.out.println("Avez-vous un autre logement ? (Oui/Non)");
             reponse = entree.next();
         }
         // entree.close();
+    }
+
+    public void AjouterTransport(int cmpt, Scanner entree) throws AmmortissementException, NbKilometresException {
+        AjouterVoiture(cmpt, entree);
+        AjouterAvion(cmpt, entree);
+        AjouterBus(cmpt, entree);
+        AjouterRER(cmpt, entree);
+        AjouterTGV(cmpt, entree);
+        AjouterMetro(cmpt, entree);
+        AjouterTramway(cmpt, entree);
     }
 
     /**
@@ -108,17 +84,15 @@ public class Utilisateur {
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * voitures
      */
-    public void AjouterVoiture() {
-        java.util.Scanner entree = new java.util.Scanner(System.in);
-
-        System.out.println("Avez-vous une autre voiture ? (Oui/Non)");
+    public void AjouterVoiture(int cmpt, Scanner entree) throws AmmortissementException, NbKilometresException {
+        System.out.println("Avez-vous une voiture ? (Oui/Non)");
         String reponse = entree.next();
         Voiture voiture;
         while (reponse.equals("Oui")) {
             System.out.println(
                     "Quelle est la taille de votre véhicule ? ('G' pour grande voiture ou 'P' pour petite voiture)");
             String taille = entree.next();
-            System.out.println("Quel est le nombre de kilomètres parcourus par an ?");
+            System.out.println("Quel est le nombre de kilomètres (un entier) parcourus par an ?");
             int km = entree.nextInt();
             System.out.println("Depuis combien d'années avez-vous votre voiture ?");
             int annee = entree.nextInt();
@@ -139,6 +113,72 @@ public class Utilisateur {
         }
     }
 
+    public void AjouterAvion(int cmpt, Scanner entree) throws NbKilometresException {
+        System.out.println("Utilisez-vous l'avion ? (Oui/Non)");
+        String reponse = entree.next();
+        if (reponse.equals("Oui")) {
+            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            int km = entree.nextInt();
+            Avion avion = new Avion(true, km);
+            liste.add(avion);
+        }
+    }
+
+    public void AjouterBus(int cmpt, Scanner entree) throws NbKilometresException {
+        System.out.println("Utilisez-vous le bus ? (Oui/Non)");
+        String reponse = entree.next();
+        if (reponse.equals("Oui")) {
+            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            int km = entree.nextInt();
+            Bus bus = new Bus(true, km);
+            liste.add(bus);
+        }
+    }
+
+    public void AjouterRER(int cmpt, Scanner entree) throws NbKilometresException {
+        System.out.println("Utilisez-vous le RER ? (Oui/Non)");
+        String reponse = entree.next();
+        if (reponse.equals("Oui")) {
+            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            int km = entree.nextInt();
+            RER rer = new RER(true, km);
+            liste.add(rer);
+        }
+    }
+
+    public void AjouterTGV(int cmpt, Scanner entree) throws NbKilometresException {
+        System.out.println("Utilisez-vous le TGV ? (Oui/Non)");
+        String reponse = entree.next();
+        if (reponse.equals("Oui")) {
+            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            int km = entree.nextInt();
+            TGV tgv = new TGV(true, km);
+            liste.add(tgv);
+        }
+    }
+
+    public void AjouterMetro(int cmpt, Scanner entree) throws NbKilometresException {
+        System.out.println("Utilisez-vous le métro ? (Oui/Non)");
+        String reponse = entree.next();
+        if (reponse.equals("Oui")) {
+            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            int km = entree.nextInt();
+            Metro metro = new Metro(true, km);
+            liste.add(metro);
+        }
+    }
+
+    public void AjouterTramway(int cmpt, Scanner entree) throws NbKilometresException {
+        System.out.println("Utilisez-vous le tramway ? (Oui/Non)");
+        String reponse = entree.next();
+        if (reponse.equals("Oui")) {
+            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            int km = entree.nextInt();
+            Tramway tramway = new Tramway(true, km);
+            liste.add(tramway);
+        }
+    }
+
     /**
      * La méthode calculerEmpreinte permet de calculer les empreintes carbones d'une
      * instance Utilisateur
@@ -146,8 +186,11 @@ public class Utilisateur {
      * @return les empreintes carbones d'une instance Utilisateur
      */
     public double calculerEmpreinte() {
-        return alimentation.getImpact() + bienConso.getImpact() + logement.getImpact() + transport.getImpact()
-                + services.getImpact();
+        double impact = 0;
+        for (ConsoCarbone c : liste) {
+            impact += c.getImpact();
+        }
+        return impact;
     }
 
     /**
@@ -155,6 +198,11 @@ public class Utilisateur {
      * d'une instance Utilisateur
      */
     public void detaillerEmpreinte() {
+        System.out.println("Description détaillée de l'empreinte carbone :");
+        for (ConsoCarbone c : liste) {
+
+        }
+
         String res = "";
         res = res + "impact de l'alimentation : " + String.format("%.2f\n", alimentation.getImpact())
                 + "impact de bienConso : "

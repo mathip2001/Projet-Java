@@ -9,7 +9,7 @@ package consoCarbone;
  */
 public class TGV extends Train {
     // Constructeur
-    public TGV(boolean utilise, int kilomAnnee) {
+    public TGV(boolean utilise, int kilomAnnee) throws NbKilometresException {
         super(kilomAnnee);
         this.utilise = utilise;
         impact = impactFormula();

@@ -14,13 +14,16 @@ public class Voiture extends Transport {
     private int amortissement;// durée de conservation du véhicule.
 
     // Constructeur
-    public Voiture(boolean possede, Taille taille, int kilomAnnee, int amortissement) {
+    public Voiture(boolean possede, Taille taille, int kilomAnnee, int amortissement)
+            throws AmmortissementException, NbKilometresException {
         super(kilomAnnee);
         this.taille = taille;
         this.possede = possede;
         this.amortissement = amortissement;
         impact = impactFormula();
-
+        if (amortissement <= 0) {
+            throw new AmmortissementException();
+        }
     }
 
     /**

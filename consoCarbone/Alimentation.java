@@ -20,11 +20,14 @@ public class Alimentation extends ConsoCarbone {
     private final double c3 = 0.9;
 
     // Constructeur
-    public Alimentation(double txBoeuf, double txVege) {
+    public Alimentation(double txBoeuf, double txVege) throws TauxException {
         super();
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
         this.impact = ImpactFormula();
+        if ((txBoeuf < 0) || (txBoeuf > 1) || (txVege < 0) || (txVege > 1)) {
+            throw new TauxException();
+        }
     }
 
     /**
