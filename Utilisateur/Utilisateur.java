@@ -45,6 +45,79 @@ public class Utilisateur {
         AjouterTransport(cmpt, entree);
     }
 
+    public static void verifyTransportKilometreAnnee(int i) throws NbKilometresException {
+        if (i <= 0) {
+            throw new NbKilometresException();
+        }
+    }
+
+    public static int CreateIntTransport() {
+        Scanner inte;
+        boolean tmp = true;
+        int s = 0;
+        while (tmp) {
+            try {
+                inte = new Scanner(System.in);
+                s = inte.nextInt();
+                verifyTransportKilometreAnnee(s);
+                tmp = false;
+            } catch (NbKilometresException k) {
+                System.out.println("Erreur : Veuillez inserer un nombre de kilometre positive");
+            } catch (Exception e) {
+                System.out.println("Erreur : Veuillez inserer un entier");
+            }
+        }
+        return s;
+    }
+
+    public static void TestReponseTailleVoiture(String s) throws TailleVoitureException {
+        if (!(s.equals("P") || s.equals("G"))) {
+            throw new TailleVoitureException("Erreur : Veuillez répondre par 'P' ou 'G'");
+        }
+    }
+
+    public static String CreateTailleVoiture() {
+        Scanner str;
+        boolean tmp = true;
+        String s = "";
+        while (tmp) {
+            try {
+                str = new Scanner(System.in);
+                s = str.next();
+                TestReponseTailleVoiture(s);
+                tmp = false;
+            } catch (TailleVoitureException t) {
+                System.out.println("Erreur : Veuillez répondre par 'P' ou 'G'");
+            }
+        }
+        return s;
+    }
+
+    public static void verifyAmortissementVoiture(int i) throws AmmortissementException {
+        if (i <= 0) {
+            throw new AmmortissementException();
+        }
+    }
+
+    public static int CreateIntAmortissementVoiture() {
+        Scanner inte;
+        boolean tmp = true;
+        int s = 0;
+        while (tmp) {
+            try {
+                inte = new Scanner(System.in);
+                s = inte.nextInt();
+                verifyAmortissementVoiture(s);
+                tmp = false;
+            } catch (AmmortissementException a) {
+                System.out.println("Erreur : Veuillez inserer un nombre d'années positif");
+            } catch (Exception e) {
+                System.out.println("Erreur : Veuillez inserer un entier");
+            }
+        }
+        return s;
+    }
+
     /**
      * La méthode AjouterLogement permet d'ajouter des Logements supplémentaires
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
@@ -85,31 +158,36 @@ public class Utilisateur {
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * voitures
      */
-    public void AjouterVoiture(int cmpt, Scanner entree) throws AmmortissementException, NbKilometresException {
+    public static void AjouterVoiture(int cmpt, Scanner entree) throws AmmortissementException, NbKilometresException {
         System.out.println("Avez-vous une voiture ? (Oui/Non)");
-        String reponse = entree.next();
+        String reponse = Population.CreateOuiNon();
+
         Voiture voiture;
         int numero = 1;
         while (reponse.equals("Oui")) {
             System.out.println(
                     "Quelle est la taille de votre véhicule ? ('G' pour grande voiture ou 'P' pour petite voiture)");
-            String taille = entree.next();
+            String taille = CreateTailleVoiture();
+
             System.out.println("Quel est le nombre de kilomètres (un entier) parcourus par an ?");
-            int km = entree.nextInt();
+            int km = CreateIntTransport();
+
             System.out.println("Depuis combien d'années avez-vous votre voiture ?");
-            int annee = entree.nextInt();
-            switch (taille) {
-                case "P":
-                    voiture = new Voiture(true, Taille.P, km, annee, numero);
-                    liste.add(voiture);
-                    break;
-                case "G":
-                    voiture = new Voiture(true, Taille.G, km, annee, numero);
-                    liste.add(voiture);
-                    break;
-                default:
-                    System.out.println("Vous n'avez pas rentré correctement la taille de votre véhicule");
-            }
+            int annee = CreateIntAmortissementVoiture();
+
+            // switch (taille) {
+            // case "P":
+            // voiture = new Voiture(true, Taille.P, km, annee, numero);
+            // liste.add(voiture);
+            // break;
+            // case "G":
+            // voiture = new Voiture(true, Taille.G, km, annee, numero);
+            // liste.add(voiture);
+            // break;
+            // default:
+            // System.out.println("Vous n'avez pas rentré correctement la taille de votre
+            // véhicule");
+            // }
             System.out.println("Avez-vous une autre voiture ? (Oui/Non)");
             reponse = entree.next();
             numero++;

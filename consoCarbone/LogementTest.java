@@ -56,6 +56,16 @@ public class LogementTest {
     }
 
     @Test
+    public void testGetNumero() throws SuperficieException {
+        Logement l1 = new Logement(100, CE.A, 1);
+        Logement l2 = new Logement(1000, CE.B, 2);
+        Logement l3 = new Logement(15, CE.G, 3);
+        assertEquals(1, l1.getNumero());
+        assertEquals(2, l2.getNumero());
+        assertEquals(3, l3.getNumero());
+    }
+
+    @Test
     public void testSetClasseEnergetique() throws SuperficieException {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);

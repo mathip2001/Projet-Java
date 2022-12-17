@@ -1,5 +1,7 @@
 import Utilisateur.Population;
+import Utilisateur.Utilisateur;
 import consoCarbone.*;
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args)
@@ -12,11 +14,13 @@ public class Test {
 
         // Voiture v1 = new Voiture(true, Taille.P, 30040, 10);
         // System.out.println(v1);
-        Population p = Population.getInstance();
-        p.creerPopulation();
+        // Population p = Population.getInstance();
+        // p.creerPopulation();
 
         // Alimentation a1 = creerAlimentation()
-
+        // System.out.println(0 / 1750);
+        Scanner scan = new Scanner(System.in);
+        Utilisateur.AjouterVoiture(1, scan);
     }
 
 }

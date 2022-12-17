@@ -68,7 +68,7 @@ public class Population {
 
     public static void TestReponse(String s) throws ErreurOuiNon {
         if ((!(s.equals("Oui"))) && (!(s.equals("Non")))) {
-            throw new ErreurOuiNon("Veuillez répondre par 'Oui' ou 'Non'");
+            throw new ErreurOuiNon("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
         }
     }
 
@@ -84,6 +84,24 @@ public class Population {
         }
     }
 
+    public static void verifyLogementSuperficie(int i) throws SuperficieException {
+        if (i <= 0) {
+            throw new SuperficieException();
+        }
+    }
+
+    public static void TestReponseLogement(String s) throws ClasseEnergetiqueException {
+        if (!(s.equals("A")
+                || s.equals("B")
+                || s.equals("C")
+                || s.equals("D")
+                || s.equals("E")
+                || s.equals("F")
+                || s.equals("G"))) {
+            throw new ClasseEnergetiqueException("Erreur : Veuillez répondre par les lettres de A à G");
+        }
+    }
+
     public static double CreateDoubleAlimentation() {
         Scanner doub;
         boolean tmp = true;
@@ -95,7 +113,7 @@ public class Population {
                 verifyAlimentation(s);
                 tmp = false;
             } catch (TauxException t) {
-                System.out.println("Erreur : le taux doit être en 0 et 1");
+                System.out.println("Erreur : Veuillez inserer un taux doit être en 0 et 1");
             } catch (Exception e) {
                 System.out.println("Erreur : Veuillez inserer un réel");
             }
@@ -114,7 +132,7 @@ public class Population {
                 verifyBienConso(s);
                 tmp = false;
             } catch (MontantException m) {
-                System.out.println("Erreur : Le montant doit être positif");
+                System.out.println("Erreur : Veuillez inserer un montant positif");
             } catch (Exception e) {
                 System.out.println("Erreur : Veuillez inserer un réel");
             }
@@ -122,7 +140,7 @@ public class Population {
         return s;
     }
 
-    public static double CreateIntLogement() {
+    public static int CreateIntLogement() {
         Scanner inte;
         boolean tmp = true;
         int s = 0;
@@ -130,12 +148,29 @@ public class Population {
             try {
                 inte = new Scanner(System.in);
                 s = inte.nextInt();
-                verifyBienConso(s);
+                verifyLogementSuperficie(s);
                 tmp = false;
-            } catch (MontantException m) {
-                System.out.println("Erreur : La superficie doit être positive");
+            } catch (SuperficieException sup) {
+                System.out.println("Erreur : Veuillez inserer une superficie positive");
             } catch (Exception e) {
-                System.out.println("Erreur : Veuillez inserer un réel");
+                System.out.println("Erreur : Veuillez inserer un entier");
+            }
+        }
+        return s;
+    }
+
+    public static String CreateClasseEnergetiqueLogement() {
+        Scanner str;
+        boolean tmp = true;
+        String s = "";
+        while (tmp) {
+            try {
+                str = new Scanner(System.in);
+                s = str.next();
+                TestReponseLogement(s);
+                tmp = false;
+            } catch (ClasseEnergetiqueException e) {
+                System.out.println("Erreur : Veuillez répondre par les lettres de A à G");
             }
         }
         return s;
@@ -152,7 +187,7 @@ public class Population {
                 TestReponse(s);
                 tmp = false;
             } catch (ErreurOuiNon e) {
-                System.out.println("Veuillez répondre par 'Oui' ou 'Non'");
+                System.out.println("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
             }
         }
         return s;
@@ -178,11 +213,11 @@ public class Population {
         do {
             Alimentation alimentation = creerAlimentation(cmpt, entree);
             BienConso bienConso = creerBienConso(cmpt, entree);
-            // Logement logement = creerLogement(cmpt, entree, 1);
-            // ServicesPublics servicesPublics = ServicesPublics.getInstance();
-            // Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logement,
-            // servicesPublics, cmpt, entree);
-            // add(utilisateur);
+            Logement logement = creerLogement(cmpt, entree, 1);
+            ServicesPublics servicesPublics = ServicesPublics.getInstance();
+            Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logement,
+                    servicesPublics, cmpt, entree);
+            add(utilisateur);
             System.out.println("Y a-t-il un autre utilisateur ? (Oui/Non)");
             reponse = CreateOuiNon();
             cmpt++;
@@ -245,7 +280,8 @@ public class Population {
 
         System.out.println(
                 "Utilisateur " + cmpt + " : Quelle est la classe énergétique du logement ? (une lettre de A à G)");
-        String classeEnergetique = entree.next();
+        String classeEnergetique = CreateClasseEnergetiqueLogement();
+
         switch (classeEnergetique) {
             case "A":
                 return new Logement(superficie, CE.A, numero);

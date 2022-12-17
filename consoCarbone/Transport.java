@@ -16,7 +16,7 @@ public class Transport extends ConsoCarbone {
     public Transport(int kilomAnnee) throws NbKilometresException {
         super();
         this.kilomAnnee = kilomAnnee;
-        if (kilomAnnee < 0) {
+        if (kilomAnnee <= 0) {
             throw new NbKilometresException();
         }
     }

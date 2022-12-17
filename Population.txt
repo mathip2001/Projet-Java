@@ -1,0 +1,43 @@
+Logement 103 A
+Logement 196 C
+Logement 78 B
+Alimentation 0.4 0.3
+BienConso 10000
+Voiture G 35000 4
+Voiture P 15000 10
+Metro 500
+Avion 4000
+
+Nouvel utilisateur
+Logement 90 B
+Alimentation 0.3 0.7
+BienConso 7500
+Voiture P 9000 7
+Metro 1500
+RER 1000
+TGV 4000
+Bus 400
+
+Nouvel utilisateur
+Logement 150 F
+Alimentation 0.5 0.5
+BienConso 12000
+Voiture G 45000 2
+Bus 1000
+
+Nouvel utilisateur
+Logement 45 A 
+Alimentation 0.2 0.6
+BienConso 2500
+Metro 3000
+Tramway 800
+TGV 5000
+RER 600
+
+Nouvel utilisateur
+Logement 250 D
+Alimentation 0.4 0.4
+BienConso 20000
+Voiture G 25000
+Voiture P 10000
+Avion 3500
