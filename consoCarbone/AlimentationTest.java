@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class AlimentationTest {
     @Test
-    public void testImpactFormula() throws TauxException {
+    public void testImpactFormula() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
@@ -16,7 +16,7 @@ public class AlimentationTest {
     }
 
     @Test
-    public void testGetID() throws TauxException {
+    public void testGetID() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
@@ -26,7 +26,7 @@ public class AlimentationTest {
     }
 
     @Test
-    public void testGetImpact() throws TauxException {
+    public void testGetImpact() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
@@ -36,7 +36,7 @@ public class AlimentationTest {
     }
 
     @Test
-    public void testGetTxBoeuf() throws TauxException {
+    public void testGetTxBoeuf() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
@@ -46,7 +46,7 @@ public class AlimentationTest {
     }
 
     @Test
-    public void testGetTxVege() throws TauxException {
+    public void testGetTxVege() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
@@ -56,7 +56,7 @@ public class AlimentationTest {
     }
 
     @Test
-    public void testSetTxBoeuf() throws TauxException {
+    public void testSetTxBoeuf() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
@@ -69,7 +69,7 @@ public class AlimentationTest {
     }
 
     @Test
-    public void testSetTxVege() throws TauxException {
+    public void testSetTxVege() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
@@ -82,7 +82,7 @@ public class AlimentationTest {
     }
 
     @Test
-    public void testToString() throws TauxException {
+    public void testToString() throws ExceptionTauxAlimentation {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         assertEquals("Alimentation : ID=0, impact=4,45, txBoeuf=0.5, txVege=0.5", a1.toString());
     }

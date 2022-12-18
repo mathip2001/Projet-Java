@@ -12,7 +12,7 @@ public class Bus extends Transport {
     private boolean utilise; // un boolean indiquant si l'utilisateur.rice utilise le bus
 
     // Constructeur
-    public Bus(boolean utilise, int kilomAnnee) throws NbKilometresException {
+    public Bus(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;
         impact = impactFormula();

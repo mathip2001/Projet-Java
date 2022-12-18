@@ -4,8 +4,7 @@ import consoCarbone.*;
 import java.util.Scanner;
 
 public class Test {
-    public static void main(String[] args)
-            throws SuperficieException, TauxException, AmmortissementException, NbKilometresException {
+    public static void main(String[] args) {
         // Logement l1 = new Logement(100, CE.A);
         // System.out.println(l1);
 

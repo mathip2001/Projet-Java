@@ -32,8 +32,8 @@ public class Utilisateur {
     // Constructeurs
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement,
             ServicesPublics services, int cmpt, Scanner entree)
-            throws SuperficieException, AmmortissementException, NbKilometresException, ClasseEnergetiqueException,
-            TailleVoitureException {
+            throws ExceptionSuperficieLogement, ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport,
+            ExceptionClasseEnergetiqueLogement, ExceptionTailleVoiture {
         liste = new ArrayList<>();
         this.alimentation = alimentation;
         this.bienConso = bienConso;
@@ -48,9 +48,9 @@ public class Utilisateur {
     }
 
     public Utilisateur(File fichier)
-            throws FileNotFoundException, TauxException, SuperficieException, ClasseEnergetiqueException,
-            NbKilometresException, TailleVoitureException, AmmortissementException, MontantException,
-            ObjetInconnuException {
+            throws FileNotFoundException, ExceptionTauxAlimentation, ExceptionSuperficieLogement,
+            ExceptionClasseEnergetiqueLogement, ExceptionNbKilometresTransport, ExceptionTailleVoiture,
+            ExceptionAmmortissementVoiture, ExceptionMontantBienConso, ExceptionObjetInconnu {
         liste = new ArrayList<>();
         FileReader fr = new FileReader(fichier);
         BufferedReader br = new BufferedReader(fr);
@@ -58,8 +58,9 @@ public class Utilisateur {
     }
 
     public void creerUtilisateur(BufferedReader br)
-            throws TauxException, SuperficieException, ClasseEnergetiqueException, NbKilometresException,
-            TailleVoitureException, AmmortissementException, MontantException, ObjetInconnuException {
+            throws ExceptionTauxAlimentation, ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement,
+            ExceptionNbKilometresTransport, ExceptionTailleVoiture, ExceptionAmmortissementVoiture,
+            ExceptionMontantBienConso, ExceptionObjetInconnu {
         String ligne;
         String[] mot;
         String objet;
@@ -181,17 +182,17 @@ public class Utilisateur {
     // Pour arrêter l'exécution du programme si l'objet n'est pas reconnu. L'appel à
     // cette fonction renvoie automatiquement une exception car on l'appelle dans le
     // default d'un switch qui représente le cas d'erreur
-    public static void erreurObjetInconnu() throws ObjetInconnuException {
-        throw new ObjetInconnuException();
+    public static void erreurObjetInconnu() throws ExceptionObjetInconnu {
+        throw new ExceptionObjetInconnu();
     }
 
     /**
      * @param i
      * @throws NbKilometresException
      */
-    public static void verifyTransportKilometreAnnee(int i) throws NbKilometresException {
+    public static void verifyTransportKilometreAnnee(int i) throws ExceptionNbKilometresTransport {
         if (i <= 0) {
-            throw new NbKilometresException();
+            throw new ExceptionNbKilometresTransport();
         }
     }
 
@@ -208,7 +209,7 @@ public class Utilisateur {
                 s = inte.nextInt();
                 verifyTransportKilometreAnnee(s);
                 tmp = false;
-            } catch (NbKilometresException k) {
+            } catch (ExceptionNbKilometresTransport k) {
                 System.out.println("Erreur : Veuillez inserer un nombre de kilometre positive");
             } catch (Exception e) {
                 System.out.println("Erreur : Veuillez inserer un entier");
@@ -219,11 +220,11 @@ public class Utilisateur {
 
     /**
      * @param s
-     * @throws TailleVoitureException
+     * @throws ExceptionTailleVoiture
      */
-    public static void TestReponseTailleVoiture(String s) throws TailleVoitureException {
+    public static void TestReponseTailleVoiture(String s) throws ExceptionTailleVoiture {
         if (!(s.equals("P") || s.equals("G"))) {
-            throw new TailleVoitureException("Erreur : Veuillez répondre par 'P' ou 'G'");
+            throw new ExceptionTailleVoiture("Erreur : Veuillez répondre par 'P' ou 'G'");
         }
     }
 
@@ -240,7 +241,7 @@ public class Utilisateur {
                 s = str.next();
                 TestReponseTailleVoiture(s);
                 tmp = false;
-            } catch (TailleVoitureException t) {
+            } catch (ExceptionTailleVoiture t) {
                 System.out.println("Erreur : Veuillez répondre par 'P' ou 'G'");
             }
         }
@@ -249,11 +250,11 @@ public class Utilisateur {
 
     /**
      * @param i
-     * @throws AmmortissementException
+     * @throws ExceptionAmmortissementVoiture
      */
-    public static void verifyAmortissementVoiture(int i) throws AmmortissementException {
+    public static void verifyAmortissementVoiture(int i) throws ExceptionAmmortissementVoiture {
         if (i <= 0) {
-            throw new AmmortissementException();
+            throw new ExceptionAmmortissementVoiture();
         }
     }
 
@@ -270,7 +271,7 @@ public class Utilisateur {
                 s = inte.nextInt();
                 verifyAmortissementVoiture(s);
                 tmp = false;
-            } catch (AmmortissementException a) {
+            } catch (ExceptionAmmortissementVoiture a) {
                 System.out.println("Erreur : Veuillez inserer un nombre d'années positif");
             } catch (Exception e) {
                 System.out.println("Erreur : Veuillez inserer un entier");
@@ -287,7 +288,8 @@ public class Utilisateur {
      * @throws SuperficieException
      * @throws ClasseEnergetiqueException
      */
-    public void AjouterLogement(int cmpt, Scanner entree) throws SuperficieException, ClasseEnergetiqueException {
+    public void AjouterLogement(int cmpt, Scanner entree)
+            throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         System.out.println("Avez-vous un autre logement ? (Oui/Non)");
         String reponse = entree.next();
         Logement log;
@@ -309,7 +311,7 @@ public class Utilisateur {
      * @throws TailleVoitureException
      */
     public void AjouterTransport(int cmpt, Scanner entree)
-            throws AmmortissementException, NbKilometresException, TailleVoitureException {
+            throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
         AjouterVoiture(cmpt, entree);
         AjouterAvion(cmpt, entree);
         AjouterBus(cmpt, entree);
@@ -324,10 +326,10 @@ public class Utilisateur {
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * voitures
      * 
-     * @throws TailleVoitureException
+     * @throws ExceptionTailleVoiture
      */
     public void AjouterVoiture(int cmpt, Scanner entree)
-            throws AmmortissementException, NbKilometresException, TailleVoitureException {
+            throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
         System.out.println("Avez-vous une voiture ? (Oui/Non)");
         String reponse = Population.CreateOuiNon();
 
@@ -365,9 +367,9 @@ public class Utilisateur {
     /**
      * @param cmpt
      * @param entree
-     * @throws NbKilometresException
+     * @throws ExceptionNbKilometresTransport
      */
-    public void AjouterAvion(int cmpt, Scanner entree) throws NbKilometresException {
+    public void AjouterAvion(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous l'avion ? (Oui/Non)");
         String reponse = entree.next();
         if (reponse.equals("Oui")) {
@@ -381,9 +383,9 @@ public class Utilisateur {
     /**
      * @param cmpt
      * @param entree
-     * @throws NbKilometresException
+     * @throws ExceptionNbKilometresTransport
      */
-    public void AjouterBus(int cmpt, Scanner entree) throws NbKilometresException {
+    public void AjouterBus(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le bus ? (Oui/Non)");
         String reponse = entree.next();
         if (reponse.equals("Oui")) {
@@ -397,9 +399,9 @@ public class Utilisateur {
     /**
      * @param cmpt
      * @param entree
-     * @throws NbKilometresException
+     * @throws ExceptionNbKilometresTransport
      */
-    public void AjouterRER(int cmpt, Scanner entree) throws NbKilometresException {
+    public void AjouterRER(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le RER ? (Oui/Non)");
         String reponse = entree.next();
         if (reponse.equals("Oui")) {
@@ -413,9 +415,9 @@ public class Utilisateur {
     /**
      * @param cmpt
      * @param entree
-     * @throws NbKilometresException
+     * @throws ExceptionNbKilometresTransport
      */
-    public void AjouterTGV(int cmpt, Scanner entree) throws NbKilometresException {
+    public void AjouterTGV(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le TGV ? (Oui/Non)");
         String reponse = entree.next();
         if (reponse.equals("Oui")) {
@@ -429,9 +431,9 @@ public class Utilisateur {
     /**
      * @param cmpt
      * @param entree
-     * @throws NbKilometresException
+     * @throws ExceptionNbKilometresTransport
      */
-    public void AjouterMetro(int cmpt, Scanner entree) throws NbKilometresException {
+    public void AjouterMetro(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le métro ? (Oui/Non)");
         String reponse = entree.next();
         if (reponse.equals("Oui")) {
@@ -445,9 +447,9 @@ public class Utilisateur {
     /**
      * @param cmpt
      * @param entree
-     * @throws NbKilometresException
+     * @throws ExceptionNbKilometresTransport
      */
-    public void AjouterTramway(int cmpt, Scanner entree) throws NbKilometresException {
+    public void AjouterTramway(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le tramway ? (Oui/Non)");
         String reponse = entree.next();
         if (reponse.equals("Oui")) {
@@ -476,37 +478,34 @@ public class Utilisateur {
      * La méthode detaillerEmpreinte permet de détailler les empreintes carbones
      * d'une instance Utilisateur
      */
-    public void detaillerEmpreinte() {
-        System.out.println("Description détaillée de l'empreinte carbone :");
-        for (ConsoCarbone c : liste) {
-            if (c instanceof Alimentation) {
-                System.out.println("Impact de l'alimentation : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof BienConso) {
-                System.out.println(
-                        "Impact des dépenses en biens de consommation : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof Logement) {
-                Logement log = (Logement) c;
-                System.out.println(
-                        "Impact du logement " + log.getNumero() + " : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof ServicesPublics) {
-                System.out.println("Impact des services publics : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof Avion) {
-                System.out.println("Impact de l'utilisation de l'avion : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof Voiture) {
-                Voiture voiture = (Voiture) c;
-                System.out.println("Impact de l'utilisation de la voiture " + voiture.getNumero() + " : "
-                        + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof Bus) {
-                System.out.println("Impact de l'utilisation du bus : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof RER) {
-                System.out.println("Impact de l'utilisation du RER : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof TGV) {
-                System.out.println("Impact de l'utilisation du TGV : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof Metro) {
-                System.out.println("Impact de l'utilisation du métro : " + String.format("%.2f\n", c.getImpact()));
-            } else if (c instanceof Tramway) {
-                System.out.println("Impact de l'utilisation du Tramway : " + String.format("%.2f\n", c.getImpact()));
-            }
+    public void detaillerEmpreinte(ConsoCarbone c) {
+        if (c instanceof Alimentation) {
+            System.out.println("Impact de l'alimentation : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof BienConso) {
+            System.out.println(
+                    "Impact des dépenses en biens de consommation : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof Logement) {
+            Logement log = (Logement) c;
+            System.out.println(
+                    "Impact du logement " + log.getNumero() + " : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof ServicesPublics) {
+            System.out.println("Impact des services publics : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof Avion) {
+            System.out.println("Impact de l'utilisation de l'avion : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof Voiture) {
+            Voiture voiture = (Voiture) c;
+            System.out.println("Impact de l'utilisation de la voiture " + voiture.getNumero() + " : "
+                    + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof Bus) {
+            System.out.println("Impact de l'utilisation du bus : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof RER) {
+            System.out.println("Impact de l'utilisation du RER : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof TGV) {
+            System.out.println("Impact de l'utilisation du TGV : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof Metro) {
+            System.out.println("Impact de l'utilisation du métro : " + String.format("%.2f\n", c.getImpact()));
+        } else if (c instanceof Tramway) {
+            System.out.println("Impact de l'utilisation du Tramway : " + String.format("%.2f\n", c.getImpact()));
         }
     }
 
@@ -517,15 +516,15 @@ public class Utilisateur {
      * puis fait des recommandations pour obtenir un mode de vie plus durable
      */
     public void trier() {
-        System.out.println("Affichage de la liste triee :");
         Collections.sort(liste);
         String recommendations = "Pour obtenir un mode de vie plus durable :\n";
-        // Affichage de la liste triée
+        // Affichage des consommations carbones triées
         for (ConsoCarbone c : liste) {
-            System.out.println(c.toString());
+            detaillerEmpreinte(c);
             if (c instanceof Alimentation) {
                 Alimentation alim1 = (Alimentation) c;
-                if (alim1.getTxBoeuf() > 0.2) {
+                if (alim1.getTxBoeuf() > 0.2) { // On considère qu'un taux de repas à base de boeuf inférieur ou égale à
+                                                // 0.2 est bien et sa baisse n'est pas nécessaire
                     recommendations += " - réduisez votre consommation de viande et de produits d'origine animale\n";
                 }
             }

@@ -13,7 +13,7 @@ public abstract class Train extends Transport {
                                // classe Train
 
     // Constructeur
-    public Train(int kilomAnnee) throws NbKilometresException {
+    public Train(int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
     }
 

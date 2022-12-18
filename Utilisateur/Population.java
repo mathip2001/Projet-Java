@@ -16,7 +16,7 @@ import consoCarbone.*;
 public class Population {
     // Attributs
     private static Population instance = null;
-    private ArrayList<Utilisateur> listePopulation;
+    private static ArrayList<Utilisateur> listePopulation;
 
     // Constructeur
     private Population() {
@@ -49,7 +49,7 @@ public class Population {
      * 
      * @param utilisateur l'objet Utilisateur à ajouter au sein de la population
      */
-    public void add(Utilisateur utilisateur) {
+    public static void add(Utilisateur utilisateur) {
         listePopulation.add(utilisateur);
     }
 
@@ -71,26 +71,31 @@ public class Population {
      * La méthode creerPopulation permet de créer une unique instance population qui
      * sera défini à partir de l'interaction dans la console avec l'utilisateur
      * 
-     * @throws TauxException
-     * @throws SuperficieException
-     * @throws AmmortissementException
-     * @throws NbKilometresException
-     * @throws ObjetInconnuException
+     * @throws ExceptionTauxAlimentation
+     * @throws ExceptionMontantBienConso
+     * @throws ExceptionSuperficieLogement
+     * @throws ExceptionClasseEnergetiqueLogement
+     * @throws ExceptionAmmortissementVoiture
+     * @throws ExceptionNbKilometresTransport
+     * @throws ExceptionTailleVoiture
      * @throws FileNotFoundException
+     * @throws ExceptionObjetInconnu
      */
-    public void creerPopulation()
-            throws TauxException, MontantException, SuperficieException, ClasseEnergetiqueException,
-            AmmortissementException, NbKilometresException, TailleVoitureException, FileNotFoundException, ObjetInconnuException {
+    public static void creerPopulation()
+            throws ExceptionTauxAlimentation, ExceptionMontantBienConso, ExceptionSuperficieLogement,
+            ExceptionClasseEnergetiqueLogement, ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport,
+            ExceptionTailleVoiture, FileNotFoundException, ExceptionObjetInconnu {
 
         Scanner entree = new Scanner(System.in);
         int cmpt = 1;
         String reponse;
-        
+
         System.out.println("Création de la population :");
         System.out.println("Avez-vous les informations des utilisateurs stockées dans un fichier '.txt' ? (Oui/Non)");
         reponse = Population.CreateOuiNon();
-        if (reponse.equals("Non")){
-            // On demande à l'utilisateur de saisir les informations nécessaires à la création de l'objet Population
+        if (reponse.equals("Non")) {
+            // On demande à l'utilisateur de saisir les informations nécessaires à la
+            // création de l'objet Population
             do {
                 Alimentation alimentation = CreerAlimentation(cmpt, entree);
                 BienConso bienConso = CreerBienConso(cmpt, entree);
@@ -104,18 +109,20 @@ public class Population {
                 cmpt++;
 
             } while (reponse.equals("Oui"));
-        }
-        else{
+        } else {
             // On récupère les informations stockées dans les fichiers textes
             int NumUtil = 1;
-            while (reponse.equals("Oui")){
-                System.out.println("Veuillez entrer le nom du fichier où sont stockées les informations de l'utilisateur " + NumUtil + " :");
+            while (reponse.equals("Oui")) {
+                System.out
+                        .println("Veuillez entrer le nom du fichier où sont stockées les informations de l'utilisateur "
+                                + NumUtil + " :");
                 reponse = entree.next();
                 File file = new File(reponse);
                 Utilisateur utilisateur = new Utilisateur(file);
                 add(utilisateur);
+                System.out.println("Y a-t-il un autre utilisateur stocké dans un fichier ? (Oui/Non)");
+                reponse = CreateOuiNon();
             }
-            
         }
         entree.close();
     }
@@ -131,12 +138,13 @@ public class Population {
      * 
      * @param d représente le taux d'alimentation saisie par l'utilisateur dans le
      *          terminal par le biais de la méthode CreateTauxAlimentation
-     * @throws TauxException est une exception qui s'enclenche lorsque l'utilisateur
-     *                       n'a pas saisie un taux entre 0 et 1
+     * @throws ExceptionTauxAlimentation est une exception qui s'enclenche
+     *                                   lorsque l'utilisateur n'a pas
+     *                                   saisie un taux entre 0 et 1
      */
-    public static void VerifyTauxAlimentation(double d) throws TauxException {
+    public static void VerifyTauxAlimentation(double d) throws ExceptionTauxAlimentation {
         if ((d < 0) || (d > 1)) {
-            throw new TauxException("Erreur : Veuillez inserer un taux doit être entre 0 et 1");
+            throw new ExceptionTauxAlimentation("Erreur : Veuillez inserer un taux doit être entre 0 et 1");
         }
     }
 
@@ -158,7 +166,7 @@ public class Population {
                 s = doub.nextDouble();
                 VerifyTauxAlimentation(s);
                 tmp = false;
-            } catch (TauxException t) {
+            } catch (ExceptionTauxAlimentation t) {
                 System.out.println("Erreur : Veuillez inserer un taux doit être en 0 et 1");
             } catch (Exception e) {
                 System.out.println("Erreur : Veuillez inserer un réel");
@@ -174,10 +182,11 @@ public class Population {
      * @param cmpt   représente le numéro de l'utilisateur
      * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance Alimentation
-     * @throws TauxException est une exception qui s'enclenche lorsque l'utilisateur
-     *                       n'a pas saisie un taux entre 0 et 1
+     * @throws ExceptionTauxAlimentation est une exception qui s'enclenche lorsque
+     *                                   l'utilisateur n'a pas saisie un taux entre
+     *                                   0 et 1
      */
-    public Alimentation CreerAlimentation(int cmpt, Scanner entree) throws TauxException {
+    public static Alimentation CreerAlimentation(int cmpt, Scanner entree) throws ExceptionTauxAlimentation {
         double txBoeuf, txVege;
 
         System.out.println(
@@ -200,12 +209,13 @@ public class Population {
      * 
      * @param d représente le montant saisie par l'utilisateur dans le terminal par
      *          le biais de la méthode CreateMontantBienConso
-     * @throws MontantException est une exception qui s'enclenche lorsque
-     *                          l'utilisateur n'a pas saisie un montant positif
+     * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque
+     *                                   l'utilisateur n'a pas saisie un montant
+     *                                   positif
      */
-    public static void VerifyMontantBienConso(double d) throws MontantException {
+    public static void VerifyMontantBienConso(double d) throws ExceptionMontantBienConso {
         if (d < 0) {
-            throw new MontantException();
+            throw new ExceptionMontantBienConso();
         }
     }
 
@@ -226,7 +236,7 @@ public class Population {
                 s = doub.nextDouble();
                 VerifyMontantBienConso(s);
                 tmp = false;
-            } catch (MontantException m) {
+            } catch (ExceptionMontantBienConso m) {
                 System.out.println("Erreur : Veuillez inserer un montant positif");
             } catch (Exception e) {
                 System.out.println("Erreur : Veuillez inserer un réel");
@@ -242,10 +252,11 @@ public class Population {
      * @param cmpt   représente le numéro de l'utilisateur
      * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance BienConso
-     * @throws MontantException est une exception qui s'enclenche lorsque
-     *                          l'utilisateur n'a pas saisie un montant positif
+     * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque
+     *                                   l'utilisateur n'a pas saisie un montant
+     *                                   positif
      */
-    public BienConso CreerBienConso(int cmpt, Scanner entree) throws MontantException {
+    public static BienConso CreerBienConso(int cmpt, Scanner entree) throws ExceptionMontantBienConso {
         double montant;
         System.out.println(
                 "Utilisateur " + cmpt
@@ -265,13 +276,13 @@ public class Population {
      * 
      * @param i représente la superficie du logement saisie par l'utilisateur dans
      *          le terminal par le biais de la méthode CreateSuperficieLogement
-     * @throws SuperficieException est une exception qui s'enclenche lorsque
-     *                             l'utilisateur n'a pas saisie une superficie
-     *                             positive
+     * @throws ExceptionSuperficieLogement est une exception qui s'enclenche lorsque
+     *                                     l'utilisateur n'a pas saisie une
+     *                                     superficie positive
      */
-    public static void VerifySuperficieLogement(int i) throws SuperficieException {
+    public static void VerifySuperficieLogement(int i) throws ExceptionSuperficieLogement {
         if (i <= 0) {
-            throw new SuperficieException();
+            throw new ExceptionSuperficieLogement();
         }
     }
 
@@ -284,11 +295,12 @@ public class Population {
      * 
      * @param s représente la classe énergétique saisie par l'utilisateur dans le
      *          terminal par le biais de la méthode CreateClasseEnergetiqueLogement
-     * @throws ClasseEnergetiqueException est une exception qui s'enclenche lorsque
-     *                                    l'utilisateur n'a pas saisie une classe
-     *                                    énergétique entre A et G
+     * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie une classe énergétique
+     *                                            entre A et G
      */
-    public static void VerifyClasseEnergetiqueLogement(String s) throws ClasseEnergetiqueException {
+    public static void VerifyClasseEnergetiqueLogement(String s) throws ExceptionClasseEnergetiqueLogement {
         if (!(s.equals("A")
                 || s.equals("B")
                 || s.equals("C")
@@ -296,7 +308,7 @@ public class Population {
                 || s.equals("E")
                 || s.equals("F")
                 || s.equals("G"))) {
-            throw new ClasseEnergetiqueException("Erreur : Veuillez répondre par les lettres de A à G");
+            throw new ExceptionClasseEnergetiqueLogement("Erreur : Veuillez répondre par les lettres de A à G");
         }
     }
 
@@ -318,7 +330,7 @@ public class Population {
                 s = inte.nextInt();
                 VerifySuperficieLogement(s);
                 tmp = false;
-            } catch (SuperficieException sup) {
+            } catch (ExceptionSuperficieLogement sup) {
                 System.out.println("Erreur : Veuillez inserer une superficie positive");
             } catch (Exception e) {
                 System.out.println("Erreur : Veuillez inserer un entier");
@@ -345,7 +357,7 @@ public class Population {
                 s = str.next();
                 VerifyClasseEnergetiqueLogement(s);
                 tmp = false;
-            } catch (ClasseEnergetiqueException e) {
+            } catch (ExceptionClasseEnergetiqueLogement e) {
                 System.out.println("Erreur : Veuillez répondre par les lettres de A à G");
             }
         }
@@ -359,12 +371,17 @@ public class Population {
      * @param cmpt   représente le numéro de l'utilisateur
      * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance Logement
-     * @throws SuperficieException est une exception qui s'enclenche lorsque
-     *                             l'utilisateur n'a pas saisie une superficie
-     *                             positive
+     * @throws ExceptionSuperficieLogement        est une exception qui s'enclenche
+     *                                            lorsque
+     *                                            l'utilisateur n'a pas saisie une
+     *                                            superficie positive
+     * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie une classe énergétique
+     *                                            entre A et G
      */
     public static Logement CreerLogement(int cmpt, Scanner entree, int numero)
-            throws SuperficieException, ClasseEnergetiqueException {
+            throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         System.out.println("Utilisateur " + cmpt + " : Quelle est la superficie du logement ? (en m^2)");
         int superficie = CreateSuperficieLogement();
 
@@ -403,12 +420,12 @@ public class Population {
      * 
      * @param s représente la réponse saisie par l'utilisateur dans le terminal par
      *          le biais de la méthode CreateOuiNon
-     * @throws ErreurOuiNon est une exception qui s'enclenche lorsque l'utilisateur
-     *                      ne répond pas par Oui ou par Non
+     * @throws ExceptionErreurOuiNon est une exception qui s'enclenche lorsque
+     *                               l'utilisateur ne répond pas par Oui ou par Non
      */
-    public static void VerifyOuiNon(String s) throws ErreurOuiNon {
+    public static void VerifyOuiNon(String s) throws ExceptionErreurOuiNon {
         if ((!(s.equals("Oui"))) && (!(s.equals("Non")))) {
-            throw new ErreurOuiNon("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
+            throw new ExceptionErreurOuiNon("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
         }
     }
 
@@ -428,7 +445,7 @@ public class Population {
                 s = str.next();
                 VerifyOuiNon(s);
                 tmp = false;
-            } catch (ErreurOuiNon e) {
+            } catch (ExceptionErreurOuiNon e) {
                 System.out.println("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
             }
         }
@@ -441,7 +458,7 @@ public class Population {
      * 
      * @return l'impact total de toute la population
      */
-    public double empreintePopulation() {
+    public static double empreintePopulation() {
         double impact = 0;
         for (Utilisateur u : listePopulation) {
             impact += u.calculerEmpreinte();
@@ -456,7 +473,7 @@ public class Population {
      * population
      * 
      */
-    public void politiquePubliqueViande() {
+    public static void politiquePubliqueViande() {
         System.out.println(
                 "Mise en place d'une politique publique visant à diviser par deux la consommation de repas à base de boeuf de chaque utilisateur de la population");
         double impact1 = empreintePopulation();
@@ -486,7 +503,7 @@ public class Population {
      * énergétique de chaque logement soit A
      * 
      */
-    public void politiquePubliqueEnergie() {
+    public static void politiquePubliqueEnergie() {
         System.out.println(
                 "Mise en place d'une politique publique incitant la rénovation énergétique de chaque utilisateur de la population afin que la classe énergétique de chaque logement soit A");
         double impact1 = empreintePopulation();
@@ -508,4 +525,15 @@ public class Population {
                         + (impact1 - impact2) + " TCO2eq");
     }
 
+    /**
+     * La méthode AffichageConsoOrdre permet d'afficher les consommations carbones
+     * ordonnées des utilisateurs avec les recommandations
+     */
+    public static void AffichageConsoOrdre() {
+        System.out.print("\nAffichage des consommations carbone ordonnées des utilisateurs avec les recommandations :");
+        for (Utilisateur u : listePopulation) {
+            System.out.println("\nUtilisateur " + (listePopulation.indexOf(u) + 1) + " :");
+            u.trier();
+        }
+    }
 }

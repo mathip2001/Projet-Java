@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class LogementTest {
     @Test
-    public void testImpactFormula() throws SuperficieException, ClasseEnergetiqueException {
+    public void testImpactFormula() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -16,7 +16,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testGetClasseEnergetique() throws SuperficieException, ClasseEnergetiqueException {
+    public void testGetClasseEnergetique() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -26,7 +26,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testGetID() throws SuperficieException, ClasseEnergetiqueException {
+    public void testGetID() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -36,7 +36,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testGetImpact() throws SuperficieException, ClasseEnergetiqueException {
+    public void testGetImpact() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -46,7 +46,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testGetSuperficie() throws SuperficieException, ClasseEnergetiqueException {
+    public void testGetSuperficie() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -56,7 +56,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testGetNumero() throws SuperficieException, ClasseEnergetiqueException {
+    public void testGetNumero() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -66,7 +66,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testSetClasseEnergetique() throws SuperficieException, ClasseEnergetiqueException {
+    public void testSetClasseEnergetique() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -79,7 +79,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testSetSuperficie() throws SuperficieException, ClasseEnergetiqueException {
+    public void testSetSuperficie() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
@@ -92,7 +92,7 @@ public class LogementTest {
     }
 
     @Test
-    public void testToString() throws SuperficieException, ClasseEnergetiqueException {
+    public void testToString() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         Logement l1 = new Logement(100, CE.A, 1);
         assertEquals("Logement : ID=0, impact=0,50, superficie=100, classeEnergetique=A", l1.toString());
     }

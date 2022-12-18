@@ -12,7 +12,7 @@ public class Avion extends Transport {
     private boolean utilise; // un boolean indiquant si l'utilisateur.rice utilise un avion
 
     // Constructeur
-    public Avion(boolean utilise, int kilomAnnee) throws NbKilometresException {
+    public Avion(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;
         impact = impactFormula();

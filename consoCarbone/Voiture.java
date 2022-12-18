@@ -16,7 +16,7 @@ public class Voiture extends Transport {
 
     // Constructeur
     public Voiture(boolean possede, Taille taille, int kilomAnnee, int amortissement, int numero)
-            throws AmmortissementException, NbKilometresException, TailleVoitureException {
+            throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
         super(kilomAnnee);
         this.taille = taille;
         this.possede = possede;
@@ -24,10 +24,10 @@ public class Voiture extends Transport {
         this.numero = numero;
         impact = impactFormula();
         if (amortissement <= 0) {
-            throw new AmmortissementException();
+            throw new ExceptionAmmortissementVoiture();
         }
         if (!(taille.equals(Taille.P) || taille.equals(Taille.G))) {
-            throw new TailleVoitureException();
+            throw new ExceptionTailleVoiture();
         }
     }
 

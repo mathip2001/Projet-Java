@@ -17,13 +17,13 @@ public class BienConso extends ConsoCarbone {
                                  // 1750€ de dépenses.
 
     // Constructeur
-    public BienConso(double montant) throws MontantException {
+    public BienConso(double montant) throws ExceptionMontantBienConso {
         super();
         // une tonne de CO2eq est équivalente à 1750€ de dépenses.
         this.montant = montant;
         impact = impactFormula();
         if (montant < 0) {
-            throw new MontantException();
+            throw new ExceptionMontantBienConso();
         }
     }
 

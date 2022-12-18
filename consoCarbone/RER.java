@@ -9,7 +9,7 @@ package consoCarbone;
  */
 public class RER extends Train {
     // Constructeur
-    public RER(boolean utilise, int kilomAnnee) throws NbKilometresException {
+    public RER(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;
         impact = impactFormula();
