@@ -227,7 +227,8 @@ public class Population {
      * montant du BienConso saisie à partir du terminal. Le montant est nécessaire
      * pour la création d'une instance BienConso dans la méthode CreerBienConso
      * 
-     * @return le montant du BienConso
+     * @return le montant du BienConso qui sera nécessaire pour instancier un objet
+     *         BienConso
      */
     public static double CreateMontantBienConso() {
         Scanner doub;
@@ -491,9 +492,11 @@ public class Population {
         }
         double impact2 = empreintePopulation();
         System.out.println(
-                "Impact carbone de la population avant la mise en place de cette politique : " + String.format("%.2f", impact1) + " TCO2eq");
+                "Impact carbone de la population avant la mise en place de cette politique : "
+                        + String.format("%.2f", impact1) + " TCO2eq");
         System.out.println(
-                "Impact carbone de la population après la mise en place de cette politique : " + String.format("%.2f", impact2) + " TCO2eq");
+                "Impact carbone de la population après la mise en place de cette politique : "
+                        + String.format("%.2f", impact2) + " TCO2eq");
         System.out.println(
                 "La mise en place de cette politique a donc permis de réduire l'impact carbone de la population de "
                         + String.format("%.2f", (impact1 - impact2)) + " TCO2eq");
@@ -520,9 +523,11 @@ public class Population {
         }
         double impact2 = empreintePopulation();
         System.out.println(
-                "Impact carbone de la population avant la mise en place de cette politique : " + String.format("%.2f", impact1) + " TCO2eq");
+                "Impact carbone de la population avant la mise en place de cette politique : "
+                        + String.format("%.2f", impact1) + " TCO2eq");
         System.out.println(
-                "Impact carbone de la population après la mise en place de cette politique : " + String.format("%.2f", impact2) + " TCO2eq");
+                "Impact carbone de la population après la mise en place de cette politique : "
+                        + String.format("%.2f", impact2) + " TCO2eq");
         System.out.println(
                 "La mise en place de cette politique a donc permis de réduire l'impact carbone de la population de "
                         + String.format("%.2f", (impact1 - impact2)) + " TCO2eq");

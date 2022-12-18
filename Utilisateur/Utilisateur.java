@@ -153,7 +153,7 @@ public class Utilisateur {
                         break;
                     case "Voiture":
                         String taille = mot[1];
-                        TestReponseTailleVoiture(taille);
+                        VerifyTailleVoiture(taille);
                         km = Integer.parseInt(mot[2]);
                         int ammortissement = Integer.parseInt(mot[3]);
                         VerifyAmortissementVoiture(ammortissement);
@@ -223,7 +223,8 @@ public class Utilisateur {
             System.out.println("Impact de l'alimentation : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof BienConso) {
             System.out.println(
-                    "Impact des dépenses en biens de consommation : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
+                    "Impact des dépenses en biens de consommation : " + String.format("%.2f", c.getImpact())
+                            + " TCO2eq");
         } else if (c instanceof Logement) {
             Logement log = (Logement) c;
             System.out.println(
@@ -231,7 +232,8 @@ public class Utilisateur {
         } else if (c instanceof ServicesPublics) {
             System.out.println("Impact des services publics : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Avion) {
-            System.out.println("Impact de l'utilisation de l'avion : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
+            System.out.println(
+                    "Impact de l'utilisation de l'avion : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Voiture) {
             Voiture voiture = (Voiture) c;
             System.out.println("Impact de l'utilisation de la voiture " + voiture.getNumero() + " : "
@@ -243,9 +245,11 @@ public class Utilisateur {
         } else if (c instanceof TGV) {
             System.out.println("Impact de l'utilisation du TGV : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Metro) {
-            System.out.println("Impact de l'utilisation du métro : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
+            System.out
+                    .println("Impact de l'utilisation du métro : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Tramway) {
-            System.out.println("Impact de l'utilisation du Tramway : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
+            System.out.println(
+                    "Impact de l'utilisation du Tramway : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         }
     }
 
@@ -281,12 +285,15 @@ public class Utilisateur {
     /**
      * La méthode VerifyKilometreAnneeTransport permet de vérifier si l'utilisateur
      * a bien indiqué une valeur positive pour le nombre de kilomètre parcouru. Si
-     * l'utilisateur n'a pas saisi correctement le taux, l'erreur
+     * l'utilisateur n'a pas saisi correctement le nombre de kilomètre, l'erreur
      * ExceptionNbKilometresTransport apparaîtra à l'écran. Cette méthode est
-     * appelée par la méthode CreateMontantBienConso
+     * appelée par la méthode ......
      * 
-     * @param i représente le nombre de kilomètre saisie par l'utilisateur
-     * @throws ExceptionNbKilometresTransport
+     * @param i représente le nombre de kilomètre saisie par l'utilisateur par le
+     *          biais de la méthode CreateKilometreAnneeTransport
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
+     *                                        lorsque l'utilisateur n'a pas saisie
+     *                                        un nombre de kilomètre positif
      */
     public static void VerifyKilometreAnneeTransport(int i) throws ExceptionNbKilometresTransport {
         if (i <= 0) {
@@ -295,7 +302,13 @@ public class Utilisateur {
     }
 
     /**
-     * @return int
+     * La méthode CreateKilometreAnneeTransport permet de vérifier le nombre de
+     * kilometre d'un véhicule de transport saisie à partir du terminal. Le nombre
+     * de kilomètre par année est nécessaire pour la création d'une instance
+     * Transport dans la méthode AjouterVoiture
+     * 
+     * @return le nombre de kilomètres qui sera nécessaire pour instancier un
+     *         objet Transport
      */
     public static int CreateKilometreAnneeTransport() {
         Scanner inte;
@@ -317,17 +330,30 @@ public class Utilisateur {
     }
 
     /**
-     * @param s
-     * @throws ExceptionTailleVoiture
+     * La méthode VerifyTailleVoiture permet de vérifier si l'utilisateur a bien
+     * saisie la lettre 'P' ou 'G' dans le terminal. Si l'utilisateur n'a pas saisi
+     * correctement la lettre, l'erreur ExceptionTailleVoiture apparaître à l'écran.
+     * Cette méthode est appelée par la méthode CreateTailleVoiture
+     * 
+     * @param s représente la taille de la voiture saisie par l'utilisateur dans le
+     *          terminal par le biais de la méthode CreateTailleVoiture
+     * @throws ExceptionTailleVoiture est une exception qui s'enclenche lorsque
+     *                                l'utilisateur n'a pas saisie une taille
+     *                                correspondant à 'P' ou 'G'
      */
-    public static void TestReponseTailleVoiture(String s) throws ExceptionTailleVoiture {
+    public static void VerifyTailleVoiture(String s) throws ExceptionTailleVoiture {
         if (!(s.equals("P") || s.equals("G"))) {
             throw new ExceptionTailleVoiture("Erreur : Veuillez répondre par 'P' ou 'G'");
         }
     }
 
     /**
-     * @return String
+     * La méthode CreateTailleVoiture permet de recueillir et de vérifier la taille
+     * de la voiture saisie à partir du terminal. La taille de la voiture est
+     * nécessaire pour la création d'une instance Voiture dans la méthode
+     * AjouterVoiture
+     * 
+     * @return la taille d'une voiture à instancier
      */
     public static String CreateTailleVoiture() {
         Scanner str;
@@ -337,7 +363,7 @@ public class Utilisateur {
             try {
                 str = new Scanner(System.in);
                 s = str.next();
-                TestReponseTailleVoiture(s);
+                VerifyTailleVoiture(s);
                 tmp = false;
             } catch (ExceptionTailleVoiture t) {
                 System.out.println("Erreur : Veuillez répondre par 'P' ou 'G'");
@@ -347,6 +373,12 @@ public class Utilisateur {
     }
 
     /**
+     * La méthode VerifyAmortissementVoiture permet de vérifier si l'utilisateur
+     * a bien indiqué une valeur positive pour la durée de l'amortissement. Si
+     * l'utilisateur n'a pas saisi correctement la durée de l'amortissement,
+     * l'erreur ExceptionAmmortissementVoiture apparaîtra à l'écran. Cette méthode
+     * est appelée par la méthode AjouterVoiture
+     * 
      * @param i
      * @throws ExceptionAmmortissementVoiture
      */
@@ -359,7 +391,7 @@ public class Utilisateur {
     /**
      * @return int
      */
-    public static int CreateIntAmortissementVoiture() {
+    public static int CreateAmortissementVoiture() {
         Scanner inte;
         boolean tmp = true;
         int s = 0;
@@ -378,6 +410,8 @@ public class Utilisateur {
         return s;
     }
 
+    // Méthodes qui permettent d'ajouter des objets à la liste contenue dans
+    // Utilisateur
     /**
      * La méthode AjouterLogement permet d'ajouter des Logements supplémentaires
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
@@ -442,7 +476,7 @@ public class Utilisateur {
             int km = CreateKilometreAnneeTransport();
 
             System.out.println("Depuis combien d'années avez-vous votre voiture ?");
-            int annee = CreateIntAmortissementVoiture();
+            int annee = CreateAmortissementVoiture();
 
             switch (taille) {
                 case "P":
