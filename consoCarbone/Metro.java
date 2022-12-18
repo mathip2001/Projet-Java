@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
+
 /**
  * Un objet issu de la classe Metro permet de calculer l'impact carbone lié à
  * l'utilisation du métro par une personne par an

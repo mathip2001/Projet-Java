@@ -1,4 +1,4 @@
-package consoCarbone;
+package consoCarbone.Exceptions;
 
 public class ExceptionMontantBienConso extends Exception {
     public ExceptionMontantBienConso() {

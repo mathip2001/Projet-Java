@@ -1,4 +1,4 @@
-package consoCarbone;
+package consoCarbone.Exceptions;
 
 public class ExceptionObjetInconnu extends Exception {
     public ExceptionObjetInconnu() {

@@ -1,5 +1,8 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionClasseEnergetiqueLogement;
+import consoCarbone.Exceptions.ExceptionSuperficieLogement;
+
 /**
  * Un objet issu de la classe Logement permet de calculer l'impact carbone
  * lié au logement d'une personne

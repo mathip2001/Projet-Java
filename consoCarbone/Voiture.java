@@ -1,5 +1,9 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionAmmortissementVoiture;
+import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
+import consoCarbone.Exceptions.ExceptionTailleVoiture;
+
 /**
  * Un objet issu de la classe Voiture permet de calculer l'impact carbone lié à
  * l'utilisation d'une voiture par une personne par an

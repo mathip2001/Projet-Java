@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionTauxAlimentation;
+
 /**
  * Un objet issu de la classe Alimentation permet de calculer l'impact carbone
  * lié à l'alimentation d'une personne

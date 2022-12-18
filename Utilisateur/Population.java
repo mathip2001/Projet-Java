@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import consoCarbone.*;
+import consoCarbone.Exceptions.*;
 
 /**
  * Un objet issu de la classe Population permet de regrouper l'ensemble des
@@ -113,8 +114,8 @@ public class Population {
             // On récupère les informations stockées dans les fichiers textes
             int NumUtil = 1;
             while (reponse.equals("Oui")) {
-                System.out
-                        .println("Veuillez entrer le nom du fichier où sont stockées les informations de l'utilisateur "
+                System.out.println(
+                        "Veuillez entrer le nom du fichier où sont stockées les informations de l'utilisateur "
                                 + NumUtil + " :");
                 reponse = entree.next();
                 File file = new File(reponse);
@@ -133,8 +134,8 @@ public class Population {
      * La méthode VerifyTauxAlimentation permet de vérifier si l'utilisateur a bien
      * indiqué une valeur entre 0 et 1 pour le taux de boeuf et le taux de
      * vegetarien. Si l'utilisateur n'a pas saisi correctement le taux, l'erreur
-     * TauxException apparaîtra à l'écran. Cette méthode est appelée par la méthode
-     * CreateTauxAlimentation
+     * ExceptionTauxAlimentation apparaîtra à l'écran. Cette méthode est appelée par
+     * la méthode CreateTauxAlimentation
      * 
      * @param d représente le taux d'alimentation saisie par l'utilisateur dans le
      *          terminal par le biais de la méthode CreateTauxAlimentation
@@ -204,8 +205,9 @@ public class Population {
     /**
      * La méthode VerifyMontantBienConso permet de vérifier si l'utilisateur a bien
      * indiqué une valeur positive pour le montant des BienConso. Si l'utilisateur
-     * n'a pas saisi correctement le taux, l'erreur MontantException apparaîtra à
-     * l'écran. Cette méthode est appelée par la méthode CreateMontantBienConso
+     * n'a pas saisi correctement le taux, l'erreur ExceptionMontantBienConso
+     * apparaîtra à l'écran. Cette méthode est appelée par la méthode
+     * CreateMontantBienConso
      * 
      * @param d représente le montant saisie par l'utilisateur dans le terminal par
      *          le biais de la méthode CreateMontantBienConso
@@ -271,8 +273,8 @@ public class Population {
      * La méthode VerifySuperficieLogement permet de vérifier si l'utilisateur a
      * bien indiqué une valeur positive pour le montant des BienConso. Si
      * l'utilisateur n'a pas saisi correctement le taux, l'erreur
-     * SuperficieException apparaîtra à l'écran. Cette méthode est appelée par la
-     * méthode CreateSuperficieLogement
+     * ExceptionSuperficieLogement apparaîtra à l'écran. Cette méthode est appelée
+     * par la méthode CreateSuperficieLogement
      * 
      * @param i représente la superficie du logement saisie par l'utilisateur dans
      *          le terminal par le biais de la méthode CreateSuperficieLogement
@@ -290,8 +292,8 @@ public class Population {
      * La méthode VerifyClasseEnergetiqueLogement permet de vérifier si
      * l'utilisateur a bien saisi une lettre de 'A' à 'G' dans le terminal. Si
      * l'utilisateur n'a pas saisi correctement la lettre, l'erreur
-     * ClasseEnergetiqueException apparaîtra à l'écran. Cette méthode est appelée
-     * par la méthode CreateClasseEnergetiqueLogement
+     * ExceptionClasseEnergetiqueLogement apparaîtra à l'écran. Cette méthode est
+     * appelée par la méthode CreateClasseEnergetiqueLogement
      * 
      * @param s représente la classe énergétique saisie par l'utilisateur dans le
      *          terminal par le biais de la méthode CreateClasseEnergetiqueLogement

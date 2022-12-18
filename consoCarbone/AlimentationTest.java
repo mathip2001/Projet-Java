@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import consoCarbone.Exceptions.ExceptionTauxAlimentation;
+
 public class AlimentationTest {
     @Test
     public void testImpactFormula() throws ExceptionTauxAlimentation {

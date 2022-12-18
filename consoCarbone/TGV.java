@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
+
 /**
  * Un objet issu de la classe TGV permet de calculer l'impact carbone lié à
  * l'utilisation du TGV par une personne par an

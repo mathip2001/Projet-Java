@@ -1,4 +1,5 @@
 import consoCarbone.*;
+import consoCarbone.Exceptions.*;
 import Utilisateur.*;
 
 import java.io.FileNotFoundException;

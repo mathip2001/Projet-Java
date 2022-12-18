@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionMontantBienConso;
+
 /**
  * Un objet issu de la classe BienConso permet de calculer l'impact carbone
  * lié aux dépenses en biens de consommation d'une personne

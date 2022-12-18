@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import consoCarbone.Exceptions.ExceptionClasseEnergetiqueLogement;
+import consoCarbone.Exceptions.ExceptionSuperficieLogement;
+
 public class LogementTest {
     @Test
     public void testImpactFormula() throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {

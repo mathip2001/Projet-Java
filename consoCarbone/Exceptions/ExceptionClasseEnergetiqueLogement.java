@@ -1,4 +1,4 @@
-package consoCarbone;
+package consoCarbone.Exceptions;
 
 public class ExceptionClasseEnergetiqueLogement extends Exception {
     public ExceptionClasseEnergetiqueLogement() {

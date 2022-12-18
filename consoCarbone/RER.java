@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
+
 /**
  * Un objet issu de la classe RER permet de calculer l'impact carbone lié à
  * l'utilisation du RER par une personne par an

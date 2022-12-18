@@ -1,4 +1,4 @@
-package consoCarbone;
+package consoCarbone.Exceptions;
 
 public class ExceptionTailleVoiture extends Exception {
     public ExceptionTailleVoiture() {

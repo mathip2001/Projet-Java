@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
+
 /**
  * Un objet issu de la classe Avion permet de calculer l'impact carbone lié à
  * l'utilisation de l'avion par une personne par an

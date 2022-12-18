@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
+
 /**
  * Un objet issu de la classe Train permet de calculer l'impact carbone lié à
  * l'utilisation d'un train par une personne par an

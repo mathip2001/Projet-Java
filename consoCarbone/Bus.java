@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
+
 /**
  * Un objet issu de la classe Bus permet de calculer l'impact carbone lié à
  * l'utilisation du bus par une personne par an
