@@ -101,6 +101,7 @@ public class Population {
     }
 
     // Pour Alimentation :
+
     /**
      * La méthode VerifyTauxAlimentation permet de vérifier si l'utilisateur a bien
      * indiqué une valeur entre 0 et 1 pour le taux de boeuf et le taux de
@@ -170,6 +171,7 @@ public class Population {
     }
 
     // Pour BienConso :
+
     /**
      * La méthode VerifyMontantBienConso permet de vérifier si l'utilisateur a bien
      * indiqué une valeur positive pour le montant des BienConso. Si l'utilisateur
@@ -233,6 +235,7 @@ public class Population {
     }
 
     // Pour Logement :
+
     /**
      * La méthode VerifySuperficieLogement permet de vérifier si l'utilisateur a
      * bien indiqué une valeur positive pour le montant des BienConso. Si
@@ -370,7 +373,8 @@ public class Population {
         }
     }
 
-    // Les 2 méthodes sont utiles pour la plupart des autres classes
+    // Les 2 méthodes sont utiles pour la plupart des autres classes :
+
     /**
      * La méthode VerifyOuiNon permet de vérifier si l'utilisateur a bien répondu
      * par Oui ou par Non dans le terminal. Si l'utilisateur n'a pas saisi
