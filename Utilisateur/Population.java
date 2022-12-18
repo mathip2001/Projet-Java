@@ -90,6 +90,7 @@ public class Population {
         Scanner entree = new Scanner(System.in);
         int cmpt = 1;
         String reponse;
+        createInstance();
 
         System.out.println("Création de la population :");
         System.out.println("Avez-vous les informations des utilisateurs stockées dans un fichier '.txt' ? (Oui/Non)");
@@ -477,7 +478,7 @@ public class Population {
      */
     public static void politiquePubliqueViande() {
         System.out.println(
-                "Mise en place d'une politique publique visant à diviser par deux la consommation de repas à base de boeuf de chaque utilisateur de la population");
+                "\nMise en place d'une politique publique visant à diviser par deux la consommation de repas à base de boeuf de chaque utilisateur de la population");
         double impact1 = empreintePopulation();
         for (Utilisateur u : listePopulation) {
             for (ConsoCarbone c : u.getListe()) {
@@ -490,12 +491,12 @@ public class Population {
         }
         double impact2 = empreintePopulation();
         System.out.println(
-                "Impact carbone de la population avant la mise en place de cette politique : " + impact1 + " TCO2eq");
+                "Impact carbone de la population avant la mise en place de cette politique : " + String.format("%.2f", impact1) + " TCO2eq");
         System.out.println(
-                "Impact carbone de la population après la mise en place de cette politique : " + impact2 + " TCO2eq");
+                "Impact carbone de la population après la mise en place de cette politique : " + String.format("%.2f", impact2) + " TCO2eq");
         System.out.println(
                 "La mise en place de cette politique a donc permis de réduire l'impact carbone de la population de "
-                        + (impact1 - impact2) + " TCO2eq");
+                        + String.format("%.2f", (impact1 - impact2)) + " TCO2eq");
     }
 
     /**
@@ -507,7 +508,7 @@ public class Population {
      */
     public static void politiquePubliqueEnergie() {
         System.out.println(
-                "Mise en place d'une politique publique incitant la rénovation énergétique de chaque utilisateur de la population afin que la classe énergétique de chaque logement soit A");
+                "\nMise en place d'une politique publique incitant la rénovation énergétique de chaque utilisateur de la population afin que la classe énergétique de chaque logement soit A");
         double impact1 = empreintePopulation();
         for (Utilisateur u : listePopulation) {
             for (ConsoCarbone c : u.getListe()) {
@@ -519,12 +520,12 @@ public class Population {
         }
         double impact2 = empreintePopulation();
         System.out.println(
-                "Impact carbone de la population avant la mise en place de cette politique : " + impact1 + " TCO2eq");
+                "Impact carbone de la population avant la mise en place de cette politique : " + String.format("%.2f", impact1) + " TCO2eq");
         System.out.println(
-                "Impact carbone de la population après la mise en place de cette politique : " + impact2 + " TCO2eq");
+                "Impact carbone de la population après la mise en place de cette politique : " + String.format("%.2f", impact2) + " TCO2eq");
         System.out.println(
                 "La mise en place de cette politique a donc permis de réduire l'impact carbone de la population de "
-                        + (impact1 - impact2) + " TCO2eq");
+                        + String.format("%.2f", (impact1 - impact2)) + " TCO2eq");
     }
 
     /**
@@ -534,7 +535,7 @@ public class Population {
     public static void AffichageConsoOrdre() {
         System.out.print("\nAffichage des consommations carbone ordonnées des utilisateurs avec les recommandations :");
         for (Utilisateur u : listePopulation) {
-            System.out.println("\nUtilisateur " + (listePopulation.indexOf(u) + 1) + " :");
+            System.out.println("Utilisateur " + (listePopulation.indexOf(u) + 1) + " :");
             u.trier();
         }
     }

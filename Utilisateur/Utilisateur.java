@@ -95,7 +95,7 @@ public class Utilisateur {
         liste.add(servicesPublics);
         try {
             while ((ligne = br.readLine()) != null) {
-                mot = ligne.split("");
+                mot = ligne.split(" ");
                 objet = mot[0];
                 switch (objet) {
                     case "Alimentation":
@@ -220,32 +220,32 @@ public class Utilisateur {
      */
     public void detaillerEmpreinte(ConsoCarbone c) {
         if (c instanceof Alimentation) {
-            System.out.println("Impact de l'alimentation : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact de l'alimentation : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof BienConso) {
             System.out.println(
-                    "Impact des dépenses en biens de consommation : " + String.format("%.2f\n", c.getImpact()));
+                    "Impact des dépenses en biens de consommation : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Logement) {
             Logement log = (Logement) c;
             System.out.println(
-                    "Impact du logement " + log.getNumero() + " : " + String.format("%.2f\n", c.getImpact()));
+                    "Impact du logement " + log.getNumero() + " : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof ServicesPublics) {
-            System.out.println("Impact des services publics : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact des services publics : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Avion) {
-            System.out.println("Impact de l'utilisation de l'avion : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact de l'utilisation de l'avion : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Voiture) {
             Voiture voiture = (Voiture) c;
             System.out.println("Impact de l'utilisation de la voiture " + voiture.getNumero() + " : "
-                    + String.format("%.2f\n", c.getImpact()));
+                    + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Bus) {
-            System.out.println("Impact de l'utilisation du bus : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact de l'utilisation du bus : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof RER) {
-            System.out.println("Impact de l'utilisation du RER : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact de l'utilisation du RER : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof TGV) {
-            System.out.println("Impact de l'utilisation du TGV : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact de l'utilisation du TGV : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Metro) {
-            System.out.println("Impact de l'utilisation du métro : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact de l'utilisation du métro : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         } else if (c instanceof Tramway) {
-            System.out.println("Impact de l'utilisation du Tramway : " + String.format("%.2f\n", c.getImpact()));
+            System.out.println("Impact de l'utilisation du Tramway : " + String.format("%.2f", c.getImpact()) + " TCO2eq");
         }
     }
 

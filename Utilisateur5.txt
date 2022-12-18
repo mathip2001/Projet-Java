@@ -1,6 +1,6 @@
 Logement 250 D
 Alimentation 0.4 0.4
 BienConso 20000
-Voiture G 25000
-Voiture P 10000
+Voiture G 25000 4
+Voiture P 10000 12
 Avion 3500
