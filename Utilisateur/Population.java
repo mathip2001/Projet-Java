@@ -1,5 +1,6 @@
 package Utilisateur;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -74,29 +75,48 @@ public class Population {
      * @throws SuperficieException
      * @throws AmmortissementException
      * @throws NbKilometresException
+     * @throws ObjetInconnuException
+     * @throws FileNotFoundException
      */
     public void creerPopulation()
             throws TauxException, MontantException, SuperficieException, ClasseEnergetiqueException,
-            AmmortissementException, NbKilometresException, TailleVoitureException {
+            AmmortissementException, NbKilometresException, TailleVoitureException, FileNotFoundException, ObjetInconnuException {
 
-        System.out.println("Création de la population :");
         Scanner entree = new Scanner(System.in);
         int cmpt = 1;
         String reponse;
+        
+        System.out.println("Création de la population :");
+        System.out.println("Avez-vous les informations des utilisateurs stockées dans un fichier '.txt' ? (Oui/Non)");
+        reponse = Population.CreateOuiNon();
+        if (reponse.equals("Non")){
+            // On demande à l'utilisateur de saisir les informations nécessaires à la création de l'objet Population
+            do {
+                Alimentation alimentation = CreerAlimentation(cmpt, entree);
+                BienConso bienConso = CreerBienConso(cmpt, entree);
+                Logement logement = CreerLogement(cmpt, entree, 1);
+                ServicesPublics servicesPublics = ServicesPublics.getInstance();
+                Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logement,
+                        servicesPublics, cmpt, entree);
+                add(utilisateur);
+                System.out.println("Y a-t-il un autre utilisateur ? (Oui/Non)");
+                reponse = CreateOuiNon();
+                cmpt++;
 
-        do {
-            Alimentation alimentation = CreerAlimentation(cmpt, entree);
-            BienConso bienConso = CreerBienConso(cmpt, entree);
-            Logement logement = CreerLogement(cmpt, entree, 1);
-            ServicesPublics servicesPublics = ServicesPublics.getInstance();
-            Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logement,
-                    servicesPublics, cmpt, entree);
-            add(utilisateur);
-            System.out.println("Y a-t-il un autre utilisateur ? (Oui/Non)");
-            reponse = CreateOuiNon();
-            cmpt++;
-
-        } while (reponse.equals("Oui"));
+            } while (reponse.equals("Oui"));
+        }
+        else{
+            // On récupère les informations stockées dans les fichiers textes
+            int NumUtil = 1;
+            while (reponse.equals("Oui")){
+                System.out.println("Veuillez entrer le nom du fichier où sont stockées les informations de l'utilisateur " + NumUtil + " :");
+                reponse = entree.next();
+                File file = new File(reponse);
+                Utilisateur utilisateur = new Utilisateur(file);
+                add(utilisateur);
+            }
+            
+        }
         entree.close();
     }
 
