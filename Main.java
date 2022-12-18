@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args)
-            throws SuperficieException, TauxException, AmmortissementException, NbKilometresException {
+            throws TauxException, MontantException, SuperficieException, ClasseEnergetiqueException,
+            AmmortissementException, NbKilometresException, TailleVoitureException {
         // Création de 3 objets Logements
         System.out.println("Creation de 3 objets Logements :");
         Logement l1 = new Logement(100, CE.A, 1);

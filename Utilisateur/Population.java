@@ -46,7 +46,7 @@ public class Population {
     /**
      * La méthode add permet d'ajouter un utilisateur au sein de la population
      * 
-     * @param utilisateur l'objet à ajouter au sein de la population
+     * @param utilisateur l'objet Utilisateur à ajouter au sein de la population
      */
     public void add(Utilisateur utilisateur) {
         listePopulation.add(utilisateur);
@@ -66,133 +66,6 @@ public class Population {
         }
     }
 
-    public static void TestReponse(String s) throws ErreurOuiNon {
-        if ((!(s.equals("Oui"))) && (!(s.equals("Non")))) {
-            throw new ErreurOuiNon("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
-        }
-    }
-
-    public static void verifyAlimentation(double d) throws TauxException {
-        if ((d < 0) || (d > 1)) {
-            throw new TauxException();
-        }
-    }
-
-    public static void verifyBienConso(double d) throws MontantException {
-        if (d < 0) {
-            throw new MontantException();
-        }
-    }
-
-    public static void verifyLogementSuperficie(int i) throws SuperficieException {
-        if (i <= 0) {
-            throw new SuperficieException();
-        }
-    }
-
-    public static void TestReponseLogement(String s) throws ClasseEnergetiqueException {
-        if (!(s.equals("A")
-                || s.equals("B")
-                || s.equals("C")
-                || s.equals("D")
-                || s.equals("E")
-                || s.equals("F")
-                || s.equals("G"))) {
-            throw new ClasseEnergetiqueException("Erreur : Veuillez répondre par les lettres de A à G");
-        }
-    }
-
-    public static double CreateDoubleAlimentation() {
-        Scanner doub;
-        boolean tmp = true;
-        double s = 0;
-        while (tmp) {
-            try {
-                doub = new Scanner(System.in);
-                s = doub.nextDouble();
-                verifyAlimentation(s);
-                tmp = false;
-            } catch (TauxException t) {
-                System.out.println("Erreur : Veuillez inserer un taux doit être en 0 et 1");
-            } catch (Exception e) {
-                System.out.println("Erreur : Veuillez inserer un réel");
-            }
-        }
-        return s;
-    }
-
-    public static double CreateDoubleBienConso() {
-        Scanner doub;
-        boolean tmp = true;
-        double s = 0;
-        while (tmp) {
-            try {
-                doub = new Scanner(System.in);
-                s = doub.nextDouble();
-                verifyBienConso(s);
-                tmp = false;
-            } catch (MontantException m) {
-                System.out.println("Erreur : Veuillez inserer un montant positif");
-            } catch (Exception e) {
-                System.out.println("Erreur : Veuillez inserer un réel");
-            }
-        }
-        return s;
-    }
-
-    public static int CreateIntLogement() {
-        Scanner inte;
-        boolean tmp = true;
-        int s = 0;
-        while (tmp) {
-            try {
-                inte = new Scanner(System.in);
-                s = inte.nextInt();
-                verifyLogementSuperficie(s);
-                tmp = false;
-            } catch (SuperficieException sup) {
-                System.out.println("Erreur : Veuillez inserer une superficie positive");
-            } catch (Exception e) {
-                System.out.println("Erreur : Veuillez inserer un entier");
-            }
-        }
-        return s;
-    }
-
-    public static String CreateClasseEnergetiqueLogement() {
-        Scanner str;
-        boolean tmp = true;
-        String s = "";
-        while (tmp) {
-            try {
-                str = new Scanner(System.in);
-                s = str.next();
-                TestReponseLogement(s);
-                tmp = false;
-            } catch (ClasseEnergetiqueException e) {
-                System.out.println("Erreur : Veuillez répondre par les lettres de A à G");
-            }
-        }
-        return s;
-    }
-
-    public static String CreateOuiNon() {
-        Scanner str;
-        boolean tmp = true;
-        String s = "";
-        while (tmp) {
-            try {
-                str = new Scanner(System.in);
-                s = str.next();
-                TestReponse(s);
-                tmp = false;
-            } catch (ErreurOuiNon e) {
-                System.out.println("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
-            }
-        }
-        return s;
-    }
-
     /**
      * La méthode creerPopulation permet de créer une unique instance population qui
      * sera défini à partir de l'interaction dans la console avec l'utilisateur
@@ -203,7 +76,8 @@ public class Population {
      * @throws NbKilometresException
      */
     public void creerPopulation()
-            throws TauxException, SuperficieException, AmmortissementException, NbKilometresException {
+            throws TauxException, MontantException, SuperficieException, ClasseEnergetiqueException,
+            AmmortissementException, NbKilometresException, TailleVoitureException {
 
         System.out.println("Création de la population :");
         Scanner entree = new Scanner(System.in);
@@ -211,9 +85,9 @@ public class Population {
         String reponse;
 
         do {
-            Alimentation alimentation = creerAlimentation(cmpt, entree);
-            BienConso bienConso = creerBienConso(cmpt, entree);
-            Logement logement = creerLogement(cmpt, entree, 1);
+            Alimentation alimentation = CreerAlimentation(cmpt, entree);
+            BienConso bienConso = CreerBienConso(cmpt, entree);
+            Logement logement = CreerLogement(cmpt, entree, 1);
             ServicesPublics servicesPublics = ServicesPublics.getInstance();
             Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logement,
                     servicesPublics, cmpt, entree);
@@ -226,57 +100,250 @@ public class Population {
         entree.close();
     }
 
+    // Pour Alimentation :
     /**
-     * La méthode creerAlimentation permet de créer une instance Alimentation qui
+     * La méthode VerifyTauxAlimentation permet de vérifier si l'utilisateur a bien
+     * indiqué une valeur entre 0 et 1 pour le taux de boeuf et le taux de
+     * vegetarien. Si l'utilisateur n'a pas saisi correctement le taux, l'erreur
+     * TauxException apparaîtra à l'écran. Cette méthode est appelée par la méthode
+     * CreateTauxAlimentation
+     * 
+     * @param d représente le taux d'alimentation saisie par l'utilisateur dans le
+     *          terminal par le biais de la méthode CreateTauxAlimentation
+     * @throws TauxException est une exception qui s'enclenche lorsque l'utilisateur
+     *                       n'a pas saisie un taux entre 0 et 1
+     */
+    public static void VerifyTauxAlimentation(double d) throws TauxException {
+        if ((d < 0) || (d > 1)) {
+            throw new TauxException("Erreur : Veuillez inserer un taux doit être entre 0 et 1");
+        }
+    }
+
+    /**
+     * La méthode CreateTauxAlimentation permet de recueillir et de vérifier le taux
+     * de repas à base de boeuf ou le taux de repas végétarien saisie à partir du
+     * terminal. Le taux est nécessaire pour la création d'une instance Alimentation
+     * dans la méthode CreerAlimentation
+     * 
+     * @return le taux de repas à base de boeuf ou le taux de repas végétarien
+     */
+    public static double CreateTauxAlimentation() {
+        Scanner doub;
+        boolean tmp = true;
+        double s = 0;
+        while (tmp) {
+            try {
+                doub = new Scanner(System.in);
+                s = doub.nextDouble();
+                VerifyTauxAlimentation(s);
+                tmp = false;
+            } catch (TauxException t) {
+                System.out.println("Erreur : Veuillez inserer un taux doit être en 0 et 1");
+            } catch (Exception e) {
+                System.out.println("Erreur : Veuillez inserer un réel");
+            }
+        }
+        return s;
+    }
+
+    /**
+     * La méthode CreerAlimentation permet de créer une instance Alimentation qui
      * sera définie à partir des informations saisies dans le terminal
      * 
-     * @param cmpt
-     * @param entree
+     * @param cmpt   représente le numéro de l'utilisateur
+     * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance Alimentation
-     * @throws TauxException
+     * @throws TauxException est une exception qui s'enclenche lorsque l'utilisateur
+     *                       n'a pas saisie un taux entre 0 et 1
      */
-    public Alimentation creerAlimentation(int cmpt, Scanner entree) throws TauxException {
+    public Alimentation CreerAlimentation(int cmpt, Scanner entree) throws TauxException {
         double txBoeuf, txVege;
 
         System.out.println(
                 "Utilisateur " + cmpt + " : Quel est votre taux de repas à base de boeuf ? (une valeur entre 0 et 1)");
-        txBoeuf = CreateDoubleAlimentation();
+        txBoeuf = CreateTauxAlimentation();
 
         System.out.println(
                 "Utilisateur " + cmpt + " : Quel est votre taux de repas végétariens ? (une valeur entre 0 et 1)");
-        txVege = CreateDoubleAlimentation();
+        txVege = CreateTauxAlimentation();
         return new Alimentation(txBoeuf, txVege);
     }
 
+    // Pour BienConso :
     /**
-     * La méthode creerBienConso permet de créer une instance BienConso qui
+     * La méthode VerifyMontantBienConso permet de vérifier si l'utilisateur a bien
+     * indiqué une valeur positive pour le montant des BienConso. Si l'utilisateur
+     * n'a pas saisi correctement le taux, l'erreur MontantException apparaîtra à
+     * l'écran. Cette méthode est appelée par la méthode CreateMontantBienConso
+     * 
+     * @param d représente le montant saisie par l'utilisateur dans le terminal par
+     *          le biais de la méthode CreateMontantBienConso
+     * @throws MontantException est une exception qui s'enclenche lorsque
+     *                          l'utilisateur n'a pas saisie un montant positif
+     */
+    public static void VerifyMontantBienConso(double d) throws MontantException {
+        if (d < 0) {
+            throw new MontantException();
+        }
+    }
+
+    /**
+     * La méthode CreateMontantBienConso permet de recueillir et de vérifier le
+     * montant du BienConso saisie à partir du terminal. Le montant est nécessaire
+     * pour la création d'une instance BienConso dans la méthode CreerBienConso
+     * 
+     * @return le montant du BienConso
+     */
+    public static double CreateMontantBienConso() {
+        Scanner doub;
+        boolean tmp = true;
+        double s = 0;
+        while (tmp) {
+            try {
+                doub = new Scanner(System.in);
+                s = doub.nextDouble();
+                VerifyMontantBienConso(s);
+                tmp = false;
+            } catch (MontantException m) {
+                System.out.println("Erreur : Veuillez inserer un montant positif");
+            } catch (Exception e) {
+                System.out.println("Erreur : Veuillez inserer un réel");
+            }
+        }
+        return s;
+    }
+
+    /**
+     * La méthode CreerBienConso permet de créer une instance BienConso qui
      * sera définie à partir des informations saisies dans le terminal
      * 
-     * @param cmpt
-     * @param entree
+     * @param cmpt   représente le numéro de l'utilisateur
+     * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance BienConso
+     * @throws MontantException est une exception qui s'enclenche lorsque
+     *                          l'utilisateur n'a pas saisie un montant positif
      */
-    public BienConso creerBienConso(int cmpt, Scanner entree) {
+    public BienConso CreerBienConso(int cmpt, Scanner entree) throws MontantException {
         double montant;
         System.out.println(
                 "Utilisateur " + cmpt
                         + " : Quel est le montant de vos dépenses annuelles en biens de consommation ?");
-        montant = CreateDoubleBienConso();
+        montant = CreateMontantBienConso();
         return new BienConso(montant);
+    }
+
+    // Pour Logement :
+    /**
+     * La méthode VerifySuperficieLogement permet de vérifier si l'utilisateur a
+     * bien indiqué une valeur positive pour le montant des BienConso. Si
+     * l'utilisateur n'a pas saisi correctement le taux, l'erreur
+     * SuperficieException apparaîtra à l'écran. Cette méthode est appelée par la
+     * méthode CreateSuperficieLogement
+     * 
+     * @param i représente la superficie du logement saisie par l'utilisateur dans
+     *          le terminal par le biais de la méthode CreateSuperficieLogement
+     * @throws SuperficieException est une exception qui s'enclenche lorsque
+     *                             l'utilisateur n'a pas saisie une superficie
+     *                             positive
+     */
+    public static void VerifySuperficieLogement(int i) throws SuperficieException {
+        if (i <= 0) {
+            throw new SuperficieException();
+        }
+    }
+
+    /**
+     * La méthode VerifyClasseEnergetiqueLogement permet de vérifier si
+     * l'utilisateur a bien saisi une lettre de 'A' à 'G' dans le terminal. Si
+     * l'utilisateur n'a pas saisi correctement la lettre, l'erreur
+     * ClasseEnergetiqueException apparaîtra à l'écran. Cette méthode est appelée
+     * par la méthode CreateClasseEnergetiqueLogement
+     * 
+     * @param s représente la classe énergétique saisie par l'utilisateur dans le
+     *          terminal par le biais de la méthode CreateClasseEnergetiqueLogement
+     * @throws ClasseEnergetiqueException est une exception qui s'enclenche lorsque
+     *                                    l'utilisateur n'a pas saisie une classe
+     *                                    énergétique entre A et G
+     */
+    public static void VerifyClasseEnergetiqueLogement(String s) throws ClasseEnergetiqueException {
+        if (!(s.equals("A")
+                || s.equals("B")
+                || s.equals("C")
+                || s.equals("D")
+                || s.equals("E")
+                || s.equals("F")
+                || s.equals("G"))) {
+            throw new ClasseEnergetiqueException("Erreur : Veuillez répondre par les lettres de A à G");
+        }
+    }
+
+    /**
+     * La méthode CreateSuperficieLogement permet de recueillir et de vérifier la
+     * superficie du logement saisie à partir du terminal. La superficie est
+     * nécessaire pour la création d'une instance Logement dans la méthode
+     * CreerLogement
+     * 
+     * @return la superficie du logement
+     */
+    public static int CreateSuperficieLogement() {
+        Scanner inte;
+        boolean tmp = true;
+        int s = 0;
+        while (tmp) {
+            try {
+                inte = new Scanner(System.in);
+                s = inte.nextInt();
+                VerifySuperficieLogement(s);
+                tmp = false;
+            } catch (SuperficieException sup) {
+                System.out.println("Erreur : Veuillez inserer une superficie positive");
+            } catch (Exception e) {
+                System.out.println("Erreur : Veuillez inserer un entier");
+            }
+        }
+        return s;
+    }
+
+    /**
+     * La méthode CreateClasseEnergetiqueLogement permet de recueillir et de
+     * vérifier la classe énergétique du logement saisie à partir du terminal. La
+     * classe énergétique du logement est nécessaire pour la création d'une instance
+     * Logement dans la méthode CreerLogement
+     *
+     * @return la classe énergétique du logement
+     */
+    public static String CreateClasseEnergetiqueLogement() {
+        Scanner str;
+        boolean tmp = true;
+        String s = "";
+        while (tmp) {
+            try {
+                str = new Scanner(System.in);
+                s = str.next();
+                VerifyClasseEnergetiqueLogement(s);
+                tmp = false;
+            } catch (ClasseEnergetiqueException e) {
+                System.out.println("Erreur : Veuillez répondre par les lettres de A à G");
+            }
+        }
+        return s;
     }
 
     /**
      * La méthode creerLogement permet de créer une instance Logement qui
      * sera définie à partir des informations saisies dans le terminal
      *
-     * @param cmpt
-     * @param entree
+     * @param cmpt   représente le numéro de l'utilisateur
+     * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance Logement
-     * @throws SuperficieException
+     * @throws SuperficieException est une exception qui s'enclenche lorsque
+     *                             l'utilisateur n'a pas saisie une superficie
+     *                             positive
      */
-    public static Logement creerLogement(int cmpt, Scanner entree, int numero) throws SuperficieException {
+    public static Logement CreerLogement(int cmpt, Scanner entree, int numero)
+            throws SuperficieException, ClasseEnergetiqueException {
         System.out.println("Utilisateur " + cmpt + " : Quelle est la superficie du logement ? (en m^2)");
-        int superficie = CreateIntLogement();
+        int superficie = CreateSuperficieLogement();
 
         System.out.println(
                 "Utilisateur " + cmpt + " : Quelle est la classe énergétique du logement ? (une lettre de A à G)");
@@ -299,10 +366,57 @@ public class Population {
                 return new Logement(superficie, CE.G, numero);
             default:
                 System.out.println("Vous n'avez pas rentré correctement la classe énergétique de votre logement");
-                return creerLogement(cmpt, entree, numero);
+                return CreerLogement(cmpt, entree, numero);
         }
     }
 
+    // Les 2 méthodes sont utiles pour la plupart des autres classes
+    /**
+     * La méthode VerifyOuiNon permet de vérifier si l'utilisateur a bien répondu
+     * par Oui ou par Non dans le terminal. Si l'utilisateur n'a pas saisi
+     * correctement le taux, l'erreur ErreurOuiNon apparaîtra à l'écran. Cette
+     * méthode est appelée par la méthode CreateOuiNon
+     * 
+     * @param s représente la réponse saisie par l'utilisateur dans le terminal par
+     *          le biais de la méthode CreateOuiNon
+     * @throws ErreurOuiNon est une exception qui s'enclenche lorsque l'utilisateur
+     *                      ne répond pas par Oui ou par Non
+     */
+    public static void VerifyOuiNon(String s) throws ErreurOuiNon {
+        if ((!(s.equals("Oui"))) && (!(s.equals("Non")))) {
+            throw new ErreurOuiNon("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
+        }
+    }
+
+    /**
+     * La méthode CreateOuiNon permet de recueillir et vérifier la réponse saisie
+     * par l'utilisateur à partir du terminal
+     * 
+     * @return la chaîne de caractère Oui ou Non
+     */
+    public static String CreateOuiNon() {
+        Scanner str;
+        boolean tmp = true;
+        String s = "";
+        while (tmp) {
+            try {
+                str = new Scanner(System.in);
+                s = str.next();
+                VerifyOuiNon(s);
+                tmp = false;
+            } catch (ErreurOuiNon e) {
+                System.out.println("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
+            }
+        }
+        return s;
+    }
+
+    /**
+     * La méthode empreintePopulation permet de connaître l'impact total de toute la
+     * population
+     * 
+     * @return l'impact total de toute la population
+     */
     public double empreintePopulation() {
         double impact = 0;
         for (Utilisateur u : listePopulation) {
@@ -311,6 +425,13 @@ public class Population {
         return impact;
     }
 
+    /**
+     * La méthode politiquePubliqueViande permet de réaliser une simulation afin de
+     * tester une mise en place d'une politique publique visant à diviser par deux
+     * la consommation de repas à base de boeuf de chaque utilisateur de la
+     * population
+     * 
+     */
     public void politiquePubliqueViande() {
         System.out.println(
                 "Mise en place d'une politique publique visant à diviser par deux la consommation de repas à base de boeuf de chaque utilisateur de la population");
@@ -334,6 +455,13 @@ public class Population {
                         + (impact1 - impact2) + " TCO2eq");
     }
 
+    /**
+     * La méthode politiquePubliqueEnergie permet de réaliser une simulation afin de
+     * tester une mise en place d'une politique publique incitant la rénovation
+     * énergétique de chaque utilisateur de la population afin que la classe
+     * énergétique de chaque logement soit A
+     * 
+     */
     public void politiquePubliqueEnergie() {
         System.out.println(
                 "Mise en place d'une politique publique incitant la rénovation énergétique de chaque utilisateur de la population afin que la classe énergétique de chaque logement soit A");

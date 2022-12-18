@@ -19,8 +19,9 @@ public class Test {
 
         // Alimentation a1 = creerAlimentation()
         // System.out.println(0 / 1750);
-        Scanner scan = new Scanner(System.in);
-        Utilisateur.AjouterVoiture(1, scan);
+
+        // Scanner scan = new Scanner(System.in);
+        // Utilisateur.AjouterVoiture(1, scan);
     }
 
 }

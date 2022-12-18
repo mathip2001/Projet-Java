@@ -3,6 +3,7 @@ package Utilisateur;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.io.*;
 
 import consoCarbone.*;
 
@@ -28,10 +29,11 @@ public class Utilisateur {
                                       // utilisation des services publics
     private ArrayList<ConsoCarbone> liste;
 
-    // Constructeur
+    // Constructeurs
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement,
             ServicesPublics services, int cmpt, Scanner entree)
-            throws SuperficieException, AmmortissementException, NbKilometresException {
+            throws SuperficieException, AmmortissementException, NbKilometresException, ClasseEnergetiqueException,
+            TailleVoitureException {
         liste = new ArrayList<>();
         this.alimentation = alimentation;
         this.bienConso = bienConso;
@@ -45,12 +47,157 @@ public class Utilisateur {
         AjouterTransport(cmpt, entree);
     }
 
+    public Utilisateur(File fichier)
+            throws FileNotFoundException, TauxException, SuperficieException, ClasseEnergetiqueException,
+            NbKilometresException, TailleVoitureException, AmmortissementException, MontantException,
+            ObjetInconnuException {
+        liste = new ArrayList<>();
+        FileReader fr = new FileReader(fichier);
+        BufferedReader br = new BufferedReader(fr);
+        creerUtilisateur(br);
+    }
+
+    public void creerUtilisateur(BufferedReader br)
+            throws TauxException, SuperficieException, ClasseEnergetiqueException, NbKilometresException,
+            TailleVoitureException, AmmortissementException, MontantException, ObjetInconnuException {
+        String ligne;
+        String[] mot;
+        String objet;
+        int numLog = 1;
+        int numVoit = 1;
+        int km;
+        ServicesPublics servicesPublics = ServicesPublics.getInstance();
+        liste.add(servicesPublics);
+        try {
+            while ((ligne = br.readLine()) != null) {
+                mot = ligne.split("");
+                objet = mot[0];
+                switch (objet) {
+                    case "Alimentation":
+                        double txBoeuf = Double.parseDouble(mot[1]);
+                        double txVege = Double.parseDouble(mot[2]);
+                        Alimentation alimentation = new Alimentation(txBoeuf, txVege);
+                        liste.add(alimentation);
+                        break;
+                    case "BienConso":
+                        double montant = Double.parseDouble(mot[1]);
+                        BienConso bienConso = new BienConso(montant);
+                        liste.add(bienConso);
+                        break;
+                    case "Logement":
+                        int superficie = Integer.parseInt(mot[1]);
+                        String ce = mot[2];
+                        Population.VerifyClasseEnergetiqueLogement(ce);
+                        Logement logement;
+                        switch (ce) {
+                            case "A":
+                                logement = new Logement(superficie, CE.A, numLog);
+                                liste.add(logement);
+                                break;
+                            case "B":
+                                logement = new Logement(superficie, CE.B, numLog);
+                                liste.add(logement);
+                                break;
+                            case "C":
+                                logement = new Logement(superficie, CE.C, numLog);
+                                liste.add(logement);
+                                break;
+                            case "D":
+                                logement = new Logement(superficie, CE.D, numLog);
+                                liste.add(logement);
+                                break;
+                            case "E":
+                                logement = new Logement(superficie, CE.E, numLog);
+                                liste.add(logement);
+                                break;
+                            case "F":
+                                logement = new Logement(superficie, CE.F, numLog);
+                                liste.add(logement);
+                                break;
+                            case "G":
+                                logement = new Logement(superficie, CE.G, numLog);
+                                liste.add(logement);
+                                break;
+                        }
+                        numLog++;
+                        break;
+                    case "Avion":
+                        km = Integer.parseInt(mot[1]);
+                        Avion avion = new Avion(true, km);
+                        liste.add(avion);
+                        break;
+                    case "Voiture":
+                        String taille = mot[1];
+                        TestReponseTailleVoiture(taille);
+                        km = Integer.parseInt(mot[2]);
+                        int ammortissement = Integer.parseInt(mot[3]);
+                        verifyAmortissementVoiture(ammortissement);
+                        switch (taille) {
+                            case "P":
+                                Voiture voiture = new Voiture(true, Taille.P, km, ammortissement, numVoit);
+                                liste.add(voiture);
+                                break;
+                            case "G":
+                                voiture = new Voiture(true, Taille.G, km, ammortissement, numVoit);
+                                liste.add(voiture);
+                                break;
+                        }
+                        numVoit++;
+                        break;
+                    case "Bus":
+                        km = Integer.parseInt(mot[1]);
+                        Bus bus = new Bus(true, km);
+                        liste.add(bus);
+                        break;
+                    case "RER":
+                        km = Integer.parseInt(mot[1]);
+                        RER rer = new RER(true, km);
+                        liste.add(rer);
+                        break;
+                    case "TGV":
+                        km = Integer.parseInt(mot[1]);
+                        TGV tgv = new TGV(true, km);
+                        liste.add(tgv);
+                        break;
+                    case "Metro":
+                        km = Integer.parseInt(mot[1]);
+                        Metro metro = new Metro(true, km);
+                        liste.add(metro);
+                        break;
+                    case "Tramway":
+                        km = Integer.parseInt(mot[1]);
+                        Tramway tramway = new Tramway(true, km);
+                        liste.add(tramway);
+                        break;
+                    default:
+                        erreurObjetInconnu();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Pour arrêter l'exécution du programme si l'objet n'est pas reconnu. L'appel à
+    // cette fonction renvoie automatiquement une exception car on l'appelle dans le
+    // default d'un switch qui représente le cas d'erreur
+    public static void erreurObjetInconnu() throws ObjetInconnuException {
+        throw new ObjetInconnuException();
+    }
+
+    /**
+     * @param i
+     * @throws NbKilometresException
+     */
     public static void verifyTransportKilometreAnnee(int i) throws NbKilometresException {
         if (i <= 0) {
             throw new NbKilometresException();
         }
     }
 
+    /**
+     * @return int
+     */
     public static int CreateIntTransport() {
         Scanner inte;
         boolean tmp = true;
@@ -70,12 +217,19 @@ public class Utilisateur {
         return s;
     }
 
+    /**
+     * @param s
+     * @throws TailleVoitureException
+     */
     public static void TestReponseTailleVoiture(String s) throws TailleVoitureException {
         if (!(s.equals("P") || s.equals("G"))) {
             throw new TailleVoitureException("Erreur : Veuillez répondre par 'P' ou 'G'");
         }
     }
 
+    /**
+     * @return String
+     */
     public static String CreateTailleVoiture() {
         Scanner str;
         boolean tmp = true;
@@ -93,12 +247,19 @@ public class Utilisateur {
         return s;
     }
 
+    /**
+     * @param i
+     * @throws AmmortissementException
+     */
     public static void verifyAmortissementVoiture(int i) throws AmmortissementException {
         if (i <= 0) {
             throw new AmmortissementException();
         }
     }
 
+    /**
+     * @return int
+     */
     public static int CreateIntAmortissementVoiture() {
         Scanner inte;
         boolean tmp = true;
@@ -122,14 +283,17 @@ public class Utilisateur {
      * La méthode AjouterLogement permet d'ajouter des Logements supplémentaires
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * logements
+     * 
+     * @throws SuperficieException
+     * @throws ClasseEnergetiqueException
      */
-    public void AjouterLogement(int cmpt, Scanner entree) throws SuperficieException {
+    public void AjouterLogement(int cmpt, Scanner entree) throws SuperficieException, ClasseEnergetiqueException {
         System.out.println("Avez-vous un autre logement ? (Oui/Non)");
         String reponse = entree.next();
         Logement log;
         int numero = 2;
         while (reponse.equals("Oui")) {
-            log = Population.creerLogement(cmpt, entree, numero);
+            log = Population.CreerLogement(cmpt, entree, numero);
             liste.add(log);
             System.out.println("Avez-vous un autre logement ? (Oui/Non)");
             reponse = entree.next();
@@ -142,8 +306,10 @@ public class Utilisateur {
      * @param entree
      * @throws AmmortissementException
      * @throws NbKilometresException
+     * @throws TailleVoitureException
      */
-    public void AjouterTransport(int cmpt, Scanner entree) throws AmmortissementException, NbKilometresException {
+    public void AjouterTransport(int cmpt, Scanner entree)
+            throws AmmortissementException, NbKilometresException, TailleVoitureException {
         AjouterVoiture(cmpt, entree);
         AjouterAvion(cmpt, entree);
         AjouterBus(cmpt, entree);
@@ -157,8 +323,11 @@ public class Utilisateur {
      * La méthode AjouterVoiture permet d'ajouter des voitures supplémentaires
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * voitures
+     * 
+     * @throws TailleVoitureException
      */
-    public static void AjouterVoiture(int cmpt, Scanner entree) throws AmmortissementException, NbKilometresException {
+    public void AjouterVoiture(int cmpt, Scanner entree)
+            throws AmmortissementException, NbKilometresException, TailleVoitureException {
         System.out.println("Avez-vous une voiture ? (Oui/Non)");
         String reponse = Population.CreateOuiNon();
 
@@ -175,25 +344,29 @@ public class Utilisateur {
             System.out.println("Depuis combien d'années avez-vous votre voiture ?");
             int annee = CreateIntAmortissementVoiture();
 
-            // switch (taille) {
-            // case "P":
-            // voiture = new Voiture(true, Taille.P, km, annee, numero);
-            // liste.add(voiture);
-            // break;
-            // case "G":
-            // voiture = new Voiture(true, Taille.G, km, annee, numero);
-            // liste.add(voiture);
-            // break;
-            // default:
-            // System.out.println("Vous n'avez pas rentré correctement la taille de votre
-            // véhicule");
-            // }
+            switch (taille) {
+                case "P":
+                    voiture = new Voiture(true, Taille.P, km, annee, numero);
+                    liste.add(voiture);
+                    break;
+                case "G":
+                    voiture = new Voiture(true, Taille.G, km, annee, numero);
+                    liste.add(voiture);
+                    break;
+                default:
+                    System.out.println("Vous n'avez pas rentré correctement la taille de votre véhicule");
+            }
             System.out.println("Avez-vous une autre voiture ? (Oui/Non)");
-            reponse = entree.next();
+            reponse = Population.CreateOuiNon();
             numero++;
         }
     }
 
+    /**
+     * @param cmpt
+     * @param entree
+     * @throws NbKilometresException
+     */
     public void AjouterAvion(int cmpt, Scanner entree) throws NbKilometresException {
         System.out.println("Utilisez-vous l'avion ? (Oui/Non)");
         String reponse = entree.next();
@@ -205,6 +378,11 @@ public class Utilisateur {
         }
     }
 
+    /**
+     * @param cmpt
+     * @param entree
+     * @throws NbKilometresException
+     */
     public void AjouterBus(int cmpt, Scanner entree) throws NbKilometresException {
         System.out.println("Utilisez-vous le bus ? (Oui/Non)");
         String reponse = entree.next();
@@ -216,6 +394,11 @@ public class Utilisateur {
         }
     }
 
+    /**
+     * @param cmpt
+     * @param entree
+     * @throws NbKilometresException
+     */
     public void AjouterRER(int cmpt, Scanner entree) throws NbKilometresException {
         System.out.println("Utilisez-vous le RER ? (Oui/Non)");
         String reponse = entree.next();
@@ -227,6 +410,11 @@ public class Utilisateur {
         }
     }
 
+    /**
+     * @param cmpt
+     * @param entree
+     * @throws NbKilometresException
+     */
     public void AjouterTGV(int cmpt, Scanner entree) throws NbKilometresException {
         System.out.println("Utilisez-vous le TGV ? (Oui/Non)");
         String reponse = entree.next();
@@ -238,6 +426,11 @@ public class Utilisateur {
         }
     }
 
+    /**
+     * @param cmpt
+     * @param entree
+     * @throws NbKilometresException
+     */
     public void AjouterMetro(int cmpt, Scanner entree) throws NbKilometresException {
         System.out.println("Utilisez-vous le métro ? (Oui/Non)");
         String reponse = entree.next();
@@ -249,6 +442,11 @@ public class Utilisateur {
         }
     }
 
+    /**
+     * @param cmpt
+     * @param entree
+     * @throws NbKilometresException
+     */
     public void AjouterTramway(int cmpt, Scanner entree) throws NbKilometresException {
         System.out.println("Utilisez-vous le tramway ? (Oui/Non)");
         String reponse = entree.next();
@@ -340,26 +538,45 @@ public class Utilisateur {
 
     }
 
+    // Getter
+    /**
+     * @return Alimentation
+     */
     public Alimentation getAlimentation() {
         return alimentation;
     }
 
+    /**
+     * @return BienConso
+     */
     public BienConso getBienConso() {
         return bienConso;
     }
 
+    /**
+     * @return Logement
+     */
     public Logement getLogement() {
         return logement;
     }
 
+    /**
+     * @return Transport
+     */
     public Transport getTransport() {
         return transport;
     }
 
+    /**
+     * @return ServicesPublics
+     */
     public ServicesPublics getServices() {
         return services;
     }
 
+    /**
+     * @return ArrayList<ConsoCarbone>
+     */
     public ArrayList<ConsoCarbone> getListe() {
         return liste;
     }

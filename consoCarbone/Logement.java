@@ -16,7 +16,8 @@ public class Logement extends ConsoCarbone {
     private int numero; // représente le numéro du logement
 
     // Constructeur
-    public Logement(int superficie, CE classeEnergetique, int numero) throws SuperficieException {
+    public Logement(int superficie, CE classeEnergetique, int numero)
+            throws SuperficieException, ClasseEnergetiqueException {
         super();
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
@@ -24,6 +25,15 @@ public class Logement extends ConsoCarbone {
         impact = ImpactFormula();
         if (superficie < 0) {
             throw new SuperficieException();
+        }
+        if (!(classeEnergetique.equals(CE.A)
+                || classeEnergetique.equals(CE.B)
+                || classeEnergetique.equals(CE.C)
+                || classeEnergetique.equals(CE.D)
+                || classeEnergetique.equals(CE.E)
+                || classeEnergetique.equals(CE.F)
+                || classeEnergetique.equals(CE.G))) {
+            throw new ClasseEnergetiqueException();
         }
     }
 

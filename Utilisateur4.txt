@@ -1,0 +1,7 @@
+Logement 45 A 
+Alimentation 0.2 0.6
+BienConso 2500
+Metro 3000
+Tramway 800
+TGV 5000
+RER 600

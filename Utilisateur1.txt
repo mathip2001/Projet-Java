@@ -1,0 +1,9 @@
+Logement 103 A
+Logement 196 C
+Logement 78 B
+Alimentation 0.4 0.3
+BienConso 10000
+Voiture G 35000 4
+Voiture P 15000 10
+Metro 500
+Avion 4000

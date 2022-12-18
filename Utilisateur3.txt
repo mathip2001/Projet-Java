@@ -1,0 +1,5 @@
+Logement 150 F
+Alimentation 0.5 0.5
+BienConso 12000
+Voiture G 45000 2
+Bus 1000

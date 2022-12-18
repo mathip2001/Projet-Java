@@ -5,4 +5,8 @@ public class TauxException extends Exception {
         super("Erreur : le taux doit être en 0 et 1");
     }
 
+    public TauxException(String s) {
+        super(s);
+    }
+
 }
