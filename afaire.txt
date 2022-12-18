@@ -1,0 +1,4 @@
+1) javadoc -> dans le main aussi?
+2) fonction trier
+3) rapport
+4) fichier readme

@@ -7,7 +7,7 @@ import consoCarbone.Exceptions.ExceptionMontantBienConso;
  * lié aux dépenses en biens de consommation d'une personne
  * 
  * @author Julien RAMEAUX et Mathias YIP
- * @version 1
+ * @version du 22/12/2022
  */
 
 public class BienConso extends ConsoCarbone {

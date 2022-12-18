@@ -12,7 +12,7 @@ import consoCarbone.Exceptions.*;
  * Utilisateurs
  * 
  * @author Julien RAMEAUX et Mathias YIP
- * @version 1
+ * @version du 22/12/2022
  */
 public class Population {
     // Attributs
@@ -72,15 +72,37 @@ public class Population {
      * La méthode creerPopulation permet de créer une unique instance population qui
      * sera défini à partir de l'interaction dans la console avec l'utilisateur
      * 
-     * @throws ExceptionTauxAlimentation
-     * @throws ExceptionMontantBienConso
-     * @throws ExceptionSuperficieLogement
-     * @throws ExceptionClasseEnergetiqueLogement
-     * @throws ExceptionAmmortissementVoiture
-     * @throws ExceptionNbKilometresTransport
-     * @throws ExceptionTailleVoiture
-     * @throws FileNotFoundException
-     * @throws ExceptionObjetInconnu
+     * @throws ExceptionTauxAlimentation          est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie un taux entre 0 et 1
+     * @throws ExceptionMontantBienConso          est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie un montant positif
+     * @throws ExceptionSuperficieLogement        est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie une superficie positive
+     * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie une classe énergétique
+     *                                            entre A et G
+     * @throws ExceptionAmmortissementVoiture     est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie
+     *                                            une durée d'amortissement positive
+     * @throws ExceptionNbKilometresTransport     est une exception qui s'enclenche
+     *                                            lorsque l'utilisateur n'a pas
+     *                                            saisie
+     *                                            un nombre de kilomètre positif
+     * @throws ExceptionTailleVoiture             est une exception qui s'enclenche
+     *                                            lorsque
+     *                                            l'utilisateur n'a pas saisie une
+     *                                            taille
+     *                                            correspondant à 'P' ou 'G'
+     * @throws FileNotFoundException              représente l'exception qui informe
+     *                                            qu'un fichier n'existe pas
+     * @throws ExceptionObjetInconnu              représente l'exception qui informe
+     *                                            que l'objet
+     *                                            n'existe pas
      */
     public static void creerPopulation()
             throws ExceptionTauxAlimentation, ExceptionMontantBienConso, ExceptionSuperficieLogement,
@@ -122,6 +144,7 @@ public class Population {
                 File file = new File(reponse);
                 Utilisateur utilisateur = new Utilisateur(file);
                 add(utilisateur);
+                NumUtil++;
                 System.out.println("Y a-t-il un autre utilisateur stocké dans un fichier ? (Oui/Non)");
                 reponse = CreateOuiNon();
             }
@@ -156,7 +179,8 @@ public class Population {
      * terminal. Le taux est nécessaire pour la création d'une instance Alimentation
      * dans la méthode CreerAlimentation
      * 
-     * @return le taux de repas à base de boeuf ou le taux de repas végétarien
+     * @return le taux de repas à base de boeuf ou le taux de repas végétarien qui
+     *         sera nécessaire pour instancier un objet Alimentation
      */
     public static double CreateTauxAlimentation() {
         Scanner doub;
@@ -322,7 +346,8 @@ public class Population {
      * nécessaire pour la création d'une instance Logement dans la méthode
      * CreerLogement
      * 
-     * @return la superficie du logement
+     * @return la superficie du logement qui sera nécessaire pour instancier un
+     *         objet Logement
      */
     public static int CreateSuperficieLogement() {
         Scanner inte;
@@ -349,7 +374,8 @@ public class Population {
      * classe énergétique du logement est nécessaire pour la création d'une instance
      * Logement dans la méthode CreerLogement
      *
-     * @return la classe énergétique du logement
+     * @return la classe énergétique du logement qui sera nécessaire pour instancier
+     *         un objet Logement
      */
     public static String CreateClasseEnergetiqueLogement() {
         Scanner str;
@@ -414,7 +440,7 @@ public class Population {
         }
     }
 
-    // Les 2 méthodes sont utiles pour la plupart des autres classes :
+    // Les 2 méthodes suivantes sont utiles pour la plupart des autres classes :
 
     /**
      * La méthode VerifyOuiNon permet de vérifier si l'utilisateur a bien répondu
@@ -511,7 +537,7 @@ public class Population {
      */
     public static void politiquePubliqueEnergie() {
         System.out.println(
-                "\nMise en place d'une politique publique incitant la rénovation énergétique de chaque utilisateur de la population afin que la classe énergétique de chaque logement soit A");
+                "\nMise en place d'une politique publique incitant la rénovation énergétique de chaque utilisateur de la population afin que la classe énergétique de chaque logement soit de classe énergétique A");
         double impact1 = empreintePopulation();
         for (Utilisateur u : listePopulation) {
             for (ConsoCarbone c : u.getListe()) {
@@ -538,7 +564,8 @@ public class Population {
      * ordonnées des utilisateurs avec les recommandations
      */
     public static void AffichageConsoOrdre() {
-        System.out.print("\nAffichage des consommations carbone ordonnées des utilisateurs avec les recommandations :");
+        System.out
+                .println("\nAffichage des consommations carbone ordonnées des utilisateurs avec les recommandations :");
         for (Utilisateur u : listePopulation) {
             System.out.println("Utilisateur " + (listePopulation.indexOf(u) + 1) + " :");
             u.trier();

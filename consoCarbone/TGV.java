@@ -7,7 +7,7 @@ import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
  * l'utilisation du TGV par une personne par an
  * 
  * @author Julien RAMEAUX et Mathias YIP
- * @version 1
+ * @version du 22/12/2022
  */
 public class TGV extends Train {
     // Constructeur

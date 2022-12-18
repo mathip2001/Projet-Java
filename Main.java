@@ -17,6 +17,7 @@ public class Main {
         Population.AffichageConsoOrdre();
 
         // Simulation de la mise en place de politiques publiques
+        System.out.println("Simulation de la mise en place de politiques publiques :");
         Population.politiquePubliqueViande();
         Population.politiquePubliqueEnergie();
     }

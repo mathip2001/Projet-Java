@@ -7,7 +7,7 @@ package consoCarbone;
  * utilisé est le singleton
  * 
  * @author Julien RAMEAUX et Mathias YIP
- * @version 1
+ * @version du 22/12/2022
  */
 
 public class ServicesPublics extends ConsoCarbone {

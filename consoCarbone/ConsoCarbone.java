@@ -6,7 +6,7 @@ import java.lang.Comparable;
  * consoCarbone représente un poste de consommation carbone générique
  * 
  * @author Julien RAMEAUX et Mathias YIP
- * @version 1
+ * @version du 22/12/2022
  */
 
 public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {

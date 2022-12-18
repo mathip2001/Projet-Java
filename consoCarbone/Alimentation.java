@@ -7,7 +7,7 @@ import consoCarbone.Exceptions.ExceptionTauxAlimentation;
  * lié à l'alimentation d'une personne
  * 
  * @author Julien RAMEAUX et Mathias YIP
- * @version 2
+ * @version du 22/12/2022
  */
 
 public class Alimentation extends ConsoCarbone {
