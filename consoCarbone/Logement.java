@@ -25,7 +25,7 @@ public class Logement extends ConsoCarbone {
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
         this.numero = numero;
-        impact = ImpactFormula();
+        impact = impactFormula();
         if (superficie < 0) {
             throw new ExceptionSuperficieLogement();
         }
@@ -47,7 +47,7 @@ public class Logement extends ConsoCarbone {
      * @return l'impact d'après la formule : this.superficie *
      *         this.classeEnergetique.getCoefficient();
      */
-    public double ImpactFormula() {
+    public double impactFormula() {
         return this.superficie * this.classeEnergetique.getCoefficient();
     }
 
@@ -70,7 +70,7 @@ public class Logement extends ConsoCarbone {
      */
     public void setSuperficie(int superficie) {
         this.superficie = superficie;
-        this.impact = ImpactFormula();
+        this.impact = impactFormula();
     }
 
     /**
@@ -92,7 +92,7 @@ public class Logement extends ConsoCarbone {
      */
     public void setClasseEnergetique(CE classeEnergetique) {
         this.classeEnergetique = classeEnergetique;
-        this.impact = ImpactFormula();
+        this.impact = impactFormula();
     }
 
     /**

@@ -12,9 +12,9 @@ public class AlimentationTest {
         Alimentation a1 = new Alimentation(0.5, 0.5);
         Alimentation a2 = new Alimentation(0.6, 0.4);
         Alimentation a3 = new Alimentation(0.4, 0.3);
-        assertEquals(4.45, a1.ImpactFormula(), 1e-3);
-        assertEquals(5.16, a2.ImpactFormula(), 1e-3);
-        assertEquals(3.95, a3.ImpactFormula(), 1e-3);
+        assertEquals(4.45, a1.impactFormula(), 1e-3);
+        assertEquals(5.16, a2.impactFormula(), 1e-3);
+        assertEquals(3.95, a3.impactFormula(), 1e-3);
     }
 
     @Test

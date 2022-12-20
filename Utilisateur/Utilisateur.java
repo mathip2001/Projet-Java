@@ -44,8 +44,8 @@ public class Utilisateur {
         liste.add(bienConso);
         liste.add(logement);
         liste.add(services);
-        AjouterLogement(cmpt, entree);
-        AjouterTransport(cmpt, entree);
+        ajouterLogement(cmpt, entree);
+        ajouterTransport(cmpt, entree);
     }
 
     public Utilisateur(File fichier)
@@ -124,7 +124,7 @@ public class Utilisateur {
                     case "Logement":
                         int superficie = Integer.parseInt(mot[1]);
                         String ce = mot[2];
-                        Population.VerifyClasseEnergetiqueLogement(ce);
+                        Population.verifyClasseEnergetiqueLogement(ce);
                         Logement logement;
                         switch (ce) {
                             case "A":
@@ -165,10 +165,10 @@ public class Utilisateur {
                         break;
                     case "Voiture":
                         String taille = mot[1];
-                        VerifyTailleVoiture(taille);
+                        verifyTailleVoiture(taille);
                         km = Integer.parseInt(mot[2]);
                         int ammortissement = Integer.parseInt(mot[3]);
-                        VerifyAmortissementVoiture(ammortissement);
+                        verifyAmortissementVoiture(ammortissement);
                         switch (taille) {
                             case "P":
                                 Voiture voiture = new Voiture(true, Taille.P, km, ammortissement, numVoit);
@@ -297,36 +297,36 @@ public class Utilisateur {
     // Pour Transport :
 
     /**
-     * La méthode VerifyKilometreAnneeTransport permet de vérifier si l'utilisateur
+     * La méthode verifyKilometreAnneeTransport permet de vérifier si l'utilisateur
      * a bien indiqué une valeur positive pour le nombre de kilomètre parcouru. Si
      * l'utilisateur n'a pas saisi correctement le nombre de kilomètre, l'erreur
      * ExceptionNbKilometresTransport apparaîtra à l'écran. Cette méthode est
-     * appelée par la méthode CreateKilometreAnneeTranport
+     * appelée par la méthode createKilometreAnneeTranport
      * 
      * @param i représente le nombre de kilomètre saisie par l'utilisateur par le
-     *          biais de la méthode CreateKilometreAnneeTransport
+     *          biais de la méthode createKilometreAnneeTransport
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public static void VerifyKilometreAnneeTransport(int i) throws ExceptionNbKilometresTransport {
+    public static void verifyKilometreAnneeTransport(int i) throws ExceptionNbKilometresTransport {
         if (i <= 0) {
             throw new ExceptionNbKilometresTransport();
         }
     }
 
     /**
-     * La méthode CreateKilometreAnneeTransport permet de vérifier le nombre de
+     * La méthode createKilometreAnneeTransport permet de vérifier le nombre de
      * kilometre d'un véhicule de transport saisie à partir du terminal. Le nombre
      * de kilomètre par année est nécessaire pour la création d'une instance
      * Transport dans les méthodes
-     * AjouterAvion/AjouterBus/AjouterVoiture/AjouterMetro/AjouterTGV/AjouterTramway/AjouterRER
+     * ajouterAvion/ajouterBus/ajouterVoiture/ajouterMetro/ajouterTGV/ajouterTramway/ajouterRER
      * 
      * 
      * @return le nombre de kilomètres qui sera nécessaire pour instancier un
      *         objet Transport
      */
-    public static int CreateKilometreAnneeTransport() {
+    public static int createKilometreAnneeTransport() {
         Scanner inte;
         boolean tmp = true;
         int s = 0;
@@ -334,7 +334,7 @@ public class Utilisateur {
             try {
                 inte = new Scanner(System.in);
                 s = inte.nextInt();
-                VerifyKilometreAnneeTransport(s);
+                verifyKilometreAnneeTransport(s);
                 tmp = false;
             } catch (ExceptionNbKilometresTransport k) {
                 System.out.println("Erreur : Veuillez inserer un nombre de kilometre positive");
@@ -348,52 +348,52 @@ public class Utilisateur {
     // Pour Voiture :
 
     /**
-     * La méthode VerifyTailleVoiture permet de vérifier si l'utilisateur a bien
+     * La méthode verifyTailleVoiture permet de vérifier si l'utilisateur a bien
      * saisie la lettre 'P' ou 'G' dans le terminal. Si l'utilisateur n'a pas saisi
      * correctement la lettre, l'erreur ExceptionTailleVoiture apparaître à l'écran.
-     * Cette méthode est appelée par la méthode CreateTailleVoiture
+     * Cette méthode est appelée par la méthode createTailleVoiture
      * 
      * @param s représente la taille de la voiture saisie par l'utilisateur dans le
-     *          terminal par le biais de la méthode CreateTailleVoiture
+     *          terminal par le biais de la méthode createTailleVoiture
      * @throws ExceptionTailleVoiture est une exception qui s'enclenche lorsque
      *                                l'utilisateur n'a pas saisie une taille
      *                                correspondant à 'P' ou 'G'
      */
-    public static void VerifyTailleVoiture(String s) throws ExceptionTailleVoiture {
+    public static void verifyTailleVoiture(String s) throws ExceptionTailleVoiture {
         if (!(s.equals("P") || s.equals("G"))) {
             throw new ExceptionTailleVoiture("Erreur : Veuillez répondre par 'P' ou 'G'");
         }
     }
 
     /**
-     * La méthode VerifyAmortissementVoiture permet de vérifier si l'utilisateur
+     * La méthode verifyAmortissementVoiture permet de vérifier si l'utilisateur
      * a bien indiqué une valeur positive pour la durée de l'amortissement. Si
      * l'utilisateur n'a pas saisi correctement la durée de l'amortissement,
      * l'erreur ExceptionAmmortissementVoiture apparaîtra à l'écran. Cette méthode
-     * est appelée par la méthode AjouterVoiture
+     * est appelée par la méthode ajouterVoiture
      * 
      * @param i représente la durée de l'amortissement de la voiture saisie par
-     *          l'utilisateur par le biais de la méthode CreateAmortissementVoiture
+     *          l'utilisateur par le biais de la méthode createAmortissementVoiture
      * @throws ExceptionAmmortissementVoiture est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        une durée d'amortissement positive
      */
-    public static void VerifyAmortissementVoiture(int i) throws ExceptionAmmortissementVoiture {
+    public static void verifyAmortissementVoiture(int i) throws ExceptionAmmortissementVoiture {
         if (i <= 0) {
             throw new ExceptionAmmortissementVoiture();
         }
     }
 
     /**
-     * La méthode CreateTailleVoiture permet de recueillir et de vérifier la taille
+     * La méthode createTailleVoiture permet de recueillir et de vérifier la taille
      * de la voiture saisie à partir du terminal. La taille de la voiture est
      * nécessaire pour la création d'une instance Voiture dans la méthode
-     * AjouterVoiture
+     * ajouterVoiture
      * 
      * @return la taille d'une voiture qui sera nécessaire pour instancier un objet
      *         Voiture
      */
-    public static String CreateTailleVoiture() {
+    public static String createTailleVoiture() {
         Scanner str;
         boolean tmp = true;
         String s = "";
@@ -401,7 +401,7 @@ public class Utilisateur {
             try {
                 str = new Scanner(System.in);
                 s = str.next();
-                VerifyTailleVoiture(s);
+                verifyTailleVoiture(s);
                 tmp = false;
             } catch (ExceptionTailleVoiture t) {
                 System.out.println("Erreur : Veuillez répondre par 'P' ou 'G'");
@@ -411,7 +411,7 @@ public class Utilisateur {
     }
 
     /**
-     * La méthode CreateKilometreAnneeTransport permet de vérifier le nombre de
+     * La méthode createKilometreAnneeTransport permet de vérifier le nombre de
      * kilometre d'un véhicule de transport saisie à partir du terminal. Le nombre
      * de kilomètre par année est nécessaire pour la création d'une instance
      * Transport dans les méthodes
@@ -419,7 +419,7 @@ public class Utilisateur {
      * @return la durée d'amortissement qui sera nécessaire pour instancier un objet
      *         Voiture
      */
-    public static int CreateAmortissementVoiture() {
+    public static int createAmortissementVoiture() {
         Scanner inte;
         boolean tmp = true;
         int s = 0;
@@ -427,7 +427,7 @@ public class Utilisateur {
             try {
                 inte = new Scanner(System.in);
                 s = inte.nextInt();
-                VerifyAmortissementVoiture(s);
+                verifyAmortissementVoiture(s);
                 tmp = false;
             } catch (ExceptionAmmortissementVoiture a) {
                 System.out.println("Erreur : Veuillez inserer un nombre d'années positif");
@@ -441,7 +441,7 @@ public class Utilisateur {
     // Méthodes qui permettent d'ajouter des objets Logement OU Transport à la liste
     // contenue dans Utilisateur
     /**
-     * La méthode AjouterLogement permet d'ajouter des Logements supplémentaires
+     * La méthode ajouterLogement permet d'ajouter des Logements supplémentaires
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * logements
      * 
@@ -453,23 +453,23 @@ public class Utilisateur {
      *                                            saisie une classe énergétique
      *                                            entre A et G
      */
-    public void AjouterLogement(int cmpt, Scanner entree)
+    public void ajouterLogement(int cmpt, Scanner entree)
             throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         System.out.println("Avez-vous un autre logement ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
         Logement log;
         int numero = 2;
         while (reponse.equals("Oui")) {
-            log = Population.CreerLogement(cmpt, entree, numero);
+            log = Population.creerLogement(cmpt, entree, numero);
             liste.add(log);
             System.out.println("Avez-vous un autre logement ? (Oui/Non)");
-            reponse = Population.CreateOuiNon();
+            reponse = Population.createOuiNon();
             numero++;
         }
     }
 
     /**
-     * La méthode AjouterTransport permet d'ajouter une instance d'une classe fille
+     * La méthode ajouterTransport permet d'ajouter une instance d'une classe fille
      * de Transport à l'ArrayList d'Utilisateur
      * 
      * @param cmpt   représente le numéro de l'utilisateur
@@ -486,21 +486,21 @@ public class Utilisateur {
      *                                        taille
      *                                        correspondant à 'P' ou 'G'
      */
-    public void AjouterTransport(int cmpt, Scanner entree)
+    public void ajouterTransport(int cmpt, Scanner entree)
             throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
-        AjouterVoiture(cmpt, entree);
-        AjouterAvion(cmpt, entree);
-        AjouterBus(cmpt, entree);
-        AjouterRER(cmpt, entree);
-        AjouterTGV(cmpt, entree);
-        AjouterMetro(cmpt, entree);
-        AjouterTramway(cmpt, entree);
+        ajouterVoiture(cmpt, entree);
+        ajouterAvion(cmpt, entree);
+        ajouterBus(cmpt, entree);
+        ajouterRER(cmpt, entree);
+        ajouterTGV(cmpt, entree);
+        ajouterMetro(cmpt, entree);
+        ajouterTramway(cmpt, entree);
     }
 
     // Pour l'ajout des classes filles de Transport à l'ArrayList de l'Utilisateur
 
     /**
-     * La méthode AjouterVoiture permet d'ajouter des voitures supplémentaires
+     * La méthode ajouterVoiture permet d'ajouter des voitures supplémentaires
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * voitures
      * 
@@ -510,23 +510,23 @@ public class Utilisateur {
      *                                l'utilisateur n'a pas saisie une taille
      *                                correspondant à 'P' ou 'G'
      */
-    public void AjouterVoiture(int cmpt, Scanner entree)
+    public void ajouterVoiture(int cmpt, Scanner entree)
             throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
         System.out.println("Avez-vous une voiture ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
 
         Voiture voiture;
         int numero = 1;
         while (reponse.equals("Oui")) {
             System.out.println(
                     "Quelle est la taille de votre véhicule ? ('G' pour grande voiture ou 'P' pour petite voiture)");
-            String taille = CreateTailleVoiture();
+            String taille = createTailleVoiture();
 
             System.out.println("Quel est le nombre de kilomètres (un entier) parcourus par an ?");
-            int km = CreateKilometreAnneeTransport();
+            int km = createKilometreAnneeTransport();
 
             System.out.println("Depuis combien d'années avez-vous votre voiture ?");
-            int annee = CreateAmortissementVoiture();
+            int annee = createAmortissementVoiture();
 
             switch (taille) {
                 case "P":
@@ -541,7 +541,7 @@ public class Utilisateur {
                     System.out.println("Vous n'avez pas rentré correctement la taille de votre véhicule");
             }
             System.out.println("Avez-vous une autre voiture ? (Oui/Non)");
-            reponse = Population.CreateOuiNon();
+            reponse = Population.createOuiNon();
             numero++;
         }
     }
@@ -554,12 +554,12 @@ public class Utilisateur {
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void AjouterAvion(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
+    public void ajouterAvion(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous l'avion ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
             System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
-            int km = CreateKilometreAnneeTransport();
+            int km = createKilometreAnneeTransport();
             Avion avion = new Avion(true, km);
             liste.add(avion);
         }
@@ -572,12 +572,12 @@ public class Utilisateur {
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void AjouterBus(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
+    public void ajouterBus(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le bus ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
             System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
-            int km = CreateKilometreAnneeTransport();
+            int km = createKilometreAnneeTransport();
             Bus bus = new Bus(true, km);
             liste.add(bus);
         }
@@ -590,12 +590,12 @@ public class Utilisateur {
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void AjouterRER(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
+    public void ajouterRER(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le RER ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
             System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
-            int km = CreateKilometreAnneeTransport();
+            int km = createKilometreAnneeTransport();
             RER rer = new RER(true, km);
             liste.add(rer);
         }
@@ -608,12 +608,12 @@ public class Utilisateur {
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void AjouterTGV(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
+    public void ajouterTGV(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le TGV ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
             System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
-            int km = CreateKilometreAnneeTransport();
+            int km = createKilometreAnneeTransport();
             TGV tgv = new TGV(true, km);
             liste.add(tgv);
         }
@@ -626,12 +626,12 @@ public class Utilisateur {
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void AjouterMetro(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
+    public void ajouterMetro(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le métro ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
             System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
-            int km = CreateKilometreAnneeTransport();
+            int km = createKilometreAnneeTransport();
             Metro metro = new Metro(true, km);
             liste.add(metro);
         }
@@ -644,12 +644,12 @@ public class Utilisateur {
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void AjouterTramway(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
+    public void ajouterTramway(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
         System.out.println("Utilisez-vous le tramway ? (Oui/Non)");
-        String reponse = Population.CreateOuiNon();
+        String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
             System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
-            int km = CreateKilometreAnneeTransport();
+            int km = createKilometreAnneeTransport();
             Tramway tramway = new Tramway(true, km);
             liste.add(tramway);
         }

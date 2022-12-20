@@ -26,7 +26,7 @@ public class Alimentation extends ConsoCarbone {
         super();
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
-        this.impact = ImpactFormula();
+        this.impact = impactFormula();
         if ((txBoeuf < 0) || (txBoeuf > 1) || (txVege < 0) || (txVege > 1)) {
             throw new ExceptionTauxAlimentation();
         }
@@ -39,7 +39,7 @@ public class Alimentation extends ConsoCarbone {
      * @return l'impact d'après la formule : c1 * txBoeuf + c2 * (1 - txVege -
      *         txBoeuf) + c3 * txVege
      */
-    public double ImpactFormula() {
+    public double impactFormula() {
         return c1 * txBoeuf + c2 * (1 - txVege - txBoeuf) + c3 * txVege;
     }
 
@@ -63,7 +63,7 @@ public class Alimentation extends ConsoCarbone {
      */
     public void setTxBoeuf(double txBoeuf) {
         this.txBoeuf = txBoeuf;
-        this.impact = ImpactFormula();
+        this.impact = impactFormula();
     }
 
     /**
@@ -85,7 +85,7 @@ public class Alimentation extends ConsoCarbone {
      */
     public void setTxVege(double txVege) {
         this.txVege = txVege;
-        this.impact = ImpactFormula();
+        this.impact = impactFormula();
     }
 
     /**

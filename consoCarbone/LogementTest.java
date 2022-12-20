@@ -13,9 +13,9 @@ public class LogementTest {
         Logement l1 = new Logement(100, CE.A, 1);
         Logement l2 = new Logement(1000, CE.B, 2);
         Logement l3 = new Logement(15, CE.G, 3);
-        assertEquals(0.50, l1.ImpactFormula(), 1e-3);
-        assertEquals(10.00, l2.ImpactFormula(), 1e-3);
-        assertEquals(1.50, l3.ImpactFormula(), 1e-3);
+        assertEquals(0.50, l1.impactFormula(), 1e-3);
+        assertEquals(10.00, l2.impactFormula(), 1e-3);
+        assertEquals(1.50, l3.impactFormula(), 1e-3);
     }
 
     @Test

@@ -1,5 +1,6 @@
+package Utilisateur;
+
 import consoCarbone.Exceptions.*;
-import Utilisateur.*;
 
 import java.io.FileNotFoundException;
 
@@ -14,7 +15,7 @@ public class Main {
 
         // Affichage des consommations carbone ordonnées des utilisateurs avec les
         // recommendations
-        Population.AffichageConsoOrdre();
+        Population.affichageConsoOrdre();
 
         // Simulation de la mise en place de politiques publiques
         System.out.println("Simulation de la mise en place de politiques publiques :");
