@@ -1,8 +1,8 @@
-package Utilisateur;
-
 import consoCarbone.Exceptions.*;
 
 import java.io.FileNotFoundException;
+
+import Utilisateur.Population;
 
 public class Main {
     public static void main(String[] args)
