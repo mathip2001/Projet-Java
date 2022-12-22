@@ -24,6 +24,9 @@ public class Population {
         listePopulation = new ArrayList<>();
     }
 
+    /**
+     * La méthode createInstance permet de créer une instance Population
+     */
     public static void createInstance() {
         if (instance == null) {
             instance = new Population();
@@ -52,20 +55,6 @@ public class Population {
      */
     public static void add(Utilisateur utilisateur) {
         listePopulation.add(utilisateur);
-    }
-
-    /**
-     * La méthode listing permet de lister les consommations carbones triées,
-     * utilisateur par utilisateur
-     */
-    public void listing() {
-        System.out.println("Population :");
-        int tmp = 0;
-        for (Utilisateur u : listePopulation) {
-            System.out.println("Utilisateur : " + tmp);
-            u.trier();
-            tmp++;
-        }
     }
 
     /**
@@ -101,8 +90,7 @@ public class Population {
      * @throws FileNotFoundException              représente l'exception qui informe
      *                                            qu'un fichier n'existe pas
      * @throws ExceptionObjetInconnu              représente l'exception qui informe
-     *                                            que l'objet
-     *                                            n'existe pas
+     *                                            que l'objet n'existe pas
      */
     public static void creerPopulation()
             throws ExceptionTauxAlimentation, ExceptionMontantBienConso, ExceptionSuperficieLogement,
@@ -121,8 +109,8 @@ public class Population {
             // On demande à l'utilisateur de saisir les informations nécessaires à la
             // création de l'objet Population
             do {
-                Alimentation alimentation = creerAlimentation(cmpt, entree);
-                BienConso bienConso = creerBienConso(cmpt, entree);
+                Alimentation alimentation = creerAlimentation(cmpt);
+                BienConso bienConso = creerBienConso(cmpt);
                 Logement logement = creerLogement(cmpt, entree, 1);
                 ServicesPublics servicesPublics = ServicesPublics.getInstance();
                 Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logement,
@@ -161,14 +149,14 @@ public class Population {
      * ExceptionTauxAlimentation apparaîtra à l'écran. Cette méthode est appelée par
      * la méthode createTauxAlimentation
      * 
-     * @param d représente le taux d'alimentation saisie par l'utilisateur dans le
+     * @param taux représente le taux d'alimentation saisie par l'utilisateur dans le
      *          terminal par le biais de la méthode createTauxAlimentation
      * @throws ExceptionTauxAlimentation est une exception qui s'enclenche
      *                                   lorsque l'utilisateur n'a pas
      *                                   saisie un taux entre 0 et 1
      */
-    public static void verifyTauxAlimentation(double d) throws ExceptionTauxAlimentation {
-        if ((d < 0) || (d > 1)) {
+    public static void verifyTauxAlimentation(double taux) throws ExceptionTauxAlimentation {
+        if ((taux < 0) || (taux > 1)) {
             throw new ExceptionTauxAlimentation("Erreur : Veuillez inserer un taux doit être entre 0 et 1");
         }
     }
@@ -206,13 +194,12 @@ public class Population {
      * sera définie à partir des informations saisies dans le terminal
      * 
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance Alimentation
      * @throws ExceptionTauxAlimentation est une exception qui s'enclenche lorsque
      *                                   l'utilisateur n'a pas saisie un taux entre
      *                                   0 et 1
      */
-    public static Alimentation creerAlimentation(int cmpt, Scanner entree) throws ExceptionTauxAlimentation {
+    public static Alimentation creerAlimentation(int cmpt) throws ExceptionTauxAlimentation {
         double txBoeuf, txVege;
 
         System.out.println(
@@ -234,14 +221,14 @@ public class Population {
      * apparaîtra à l'écran. Cette méthode est appelée par la méthode
      * createMontantBienConso
      * 
-     * @param d représente le montant saisie par l'utilisateur dans le terminal par
+     * @param montant représente le montant saisie par l'utilisateur dans le terminal par
      *          le biais de la méthode createMontantBienConso
      * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque
      *                                   l'utilisateur n'a pas saisie un montant
      *                                   positif
      */
-    public static void verifyMontantBienConso(double d) throws ExceptionMontantBienConso {
-        if (d < 0) {
+    public static void verifyMontantBienConso(double montant) throws ExceptionMontantBienConso {
+        if (montant < 0) {
             throw new ExceptionMontantBienConso();
         }
     }
@@ -278,13 +265,12 @@ public class Population {
      * sera définie à partir des informations saisies dans le terminal
      * 
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @return une instance BienConso
      * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque
      *                                   l'utilisateur n'a pas saisie un montant
      *                                   positif
      */
-    public static BienConso creerBienConso(int cmpt, Scanner entree) throws ExceptionMontantBienConso {
+    public static BienConso creerBienConso(int cmpt) throws ExceptionMontantBienConso {
         double montant;
         System.out.println(
                 "Utilisateur " + cmpt
@@ -302,14 +288,14 @@ public class Population {
      * ExceptionSuperficieLogement apparaîtra à l'écran. Cette méthode est appelée
      * par la méthode createSuperficieLogement
      * 
-     * @param i représente la superficie du logement saisie par l'utilisateur dans
+     * @param superficie représente la superficie du logement saisie par l'utilisateur dans
      *          le terminal par le biais de la méthode createSuperficieLogement
      * @throws ExceptionSuperficieLogement est une exception qui s'enclenche lorsque
      *                                     l'utilisateur n'a pas saisie une
      *                                     superficie positive
      */
-    public static void verifySuperficieLogement(int i) throws ExceptionSuperficieLogement {
-        if (i <= 0) {
+    public static void verifySuperficieLogement(int superficie) throws ExceptionSuperficieLogement {
+        if (superficie <= 0) {
             throw new ExceptionSuperficieLogement();
         }
     }
@@ -321,21 +307,21 @@ public class Population {
      * ExceptionClasseEnergetiqueLogement apparaîtra à l'écran. Cette méthode est
      * appelée par la méthode createClasseEnergetiqueLogement
      * 
-     * @param s représente la classe énergétique saisie par l'utilisateur dans le
+     * @param ce représente la classe énergétique saisie par l'utilisateur dans le
      *          terminal par le biais de la méthode createClasseEnergetiqueLogement
      * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche
      *                                            lorsque l'utilisateur n'a pas
      *                                            saisie une classe énergétique
      *                                            entre A et G
      */
-    public static void verifyClasseEnergetiqueLogement(String s) throws ExceptionClasseEnergetiqueLogement {
-        if (!(s.equals("A")
-                || s.equals("B")
-                || s.equals("C")
-                || s.equals("D")
-                || s.equals("E")
-                || s.equals("F")
-                || s.equals("G"))) {
+    public static void verifyClasseEnergetiqueLogement(String ce) throws ExceptionClasseEnergetiqueLogement {
+        if (!(ce.equals("A")
+                || ce.equals("B")
+                || ce.equals("C")
+                || ce.equals("D")
+                || ce.equals("E")
+                || ce.equals("F")
+                || ce.equals("G"))) {
             throw new ExceptionClasseEnergetiqueLogement("Erreur : Veuillez répondre par les lettres de A à G");
         }
     }
@@ -400,6 +386,7 @@ public class Population {
      *
      * @param cmpt   représente le numéro de l'utilisateur
      * @param entree représente un Scanner permettant de récupérer une entrée
+     * @param numero représente le numéro du logement
      * @return une instance Logement
      * @throws ExceptionSuperficieLogement        est une exception qui s'enclenche
      *                                            lorsque
@@ -448,13 +435,13 @@ public class Population {
      * correctement le taux, l'erreur ErreurOuiNon apparaîtra à l'écran. Cette
      * méthode est appelée par la méthode createOuiNon
      * 
-     * @param s représente la réponse saisie par l'utilisateur dans le terminal par
+     * @param reponse représente la réponse saisie par l'utilisateur dans le terminal par
      *          le biais de la méthode createOuiNon
      * @throws ExceptionErreurOuiNon est une exception qui s'enclenche lorsque
      *                               l'utilisateur ne répond pas par Oui ou par Non
      */
-    public static void verifyOuiNon(String s) throws ExceptionErreurOuiNon {
-        if ((!(s.equals("Oui"))) && (!(s.equals("Non")))) {
+    public static void verifyOuiNon(String reponse) throws ExceptionErreurOuiNon {
+        if ((!(reponse.equals("Oui"))) && (!(reponse.equals("Non")))) {
             throw new ExceptionErreurOuiNon("Erreur : Veuillez répondre par 'Oui' ou 'Non'");
         }
     }

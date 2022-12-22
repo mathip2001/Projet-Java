@@ -19,6 +19,11 @@ public class BienConso extends ConsoCarbone {
                                  // 1750€ de dépenses.
 
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe BienConso
+     * @param montant représente le montant des dépenses annuelles en biens de consommation de l'utilisateur.rice
+     * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un montant positif
+     */
     public BienConso(double montant) throws ExceptionMontantBienConso {
         super();
         // une tonne de CO2eq est équivalente à 1750€ de dépenses.
@@ -31,7 +36,7 @@ public class BienConso extends ConsoCarbone {
 
     /**
      * La méthode impactFormula permet de calculer l'impact de l'utilisateur.rice
-     * lié à ses dépenses
+     * lié à ses dépenses en biens de consommation
      * 
      * @return l'impact d'après la formule : montant / c1
      */
@@ -55,7 +60,7 @@ public class BienConso extends ConsoCarbone {
      * La méthode setMontant permet de modifier le montant des dépenses annuelles
      * des bienConso de l'utilisateur.rice d'une instance BienConso
      * 
-     * @param représente le nouveau montant des dépenses annuelles des bienConso de
+     * @param montant représente le nouveau montant des dépenses annuelles des bienConso de
      *                   l'utilisateur.rice
      */
     public void setMontant(double montant) {

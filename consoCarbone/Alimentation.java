@@ -22,6 +22,12 @@ public class Alimentation extends ConsoCarbone {
     private final double c3 = 0.9;
 
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe Alimentation
+     * @param txBoeuf représente le taux de repas à base de boeuf
+     * @param txVege représente le taux de repas végétarien
+     * @throws ExceptionTauxAlimentation est une exception qui s'enclenche lorsque le taux n'est pas entre 0 et 1
+     */
     public Alimentation(double txBoeuf, double txVege) throws ExceptionTauxAlimentation {
         super();
         this.txBoeuf = txBoeuf;
@@ -121,7 +127,7 @@ public class Alimentation extends ConsoCarbone {
     }
 
     /**
-     * La méthode empreinteMoyAlimentation permet de donner l'empreinte carbone
+     * La méthode empreinteMoyAlimentation permet d'afficher l'empreinte carbone
      * moyenne d'un.e français.e lié à son alimentation
      */
     public static void empreinteMoyAlimentation() {

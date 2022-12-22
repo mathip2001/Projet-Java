@@ -19,6 +19,17 @@ public class Voiture extends Transport {
     private int numero; // numéro de la voiture (pour l'identifier lorsque l'utilisateur en a plusieurs)
 
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe Voiture
+     * @param possede représente la situation de possession ou non d'une voiture par l'utilisateur.rice
+     * @param taille représente la taille de la voiture
+     * @param kilomAnnee représente le nombre de kilomètres parcourus en voiture par an par l'utilisateur.rice 
+     * @param amortissement représente la durée de conservation de la voiture
+     * @param numero représente le numéro de la voiture (pour l'identifier lorsque l'utilisateur en a plusieurs)
+     * @throws ExceptionAmmortissementVoiture est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une durée d'amortissement positive
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     * @throws ExceptionTailleVoiture est une exception qui s'enclenche orsque l'utilisateur n'a pas saisie une taille correspondant à 'P' ou 'G'
+     */
     public Voiture(boolean possede, Taille taille, int kilomAnnee, int amortissement, int numero)
             throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
         super(kilomAnnee);

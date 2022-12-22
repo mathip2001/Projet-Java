@@ -31,6 +31,20 @@ public class Utilisateur {
     private ArrayList<ConsoCarbone> liste;
 
     // 2 Constructeurs
+    /**
+     * Permet de construire un objet issu de la classe Utilisateur à partir des données entrées dans la console
+     * @param alimentation représente le poste de consommation carbone lié à alimentation
+     * @param bienConso représente le poste de consommation carbone lié aux dépenses en biens de consommation
+     * @param logement représente le poste de consommation carbone lié au logement
+     * @param services représente le poste de consommation carbone lié aux services publics
+     * @param cmpt représente le numéro de l'utilisateur
+     * @param entree représente un Scanner permettant de récupérer une entrée
+     * @throws ExceptionSuperficieLogement est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une superficie positive
+     * @throws ExceptionAmmortissementVoiture est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une durée d'amortissement positive
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une classe énergétique entre A et G
+     * @throws ExceptionTailleVoiture est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une taille correspondant à 'P' ou 'G'
+     */
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement,
             ServicesPublics services, int cmpt, Scanner entree)
             throws ExceptionSuperficieLogement, ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport,
@@ -45,9 +59,22 @@ public class Utilisateur {
         liste.add(logement);
         liste.add(services);
         ajouterLogement(cmpt, entree);
-        ajouterTransport(cmpt, entree);
+        ajouterTransport(cmpt);
     }
 
+    /**
+     * Permet de construire un objet issu de la classe Utilisateur à partir des données dans un fichier '.txt'
+     * @param fichier représente le fichier qui contient les informations sur l'utilisateur
+     * @throws FileNotFoundException représente l'exception qui informe qu'un fichier n'existe pas
+     * @throws ExceptionTauxAlimentation est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un taux entre 0 et 1
+     * @throws ExceptionSuperficieLogement est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une superficie positive
+     * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une classe énergétique entre A et G
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     * @throws ExceptionTailleVoiture est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une taille correspondant à 'P' ou 'G'
+     * @throws ExceptionAmmortissementVoiture est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une durée d'amortissement positive
+     * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un montant positif
+     * @throws ExceptionObjetInconnu représente l'exception qui informe que l'objet n'existe pas
+     */
     public Utilisateur(File fichier)
             throws FileNotFoundException, ExceptionTauxAlimentation, ExceptionSuperficieLogement,
             ExceptionClasseEnergetiqueLogement, ExceptionNbKilometresTransport, ExceptionTailleVoiture,
@@ -230,6 +257,7 @@ public class Utilisateur {
     /**
      * La méthode detaillerEmpreinte permet de détailler les empreintes carbones
      * d'une instance Utilisateur
+     * @param c représente le poste de consommation carbone
      */
     public void detaillerEmpreinte(ConsoCarbone c) {
         if (c instanceof Alimentation) {
@@ -303,14 +331,14 @@ public class Utilisateur {
      * ExceptionNbKilometresTransport apparaîtra à l'écran. Cette méthode est
      * appelée par la méthode createKilometreAnneeTranport
      * 
-     * @param i représente le nombre de kilomètre saisie par l'utilisateur par le
+     * @param km représente le nombre de kilomètre saisie par l'utilisateur par le
      *          biais de la méthode createKilometreAnneeTransport
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public static void verifyKilometreAnneeTransport(int i) throws ExceptionNbKilometresTransport {
-        if (i <= 0) {
+    public static void verifyKilometreAnneeTransport(int km) throws ExceptionNbKilometresTransport {
+        if (km <= 0) {
             throw new ExceptionNbKilometresTransport();
         }
     }
@@ -353,14 +381,14 @@ public class Utilisateur {
      * correctement la lettre, l'erreur ExceptionTailleVoiture apparaître à l'écran.
      * Cette méthode est appelée par la méthode createTailleVoiture
      * 
-     * @param s représente la taille de la voiture saisie par l'utilisateur dans le
+     * @param taille représente la taille de la voiture saisie par l'utilisateur dans le
      *          terminal par le biais de la méthode createTailleVoiture
      * @throws ExceptionTailleVoiture est une exception qui s'enclenche lorsque
      *                                l'utilisateur n'a pas saisie une taille
      *                                correspondant à 'P' ou 'G'
      */
-    public static void verifyTailleVoiture(String s) throws ExceptionTailleVoiture {
-        if (!(s.equals("P") || s.equals("G"))) {
+    public static void verifyTailleVoiture(String taille) throws ExceptionTailleVoiture {
+        if (!(taille.equals("P") || taille.equals("G"))) {
             throw new ExceptionTailleVoiture("Erreur : Veuillez répondre par 'P' ou 'G'");
         }
     }
@@ -372,14 +400,14 @@ public class Utilisateur {
      * l'erreur ExceptionAmmortissementVoiture apparaîtra à l'écran. Cette méthode
      * est appelée par la méthode ajouterVoiture
      * 
-     * @param i représente la durée de l'amortissement de la voiture saisie par
+     * @param amortissement représente la durée de l'amortissement de la voiture saisie par
      *          l'utilisateur par le biais de la méthode createAmortissementVoiture
      * @throws ExceptionAmmortissementVoiture est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        une durée d'amortissement positive
      */
-    public static void verifyAmortissementVoiture(int i) throws ExceptionAmmortissementVoiture {
-        if (i <= 0) {
+    public static void verifyAmortissementVoiture(int amortissement) throws ExceptionAmmortissementVoiture {
+        if (amortissement <= 0) {
             throw new ExceptionAmmortissementVoiture();
         }
     }
@@ -445,6 +473,8 @@ public class Utilisateur {
      * dans la liste de l'utilisateur au cas où l'utilisateur possède plusieurs
      * logements
      * 
+     * @param cmpt   représente le numéro de l'utilisateur
+     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionSuperficieLogement        est une exception qui s'enclenche
      *                                            lorsque l'utilisateur n'a pas
      *                                            saisie une superficie positive
@@ -455,14 +485,14 @@ public class Utilisateur {
      */
     public void ajouterLogement(int cmpt, Scanner entree)
             throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
-        System.out.println("Avez-vous un autre logement ? (Oui/Non)");
+        System.out.println("Utilisateur " + cmpt + " : Avez-vous un autre logement ? (Oui/Non)");
         String reponse = Population.createOuiNon();
         Logement log;
         int numero = 2;
         while (reponse.equals("Oui")) {
             log = Population.creerLogement(cmpt, entree, numero);
             liste.add(log);
-            System.out.println("Avez-vous un autre logement ? (Oui/Non)");
+            System.out.println("Utilisateur " + cmpt + " : Avez-vous un autre logement ? (Oui/Non)");
             reponse = Population.createOuiNon();
             numero++;
         }
@@ -473,7 +503,6 @@ public class Utilisateur {
      * de Transport à l'ArrayList d'Utilisateur
      * 
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionAmmortissementVoiture est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        une durée d'amortissement positive
@@ -486,15 +515,15 @@ public class Utilisateur {
      *                                        taille
      *                                        correspondant à 'P' ou 'G'
      */
-    public void ajouterTransport(int cmpt, Scanner entree)
+    public void ajouterTransport(int cmpt)
             throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
-        ajouterVoiture(cmpt, entree);
-        ajouterAvion(cmpt, entree);
-        ajouterBus(cmpt, entree);
-        ajouterRER(cmpt, entree);
-        ajouterTGV(cmpt, entree);
-        ajouterMetro(cmpt, entree);
-        ajouterTramway(cmpt, entree);
+        ajouterVoiture(cmpt);
+        ajouterAvion(cmpt);
+        ajouterBus(cmpt);
+        ajouterRER(cmpt);
+        ajouterTGV(cmpt);
+        ajouterMetro(cmpt);
+        ajouterTramway(cmpt);
     }
 
     // Pour l'ajout des classes filles de Transport à l'ArrayList de l'Utilisateur
@@ -505,27 +534,26 @@ public class Utilisateur {
      * voitures
      * 
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
-     * @throws ExceptionTailleVoiture est une exception qui s'enclenche lorsque
-     *                                l'utilisateur n'a pas saisie une taille
-     *                                correspondant à 'P' ou 'G'
+     * @throws ExceptionTailleVoiture est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une taille correspondant à 'P' ou 'G'
+     * @throws ExceptionAmmortissementVoiture est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une durée d'amortissement positive
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
      */
-    public void ajouterVoiture(int cmpt, Scanner entree)
+    public void ajouterVoiture(int cmpt)
             throws ExceptionAmmortissementVoiture, ExceptionNbKilometresTransport, ExceptionTailleVoiture {
-        System.out.println("Avez-vous une voiture ? (Oui/Non)");
+        System.out.println("Utilisateur " + cmpt + " : Avez-vous une voiture ? (Oui/Non)");
         String reponse = Population.createOuiNon();
 
         Voiture voiture;
         int numero = 1;
         while (reponse.equals("Oui")) {
             System.out.println(
-                    "Quelle est la taille de votre véhicule ? ('G' pour grande voiture ou 'P' pour petite voiture)");
+                "Utilisateur " + cmpt + " : Quelle est la taille de votre véhicule ? ('G' pour grande voiture ou 'P' pour petite voiture)");
             String taille = createTailleVoiture();
 
-            System.out.println("Quel est le nombre de kilomètres (un entier) parcourus par an ?");
+            System.out.println("Utilisateur " + cmpt + " : Quel est le nombre de kilomètres (un entier) parcourus par an ?");
             int km = createKilometreAnneeTransport();
 
-            System.out.println("Depuis combien d'années avez-vous votre voiture ?");
+            System.out.println("Utilisateur " + cmpt + " : Depuis combien d'années avez-vous votre voiture ?");
             int annee = createAmortissementVoiture();
 
             switch (taille) {
@@ -540,7 +568,7 @@ public class Utilisateur {
                 default:
                     System.out.println("Vous n'avez pas rentré correctement la taille de votre véhicule");
             }
-            System.out.println("Avez-vous une autre voiture ? (Oui/Non)");
+            System.out.println("Utilisateur " + cmpt + " : Avez-vous une autre voiture ? (Oui/Non)");
             reponse = Population.createOuiNon();
             numero++;
         }
@@ -549,16 +577,15 @@ public class Utilisateur {
     /**
      * 
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void ajouterAvion(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
-        System.out.println("Utilisez-vous l'avion ? (Oui/Non)");
+    public void ajouterAvion(int cmpt) throws ExceptionNbKilometresTransport {
+        System.out.println("Utilisateur " + cmpt + " : Utilisez-vous l'avion ? (Oui/Non)");
         String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
-            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            System.out.println("Utilisateur " + cmpt + " : Quel est le nombre (un entier) de kilomètres parcourus en avion par an ?");
             int km = createKilometreAnneeTransport();
             Avion avion = new Avion(true, km);
             liste.add(avion);
@@ -567,16 +594,15 @@ public class Utilisateur {
 
     /**
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void ajouterBus(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
-        System.out.println("Utilisez-vous le bus ? (Oui/Non)");
+    public void ajouterBus(int cmpt) throws ExceptionNbKilometresTransport {
+        System.out.println("Utilisateur " + cmpt + " : Utilisez-vous le bus ? (Oui/Non)");
         String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
-            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            System.out.println("Utilisateur " + cmpt + " : Quel est le nombre (un entier) de kilomètres parcourus en bus par an ?");
             int km = createKilometreAnneeTransport();
             Bus bus = new Bus(true, km);
             liste.add(bus);
@@ -585,16 +611,15 @@ public class Utilisateur {
 
     /**
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void ajouterRER(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
-        System.out.println("Utilisez-vous le RER ? (Oui/Non)");
+    public void ajouterRER(int cmpt) throws ExceptionNbKilometresTransport {
+        System.out.println("Utilisateur " + cmpt + " : Utilisez-vous le RER ? (Oui/Non)");
         String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
-            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            System.out.println("Utilisateur " + cmpt + " : Quel est le nombre (un entier) de kilomètres parcourus en RER par an ?");
             int km = createKilometreAnneeTransport();
             RER rer = new RER(true, km);
             liste.add(rer);
@@ -603,16 +628,15 @@ public class Utilisateur {
 
     /**
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void ajouterTGV(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
-        System.out.println("Utilisez-vous le TGV ? (Oui/Non)");
+    public void ajouterTGV(int cmpt) throws ExceptionNbKilometresTransport {
+        System.out.println("Utilisateur " + cmpt + " : Utilisez-vous le TGV ? (Oui/Non)");
         String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
-            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            System.out.println("Utilisateur " + cmpt + " : Quel est le nombre (un entier) de kilomètres parcourus en TGV par an ?");
             int km = createKilometreAnneeTransport();
             TGV tgv = new TGV(true, km);
             liste.add(tgv);
@@ -621,16 +645,15 @@ public class Utilisateur {
 
     /**
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void ajouterMetro(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
-        System.out.println("Utilisez-vous le métro ? (Oui/Non)");
+    public void ajouterMetro(int cmpt) throws ExceptionNbKilometresTransport {
+        System.out.println("Utilisateur " + cmpt + " : Utilisez-vous le métro ? (Oui/Non)");
         String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
-            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            System.out.println("Utilisateur " + cmpt + " : Quel est le nombre (un entier) de kilomètres parcourus en métro par an ?");
             int km = createKilometreAnneeTransport();
             Metro metro = new Metro(true, km);
             liste.add(metro);
@@ -639,16 +662,15 @@ public class Utilisateur {
 
     /**
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
      *                                        un nombre de kilomètre positif
      */
-    public void ajouterTramway(int cmpt, Scanner entree) throws ExceptionNbKilometresTransport {
-        System.out.println("Utilisez-vous le tramway ? (Oui/Non)");
+    public void ajouterTramway(int cmpt) throws ExceptionNbKilometresTransport {
+        System.out.println("Utilisateur " + cmpt + " : Utilisez-vous le tramway ? (Oui/Non)");
         String reponse = Population.createOuiNon();
         if (reponse.equals("Oui")) {
-            System.out.println("Quel est le nombre (un entier) de kilomètres parcourus par an ?");
+            System.out.println("Utilisateur " + cmpt + " : Quel est le nombre (un entier) de kilomètres parcourus en tramway par an ?");
             int km = createKilometreAnneeTransport();
             Tramway tramway = new Tramway(true, km);
             liste.add(tramway);

@@ -19,6 +19,14 @@ public class Logement extends ConsoCarbone {
     private int numero; // représente le numéro du logement
 
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe Logement
+     * @param superficie représente la superficie du logement
+     * @param classeEnergetique représente la classe énergétique du logement
+     * @param numero représente le numéro du logement
+     * @throws ExceptionSuperficieLogement est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une superficie positive
+     * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie une classe énergétique entre A et G
+     */
     public Logement(int superficie, CE classeEnergetique, int numero)
             throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         super();

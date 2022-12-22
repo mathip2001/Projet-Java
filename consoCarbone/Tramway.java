@@ -11,6 +11,12 @@ import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
  */
 public class Tramway extends Train {
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe Tramway
+     * @param utilise représente la situation d'utilisation ou non du tramway par l'utilisateur.rice
+     * @param kilomAnnee représente le nombre de kilomètres parcourus en tramway par an par l'utilisateur.rice 
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     */
     public Tramway(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;

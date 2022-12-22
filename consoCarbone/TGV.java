@@ -11,6 +11,12 @@ import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
  */
 public class TGV extends Train {
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe TGV
+     * @param utilise représente la situation d'utilisation ou non du TGV par l'utilisateur.rice
+     * @param kilomAnnee représente le nombre de kilomètres parcourus en TGV par an par l'utilisateur.rice 
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     */
     public TGV(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;
@@ -49,8 +55,7 @@ public class TGV extends Train {
      * parcourus en TGV par an par l'utilisateur.rice
      * 
      * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en TGV
-     *                   par an
-     *                   par l'utilisateur.rice
+     *                   par an par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;

@@ -14,6 +14,12 @@ public class Bus extends Transport {
     private boolean utilise; // un boolean indiquant si l'utilisateur.rice utilise le bus
 
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe Bus
+     * @param utilise représente la situation d'utilisation ou non du bus par l'utilisateur.rice
+     * @param kilomAnnee représente le nombre de kilomètres parcourus en bus par an par l'utilisateur.rice 
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     */
     public Bus(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;
@@ -62,8 +68,7 @@ public class Bus extends Transport {
      * parcourus en bus par an par l'utilisateur.rice
      * 
      * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en bus
-     *                   par an
-     *                   par l'utilisateur.rice
+     *                   par an par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
@@ -72,9 +77,9 @@ public class Bus extends Transport {
 
     /**
      * La méthode toString permet de donner un aperçu des attributs d'une instance
-     * bus
+     * Bus
      * 
-     * @return les attributs d'une instance bus
+     * @return les attributs d'une instance Bus
      */
     @Override
     public String toString() {

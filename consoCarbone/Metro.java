@@ -11,6 +11,12 @@ import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
  */
 public class Metro extends Train {
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe Metro
+     * @param utilise représente la situation d'utilisation ou non du métro par l'utilisateur.rice
+     * @param kilomAnnee représente le nombre de kilomètres parcourus en métro par an par l'utilisateur.rice 
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     */
     public Metro(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;

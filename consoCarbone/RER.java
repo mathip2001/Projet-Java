@@ -11,6 +11,12 @@ import consoCarbone.Exceptions.ExceptionNbKilometresTransport;
  */
 public class RER extends Train {
     // Constructeur
+    /**
+     * Permet de construire un objet issu de la classe RER
+     * @param utilise représente la situation d'utilisation ou non du RER par l'utilisateur.rice
+     * @param kilomAnnee représente le nombre de kilomètres parcourus en RER par an par l'utilisateur.rice 
+     * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche lorsque l'utilisateur n'a pas saisie un nombre de kilomètre positif
+     */
     public RER(boolean utilise, int kilomAnnee) throws ExceptionNbKilometresTransport {
         super(kilomAnnee);
         this.utilise = utilise;
@@ -49,8 +55,7 @@ public class RER extends Train {
      * parcourus en RER par an par l'utilisateur.rice
      * 
      * @param kilomAnnee représente le nouveau nombre de kilomètres parcourus en RER
-     *                   par an
-     *                   par l'utilisateur.rice
+     *                   par an par l'utilisateur.rice
      */
     public void setKilomAnnee(int kilomAnnee) {
         this.kilomAnnee = kilomAnnee;
