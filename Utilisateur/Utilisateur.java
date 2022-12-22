@@ -285,7 +285,7 @@ public class Utilisateur {
     }
 
     /**
-     * Pour arrêter l'exécution du programme si l'objet n'est pas reconnu. L'appel
+     * La méthode erreurObjetInconnu permet d'arrêter l'exécution du programme si l'objet n'est pas reconnu. L'appel
      * de cette méthode renvoie automatiquement une exception car on l'appelle dans
      * le default d'un switch qui représente le cas d'erreur
      * 
@@ -485,9 +485,8 @@ public class Utilisateur {
     }
 
     /**
-     * La méthode createKilometreAnneeTransport permet de vérifier le nombre de
-     * kilometre d'un véhicule de transport saisie à partir du terminal. Le nombre
-     * de kilomètre par année est nécessaire pour la création d'une instance
+     * La méthode createAmortissementVoiture permet de vérifier l'amortissement d'une voiture saisie à partir du terminal. 
+     * L'amortissement est nécessaire pour la création d'une instance
      * Transport dans les méthodes
      * 
      * @return la durée d'amortissement qui sera nécessaire pour instancier un objet
@@ -628,7 +627,7 @@ public class Utilisateur {
     }
 
     /**
-     * 
+     * La méthode ajouterAvion permet d'ajouter un objet Avion dans la liste de l'utilisateur au cas où l'utilisateur utilise l'avion 
      * @param cmpt représente le numéro de l'utilisateur
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
@@ -647,6 +646,7 @@ public class Utilisateur {
     }
 
     /**
+     * La méthode ajouterBus permet d'ajouter un objet Bus dans la liste de l'utilisateur au cas où l'utilisateur utilise le bus 
      * @param cmpt représente le numéro de l'utilisateur
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
@@ -665,6 +665,7 @@ public class Utilisateur {
     }
 
     /**
+     * La méthode ajouterRER permet d'ajouter un objet RER dans la liste de l'utilisateur au cas où l'utilisateur utilise le RER
      * @param cmpt représente le numéro de l'utilisateur
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
@@ -683,6 +684,7 @@ public class Utilisateur {
     }
 
     /**
+     * La méthode ajouterTGV permet d'ajouter un objet TGV dans la liste de l'utilisateur au cas où l'utilisateur utilise le TGV
      * @param cmpt représente le numéro de l'utilisateur
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
@@ -701,6 +703,7 @@ public class Utilisateur {
     }
 
     /**
+     * La méthode ajouterMetro permet d'ajouter un objet Metro dans la liste de l'utilisateur au cas où l'utilisateur utilise le métro
      * @param cmpt représente le numéro de l'utilisateur
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
@@ -719,6 +722,7 @@ public class Utilisateur {
     }
 
     /**
+     * La méthode ajouterTramway permet d'ajouter un objet Tramway dans la liste de l'utilisateur au cas où l'utilisateur utilise le tramway
      * @param cmpt représente le numéro de l'utilisateur
      * @throws ExceptionNbKilometresTransport est une exception qui s'enclenche
      *                                        lorsque l'utilisateur n'a pas saisie
