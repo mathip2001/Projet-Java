@@ -111,10 +111,10 @@ public class Population {
             do {
                 Alimentation alimentation = creerAlimentation(cmpt);
                 BienConso bienConso = creerBienConso(cmpt);
-                Logement logement = creerLogement(cmpt, entree, 1);
+                Logement logement = creerLogement(cmpt, 1);
                 ServicesPublics servicesPublics = ServicesPublics.getInstance();
                 Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logement,
-                        servicesPublics, cmpt, entree);
+                        servicesPublics, cmpt);
                 add(utilisateur);
                 System.out.println("Y a-t-il un autre utilisateur ? (Oui/Non)");
                 reponse = createOuiNon();
@@ -149,8 +149,9 @@ public class Population {
      * ExceptionTauxAlimentation apparaîtra à l'écran. Cette méthode est appelée par
      * la méthode createTauxAlimentation
      * 
-     * @param taux représente le taux d'alimentation saisie par l'utilisateur dans le
-     *          terminal par le biais de la méthode createTauxAlimentation
+     * @param taux représente le taux d'alimentation saisie par l'utilisateur dans
+     *             le
+     *             terminal par le biais de la méthode createTauxAlimentation
      * @throws ExceptionTauxAlimentation est une exception qui s'enclenche
      *                                   lorsque l'utilisateur n'a pas
      *                                   saisie un taux entre 0 et 1
@@ -193,7 +194,7 @@ public class Population {
      * La méthode creerAlimentation permet de créer une instance Alimentation qui
      * sera définie à partir des informations saisies dans le terminal
      * 
-     * @param cmpt   représente le numéro de l'utilisateur
+     * @param cmpt représente le numéro de l'utilisateur
      * @return une instance Alimentation
      * @throws ExceptionTauxAlimentation est une exception qui s'enclenche lorsque
      *                                   l'utilisateur n'a pas saisie un taux entre
@@ -221,8 +222,9 @@ public class Population {
      * apparaîtra à l'écran. Cette méthode est appelée par la méthode
      * createMontantBienConso
      * 
-     * @param montant représente le montant saisie par l'utilisateur dans le terminal par
-     *          le biais de la méthode createMontantBienConso
+     * @param montant représente le montant saisie par l'utilisateur dans le
+     *                terminal par
+     *                le biais de la méthode createMontantBienConso
      * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque
      *                                   l'utilisateur n'a pas saisie un montant
      *                                   positif
@@ -264,7 +266,7 @@ public class Population {
      * La méthode creerBienConso permet de créer une instance BienConso qui
      * sera définie à partir des informations saisies dans le terminal
      * 
-     * @param cmpt   représente le numéro de l'utilisateur
+     * @param cmpt représente le numéro de l'utilisateur
      * @return une instance BienConso
      * @throws ExceptionMontantBienConso est une exception qui s'enclenche lorsque
      *                                   l'utilisateur n'a pas saisie un montant
@@ -288,8 +290,10 @@ public class Population {
      * ExceptionSuperficieLogement apparaîtra à l'écran. Cette méthode est appelée
      * par la méthode createSuperficieLogement
      * 
-     * @param superficie représente la superficie du logement saisie par l'utilisateur dans
-     *          le terminal par le biais de la méthode createSuperficieLogement
+     * @param superficie représente la superficie du logement saisie par
+     *                   l'utilisateur dans
+     *                   le terminal par le biais de la méthode
+     *                   createSuperficieLogement
      * @throws ExceptionSuperficieLogement est une exception qui s'enclenche lorsque
      *                                     l'utilisateur n'a pas saisie une
      *                                     superficie positive
@@ -308,7 +312,7 @@ public class Population {
      * appelée par la méthode createClasseEnergetiqueLogement
      * 
      * @param ce représente la classe énergétique saisie par l'utilisateur dans le
-     *          terminal par le biais de la méthode createClasseEnergetiqueLogement
+     *           terminal par le biais de la méthode createClasseEnergetiqueLogement
      * @throws ExceptionClasseEnergetiqueLogement est une exception qui s'enclenche
      *                                            lorsque l'utilisateur n'a pas
      *                                            saisie une classe énergétique
@@ -385,7 +389,6 @@ public class Population {
      * sera définie à partir des informations saisies dans le terminal
      *
      * @param cmpt   représente le numéro de l'utilisateur
-     * @param entree représente un Scanner permettant de récupérer une entrée
      * @param numero représente le numéro du logement
      * @return une instance Logement
      * @throws ExceptionSuperficieLogement        est une exception qui s'enclenche
@@ -397,7 +400,7 @@ public class Population {
      *                                            saisie une classe énergétique
      *                                            entre A et G
      */
-    public static Logement creerLogement(int cmpt, Scanner entree, int numero)
+    public static Logement creerLogement(int cmpt, int numero)
             throws ExceptionSuperficieLogement, ExceptionClasseEnergetiqueLogement {
         System.out.println("Utilisateur " + cmpt + " : Quelle est la superficie du logement ? (en m^2)");
         int superficie = createSuperficieLogement();
@@ -423,7 +426,7 @@ public class Population {
                 return new Logement(superficie, CE.G, numero);
             default:
                 System.out.println("Vous n'avez pas rentré correctement la classe énergétique de votre logement");
-                return creerLogement(cmpt, entree, numero);
+                return creerLogement(cmpt, numero);
         }
     }
 
@@ -435,8 +438,9 @@ public class Population {
      * correctement le taux, l'erreur ErreurOuiNon apparaîtra à l'écran. Cette
      * méthode est appelée par la méthode createOuiNon
      * 
-     * @param reponse représente la réponse saisie par l'utilisateur dans le terminal par
-     *          le biais de la méthode createOuiNon
+     * @param reponse représente la réponse saisie par l'utilisateur dans le
+     *                terminal par
+     *                le biais de la méthode createOuiNon
      * @throws ExceptionErreurOuiNon est une exception qui s'enclenche lorsque
      *                               l'utilisateur ne répond pas par Oui ou par Non
      */
